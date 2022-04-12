@@ -1,0 +1,34 @@
+name: Tests
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+        
+    - run: npm install
+    
+    - run: npm audit fix
+
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.7.0
+        
+    - name: Setup and Run Cypress
+      uses: cypress-io/github-action@v2
+      with:
+        browser: chrome
+        headless: true
+        start: npm run start:test
+
+    - run: npm run test:unit
+      env:
+        CI: true
+    
+    - run: npm run lint
