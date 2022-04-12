@@ -1,3 +1,5 @@
+[![Tests](https://github.com/adamwoodcock98/acebook-team-baddiez/actions/workflows/tests.yml/badge.svg)](https://github.com/adamwoodcock98/acebook-team-baddiez/actions/workflows/tests.yml)
+
 # Acebook
 
 This is a Node.js template for the Acebook engineering project.
