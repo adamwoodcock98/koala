@@ -47,7 +47,7 @@ describe("Post model", () => {
   });
 
   it("can save a post", (done) => {
-    var post = new Post({ message: "can save a post", user: mockUserId });
+    const post = new Post({ message: "can save a post", user: mockUserId });
 
     post.save((err) => {
       expect(err).toBeNull();
