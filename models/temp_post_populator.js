@@ -9,12 +9,11 @@ mongoose.connect("mongodb://127.0.0.1/acebook", {
 
 const db = mongoose.connection;
 
-// console.log(mongoose);
+console.log(db.name);
 
 const Post = require("./post");
 
 const post = new Post({ message: "the baddiez were here" });
-const post2 = new Post({ message: })
 
 post.save();
 
