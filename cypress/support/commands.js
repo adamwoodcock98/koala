@@ -37,3 +37,11 @@ Cypress.Commands.add("login", (email, password) => {
   cy.get("#password").type(password);
   cy.get("#submit").click();
 });
+
+Cypress.Commands.add('addPost', (text) => {
+  cy.visit("/posts");
+  cy.contains("New post").click();
+
+  cy.get("#new-post-form").find('[type="text"]').type(text);
+  cy.get("#new-post-form").submit();
+})
