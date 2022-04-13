@@ -1,16 +1,11 @@
+
 describe("Authentication", () => {
   it("A user signs in and is redirected to /posts", () => {
-    // sign up
-    cy.visit("/users/new");
-    cy.get("#email").type("someone@example.com");
-    cy.get("#password").type("password");
-    cy.get("#submit").click();
+    const email = "test@example.com";
+    const password = "12345";
 
-    // sign in
-    cy.visit("/sessions/new");
-    cy.get("#email").type("someone@example.com");
-    cy.get("#password").type("password");
-    cy.get("#submit").click();
+    cy.signUp(email, password);
+    cy.login(email, password);
 
     cy.url().should("include", "/posts");
     cy.contains("a", "New post");

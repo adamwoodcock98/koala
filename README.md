@@ -59,7 +59,7 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
    ```
    npm start
    ```
-2. Browse to [http://localhost:3000](http://localhost:3000)
+2. Browse to [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 ### Test
 
