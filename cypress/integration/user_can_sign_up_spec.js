@@ -1,11 +1,8 @@
 describe("Registration", () => {
   it("A user signs up and is redirected to sign in", () => {
-    // sign up
-    cy.visit("/users/new");
-    cy.get("#email").type("someone@example.com");
-    cy.get("#password").type("password");
-    cy.get("#submit").click();
-
+    const email = "test@example.com";
+    const password = "12345";
+    cy.signUp(email, password);
     cy.url().should("include", "/sessions/new");
   });
 });
