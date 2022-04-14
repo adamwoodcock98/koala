@@ -24,6 +24,16 @@ body {
   of other tags */
 }
 
+/* Allows us to override the default stylings of the search button */
+.btn-outline-success {
+  color: var(--facebook-black);
+  border-color: #c3b1e1;
+}
+
+.bg-light {
+  background-color: #c3b1e1;
+}
+
 .card {
   background-color: var(--facebook-white);
   border-radius: 25px;
