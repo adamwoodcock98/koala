@@ -11,8 +11,8 @@ describe("Viewing posts", () => {
     cy.addPost("Testing is so fun!");
     cy.addPost("Baddiez don't test!");
 
-    cy.get(".posts").should("contain", "MEHN stack!");
-    cy.get(".posts").should("contain", "Testing is so fun!");
-    cy.get(".posts").should("contain", "Baddiez don't test!");
+    cy.get(".message").should("contain", "MEHN stack!");
+    cy.get(".message").should("contain", "Testing is so fun!");
+    cy.get(".message").should("contain", "Baddiez don't test!");
   });
 });

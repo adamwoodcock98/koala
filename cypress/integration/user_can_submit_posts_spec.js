@@ -11,6 +11,6 @@ describe("Timeline", () => {
     
     cy.addPost('Hello, world!');
 
-    cy.get(".posts").should("contain", "Hello, world!");
+    cy.get(".message").should("contain", "Hello, world!");
   });
 });
