@@ -1,18 +1,56 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Helvetica, Arial, sans-serif;
   text-align: center;
+  --facebook-lighter-blue: #3578e5;
+  --facebook-blue: #1877f2;
+  --facebook-beige: #fff9d7;
+  --facebook-grey: #dddfe2;
+  --facebook-black: #1d2129;
+  --facebook-whitegrey: #f0f2f5;
+  --facebook-green: #42b72a;
+  --facebook-white: #ffffff;
+  background-color: var(--facebook-white);
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.card {
+  background-color: var(--facebook-whitegrey);
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  margin: auto;
+  padding: 14px 10px 14px 10px;
+  width: 396px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  gap: 18px;
 }
 
 .post-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .post-header {
   flex-direction: row;
+}
+
+.date-posted {
+  /* color: var(--facebook-grey); */
+  color: grey;
+}
+
+.post-body {
+  /* color: burlywood; */
+  margin: 20px;
+  /* background-color: beige; */
 }
