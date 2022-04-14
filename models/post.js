@@ -3,14 +3,17 @@ const mongoose = require("mongoose");
 const PostSchema = new mongoose.Schema({
   message: {
     type: String,
-    required: true
+    required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true
-  }
-  
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Post = mongoose.model("Post", PostSchema);
