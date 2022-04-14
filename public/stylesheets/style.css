@@ -24,10 +24,6 @@ body {
   of other tags */
 }
 
-a {
-  color: #00b7ff;
-}
-
 .card {
   background-color: var(--facebook-white);
   border-radius: 25px;
