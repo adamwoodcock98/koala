@@ -10,13 +10,14 @@ const PostsController = {
       res.render("posts/index", { posts: posts });
     });
   },
-  
+
   Create: (req, res) => {
-    const userId = req.session.user._id
-    const message = req.body.message
+    const session = {
+      message: req.body.message,
+      user: req.session.user,
+    };
+    const post = new Post(session);
     
-    const post = new Post({ message: message, user: userId });
-   
     post.save((err) => {
       if (err) {
         throw err;

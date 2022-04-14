@@ -1,10 +1,15 @@
 const createError = require("http-errors");
 const express = require("express");
+const exphbs = require("express-handlebars");
+const {
+  allowInsecurePrototypeAccess,
+} = require("@handlebars/allow-prototype-access");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const Handlebars = require("handlebars");
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
@@ -15,6 +20,14 @@ const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
+app.engine(
+  "hbs",
+  exphbs.engine({
+    defaultLayout: "layout",
+    extname: ".hbs",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+  })
+);
 app.set("view engine", "hbs");
 
 app.use(logger("dev"));
