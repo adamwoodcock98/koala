@@ -1,4 +1,0 @@
-- looking up handlebars docs to see where we can adjust templates
-- mockup of card for post
-  - return of teh Baz
-- Editing template for posts

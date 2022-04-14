@@ -18,7 +18,7 @@ a {
 }
 
 .card {
-  background-color: var(--facebook-whitegrey);
+  background-color: var(--facebook-white);
   border-radius: 25px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
