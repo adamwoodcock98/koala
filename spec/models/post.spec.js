@@ -22,7 +22,7 @@ describe("Post model", () => {
     post.save((err) => {
       expect(err).not.toBeNull();
       done();
-    })
+    });
   });
 
   it("has a user ID", () => {
@@ -36,6 +36,15 @@ describe("Post model", () => {
       expect(err).not.toBeNull();
       done();
     });
+  });
+
+  it("has a createdAt time", () => {
+    const post = new Post({
+      message: "has a user ID",
+      user: mockUserId,
+      createdAt: Date.now(),
+    });
+    expect(post.createdAt).not.toBeNull();
   });
 
   it("can list all posts", (done) => {

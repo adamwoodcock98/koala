@@ -13,7 +13,11 @@ console.log(db.name);
 
 const Post = require("./post");
 
-const post = new Post({ message: "the baddiez were here" });
+const post = new Post({
+  message: "we iz so confused",
+  user: new mongoose.Types.ObjectId(),
+  createdAt: Date.now(),
+});
 
 post.save();
 
