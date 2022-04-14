@@ -1,4 +1,3 @@
-
 describe("Authentication", () => {
   it("A user signs in and is redirected to /posts", () => {
     const email = "test@example.com";
