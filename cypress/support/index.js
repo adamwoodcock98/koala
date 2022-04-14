@@ -17,4 +17,9 @@
 // import './commands'
 
 // Alternatively you can use CommonJS syntax:
+
 require('./commands')
+
+beforeEach(() => {
+  cy.exec("mongo acebook_test --eval 'db.users.remove({})'")
+})
