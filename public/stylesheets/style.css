@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px Helvetica, Arial, sans-serif;
   text-align: center;
   --facebook-lighter-blue: #3578e5;
@@ -11,6 +11,17 @@ body {
   --facebook-green: #42b72a;
   --facebook-white: #ffffff;
   background-color: var(--facebook-white);
+}
+
+.navigation {
+  /* fixed keyword is fine too */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* z-index works pretty much like a layer:
+  the higher the z-index value, the greater
+  it will allow the navigation tag to stay on top
+  of other tags */
 }
 
 a {
@@ -50,7 +61,5 @@ a {
 }
 
 .post-body {
-  /* color: burlywood; */
   margin: 20px;
-  /* background-color: beige; */
 }
