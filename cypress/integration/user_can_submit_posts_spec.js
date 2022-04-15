@@ -1,24 +1,17 @@
-// describe("Timeline", () => {
-//   it("can submit posts, when signed in, and view them", () => {
-//     // sign up
-//     cy.visit("/users/new");
-//     cy.get("#email").type("someone@example.com");
-//     cy.get("#password").type("password");
-//     cy.get("#submit").click();
+describe("Timeline", () => {
+  it("can submit posts, when signed in, and view them", () => {
 
-//     // sign in
-//     cy.visit("/sessions/new");
-//     cy.get("#email").type("someone@example.com");
-//     cy.get("#password").type("password");
-//     cy.get("#submit").click();
+    const firstName = 'Barry'
+    const lastName = 'Barry'
+    const email = "test@example.com";
+    const password = "12345";
 
-//     // submit a post
-//     cy.visit("/posts");
-//     // cy.contains("New post").click();
+    cy.signUp(firstName, lastName, email, password);
+    cy.login(email, password);
+    
+    cy.addPost('Hello, world!');
 
-//     // cy.get("#new-post-form").find('[type="text"]').type("Hello, world!");
-//     // cy.get("#new-post-form").submit();
+    cy.get(".message").should("contain", "Hello, world!");
+  });
+});
 
-//     // cy.get(".posts").should("contain", "Hello, world!");
-//   });
-// });

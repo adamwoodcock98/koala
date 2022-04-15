@@ -1,6 +1,8 @@
 const Post = require("../models/post");
 
 const PostsController = {
+  // TODO: sort in reverse chronological order
+
   Index: (req, res) => {
     Post.find((err, posts) => {
       if (err) {
@@ -17,6 +19,7 @@ const PostsController = {
       user: req.session.user,
     };
     const post = new Post(session);
+    
     post.save((err) => {
       if (err) {
         throw err;
