@@ -2,11 +2,16 @@
 
   <div class="card">
     <form class="post-form" id="new-post-form" action="/posts" method="post">
-      <input id="message-input" name="message" type="text" placeholder="What's on your mind?" />
+      <input
+        id="message-input"
+        name="message"
+        type="text"
+        placeholder="What's on your mind?"
+      />
       <input type="submit" value="Post" />
     </form>
   </div>
-  
+
   {{#each posts}}
 
     <div class="post-container card" id="{{this._id}}">
@@ -26,4 +31,3 @@
   {{/each}}
 
 </div>
-<a class="new-post-link" href="/posts/new">New post</a>
