@@ -109,6 +109,15 @@ describe("User model", () => {
     await expect(user.save()).rejects.toThrow();
   });
 
+  it("has email as a required field", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      password: "password",
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
+
   it("only accepts valid emails", async () => {
     const user = new User({
       firstName: 'Barry',
