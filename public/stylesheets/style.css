@@ -10,7 +10,7 @@ body {
   --facebook-whitegrey: #f0f2f5;
   --facebook-green: #42b72a;
   --facebook-white: #ffffff;
-  background-color: var(--facebook-white);
+  background-color: #eae1f7;
 }
 
 .navigation {
@@ -24,6 +24,28 @@ body {
   of other tags */
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #ffffff;
+}
+
+.koala-image {
+  width: 80px;
+  height: 80px;
+}
+
+.form-control {
+  width: 10vw;
+}
+
+.form-control:focus {
+  width: 25vw;
+}
+
 /* Allows us to override the default stylings of the search button */
 .btn-outline-success {
   color: var(--facebook-black);
@@ -31,7 +53,12 @@ body {
 }
 
 .bg-light {
-  background-color: #c3b1e1;
+  background-color: #c3b1e1 !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #bf40bf !important;
+  border-color: #bf40bf;
 }
 
 .card {
@@ -40,7 +67,36 @@ body {
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
   padding: 14px 10px 14px 10px;
-  width: 396px;
+  width: 80vw;
+}
+
+input[type="text"] {
+  color: var(--facebook-black);
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem !important;
+  width: 10vw;
+}
+
+input[type="text"]:focus {
+  color: var(--facebook-black);
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem !important;
+  width: 20vw;
+}
+
+input[type="submit"] {
+  background: transparent;
+  border-color: #c3b1e1;
+  border-radius: 25px !important;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  color: #ffffff;
+  background: #bf40bf;
+  border-color: #bf40bf;
+  border-radius: 25px !important;
+  cursor: pointer;
 }
 
 .post-list {
