@@ -14,9 +14,8 @@ console.log(db.name);
 const Post = require("./post");
 
 const post = new Post({
-  message: "we iz so confused",
+  message: "testing at 3.46 pm",
   user: new mongoose.Types.ObjectId(),
-  createdAt: Date.now(),
 });
 
 post.save();
