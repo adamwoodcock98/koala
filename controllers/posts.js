@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 
 const PostsController = {
-  // TODO: sort in reverse chronological order
+  // TODO: fix session timestamp issue
 
   Index: (req, res) => {
     Post.find()
@@ -23,7 +23,7 @@ const PostsController = {
   Create: (req, res) => {
     const session = {
       message: req.body.message,
-      user: req.session.user,
+      user: req.session.user
     };
     const post = new Post(session);
 
