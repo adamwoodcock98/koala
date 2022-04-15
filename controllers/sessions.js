@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
 const SessionsController = {
   New: (req, res) => {
@@ -9,15 +10,21 @@ const SessionsController = {
     console.log("trying to log in");
     const email = req.body.email;
     const password = req.body.password;
-
+    console.log(password);
     User.findOne({ email: email }).then((user) => {
-      if (!user) {
-        res.redirect("/sessions/new");
-      } else if (user.password != password) {
-        res.redirect("/sessions/new");
+      if (user) {
+        bcrypt.compare(password, user.password).then((result) => {
+          if (result) {
+            console.log(`Look here -------- ${user.password}`);
+            console.log(result);
+            req.session.user = user;
+            res.redirect("/posts");
+          } else {
+            res.status(400).json({ error: "Invalid Password" });
+          }
+        });
       } else {
-        req.session.user = user;
-        res.redirect("/posts");
+        res.status(401).json({ error: "User does not exist" });
       }
     });
   },
