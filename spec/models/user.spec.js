@@ -91,7 +91,69 @@ describe("User model", () => {
     expect(user.aboutMe.pronouns).toBe('they/them');
   });
 
+  it("has first name as a required field", async () => {
+    const user = new User({
+      lastName: 'Barry',
+      email: "someone@example.com",
+      password: "password",
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
 
+  it("has last name as a required field", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      email: "someone@example.com",
+      password: "password",
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
+
+  it("has email as a required field", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      password: "password",
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
+
+  it("only accepts valid emails", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someoneexample.com",
+      password: "password",
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
+
+  it("email field has to be a unique entry", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someone@example.com",
+      password: "password",
+    });
+    await user.save();
+
+    const user2 = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someone@example.com",
+      password: "password",
+    });
+    await expect(user2.save()).rejects.toThrow();
+  });
+
+  it("has password as a required field", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someone@example.com"
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
 
   it("can list all users", (done) => {
     User.find((err, users) => {

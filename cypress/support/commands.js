@@ -40,8 +40,8 @@ Cypress.Commands.add("login", (email, password) => {
   cy.get("#submit").click();
 });
 
-Cypress.Commands.add('addPost', (text) => {
+Cypress.Commands.add("addPost", (text) => {
   cy.visit("/posts");
-  cy.get("#message-input").type(text);
+  cy.get("#message-input").type(text, { force: true });
   cy.get("#new-post-form").submit();
 });

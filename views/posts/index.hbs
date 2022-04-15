@@ -1,20 +1,24 @@
-<h1>Welcome to tófoo</h1>
 <div class="post-list">
 
   <div class="card">
-    <form id="new-post-form" action="/posts" method="post">
-      <input id="message-input" name="message" type="text" placeholder="What's on your mind?" />
+    <form class="post-form" id="new-post-form" action="/posts" method="post">
+      <input
+        id="message-input"
+        name="message"
+        type="text"
+        placeholder="What's on your mind?"
+      />
       <input type="submit" value="Post" />
     </form>
   </div>
-  
+
   {{#each posts}}
 
-    <div class="post-container" id="{{this._id}}">
+    <div class="post-container card" id="{{this._id}}">
 
       <div class="post-header">
-        <div class="name">NAME</div>
-        <div class="date-posted">{{this.createdAt}}</div>
+        <span class="name">Barry Barry-Barroldson</span>
+        <span class="date-posted">15 mins ago</span>
       </div>
 
       <div class="post-body">
@@ -27,4 +31,3 @@
   {{/each}}
 
 </div>
-<a class="new-post-link" href="/posts/new">New post</a>
