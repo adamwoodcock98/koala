@@ -2,7 +2,7 @@
 <div class="post-list">
 
   <div class="card">
-    <form id="new-post-form" action="/posts" method="post">
+    <form class="post-form" id="new-post-form" action="/posts" method="post">
       <input id="message-input" name="message" type="text" placeholder="What's on your mind?" />
       <input type="submit" value="Post" />
     </form>
@@ -13,8 +13,8 @@
     <div class="post-container" id="{{this._id}}">
 
       <div class="post-header">
-        <div class="name">NAME</div>
-        <div class="date-posted">DATE TIME</div>
+        <span class="name">Barry Barry</span>
+        <span class="date-posted">15 mins ago</span>
       </div>
 
       <div class="post-body">
