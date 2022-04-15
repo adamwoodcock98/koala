@@ -1,22 +1,18 @@
 describe("Viewing posts", () => {
   it("A signed in user sees posts on /posts", () => {
+    const firstName = 'Barry'
+    const lastName = 'Barry'
     const email = "test@example.com";
     const password = "12345";
 
-    cy.signUp(email, password);
+    cy.signUp(firstName, lastName, email, password);
     cy.login(email, password);
+    cy.addPost("MEHN stack!");
+    cy.addPost("Testing is so fun!");
+    cy.addPost("Baddiez don't test!");
 
-    cy.get("#message-input").type("MEHN stack!");
-    cy.get("#new-post-form").submit();
-
-    cy.get("#message-input").type("Testing is so fun!");
-    cy.get("#new-post-form").submit();
-
-    cy.get("#message-input").type("Baddiez don't test!");
-    cy.get("#new-post-form").submit();
-
-    cy.get(".post-body").should("contain", "MEHN stack!");
-    cy.get(".post-body").should("contain", "Testing is so fun!");
-    cy.get(".post-body").should("contain", "Baddiez don't test!");
+    cy.get(".message").should("contain", "MEHN stack!");
+    cy.get(".message").should("contain", "Testing is so fun!");
+    cy.get(".message").should("contain", "Baddiez don't test!");
   });
 });

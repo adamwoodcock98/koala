@@ -1,16 +1,13 @@
 <h1>Welcome to tófoo</h1>
 <div class="post-list">
 
-  <form id="new-post-form" action="/posts" method="post">
-    <input
-      id="message-input"
-      type="text"
-      name="message"
-      placeholder="What's on your mind?"
-    />
-    <input type="submit" value="Post" />
-  </form>
-
+  <div class="card">
+    <form id="new-post-form" action="/posts" method="post">
+      <input id="message-input" name="message" type="text" placeholder="What's on your mind?" />
+      <input type="submit" value="Post" />
+    </form>
+  </div>
+  
   {{#each posts}}
 
     <div class="post-container" id="{{this._id}}">

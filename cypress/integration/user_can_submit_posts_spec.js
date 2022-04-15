@@ -1,13 +1,17 @@
 describe("Timeline", () => {
   it("can submit posts, when signed in, and view them", () => {
+
+    const firstName = 'Barry'
+    const lastName = 'Barry'
     const email = "test@example.com";
     const password = "12345";
 
-    cy.signUp(email, password);
+    cy.signUp(firstName, lastName, email, password);
     cy.login(email, password);
+    
+    cy.addPost('Hello, world!');
 
-    cy.get("#message-input").type("Yo");
-    cy.get("#new-post-form").submit();
-    cy.get(".post-body").should("contain", "Yo");
+    cy.get(".message").should("contain", "Hello, world!");
   });
 });
+
