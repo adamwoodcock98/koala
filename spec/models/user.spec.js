@@ -146,6 +146,15 @@ describe("User model", () => {
     await expect(user2.save()).rejects.toThrow();
   });
 
+  it("has password as a required field", async () => {
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someone@example.com"
+    });
+    await expect(user.save()).rejects.toThrow();
+  });
+
   it("can list all users", (done) => {
     User.find((err, users) => {
       expect(err).toBeNull();
