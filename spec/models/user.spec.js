@@ -50,6 +50,18 @@ describe("User model", () => {
     expect(user.password).toEqual("password");
   });
 
+  it("can store a users post", () => {
+    const mockUserID = new mongoose.Types.ObjectId;
+    const user = new User({
+      firstName: 'Barry',
+      lastName: 'Barry',
+      email: "someone@example.com",
+      password: "password",
+      posts: mockUserID,
+    });
+    expect(user.posts[0]).toEqual(mockUserID);
+  });
+
   it("has a friend", () => {
     const mockObjectId = new mongoose.Types.ObjectId
     const user = new User({

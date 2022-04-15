@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-
-
 const aboutMeSchema = new mongoose.Schema({
   education: String,
   workplace: String,
@@ -34,6 +32,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  posts: [mongoose.SchemaTypes.ObjectId],
   friends: [mongoose.SchemaTypes.ObjectId],
   aboutMe: aboutMeSchema,
   profilePicture: {
