@@ -22,6 +22,7 @@ body {
   the higher the z-index value, the greater
   it will allow the navigation tag to stay on top
   of other tags */
+  margin-bottom: 18px !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
