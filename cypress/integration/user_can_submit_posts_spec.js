@@ -14,4 +14,3 @@ describe("Timeline", () => {
     cy.get(".message").should("contain", "Hello, world!");
   });
 });
-
