@@ -1,4 +1,9 @@
 <h1>Sign in</h1>
+
+{{#if signInError}}
+    <h3> Incorrect User or Password </h3>
+{{/if}}
+
 <form id="new-session-form" action="/sessions" method="post">
   <label for="email">Email: </label>
   <input id="email" type="email" name="email" value="">
