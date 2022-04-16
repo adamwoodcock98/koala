@@ -2,14 +2,6 @@ body {
   /* padding: 50px; */
   font: 14px Helvetica, Arial, sans-serif;
   text-align: center;
-  --facebook-lighter-blue: #3578e5;
-  --facebook-blue: #1877f2;
-  --facebook-beige: #fff9d7;
-  --facebook-grey: #dddfe2;
-  --facebook-black: #1d2129;
-  --facebook-whitegrey: #f0f2f5;
-  --facebook-green: #42b72a;
-  --facebook-white: #ffffff;
   --koala-white: #ffffff;
   --koala-lilac: #eae1f7;
   --koala-og-lavender: #c3b1e1;
@@ -19,6 +11,8 @@ body {
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
   --koala-black: #1d2129;
+  --border-radius: 25px;
+  --card-gap: 18px;
   background-color: var(--koala-background-grey);
 }
 
@@ -31,7 +25,7 @@ body {
   the higher the z-index value, the greater
   it will allow the navigation tag to stay on top
   of other tags */
-  margin-bottom: 18px !important;
+  margin-bottom: var(--card-gap) !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -41,6 +35,10 @@ body {
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .show > .nav-link {
   color: var(--koala-white);
+}
+
+.d-flex {
+  align-items: center;
 }
 
 .koala-image {
@@ -74,7 +72,7 @@ body {
 
 .card {
   background-color: var(--koala-white);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
   padding: 14px 10px 14px 10px;
@@ -91,7 +89,7 @@ input[type="text"] {
 input[type="submit"] {
   background: transparent;
   border-color: var(--koala-lavender);
-  border-radius: 25px !important;
+  border-radius: var(--border-radius) !important;
   cursor: pointer;
 }
 
@@ -99,7 +97,7 @@ input[type="submit"]:hover {
   color: var(--koala-white);
   background: var(--koala-magenta);
   border-color: var(--koala-magenta);
-  border-radius: 25px !important;
+  border-radius: var(--border-radius) !important;
   cursor: pointer;
 }
 
@@ -108,7 +106,7 @@ input[type="submit"]:hover {
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .post-container {
