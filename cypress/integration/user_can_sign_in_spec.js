@@ -7,8 +7,8 @@ describe.skip("Authentication", () => {
   });
 
   it("A user signs in and is redirected to /posts", () => {
-    cy.signUp(firstName, lastName, email, password);
-    cy.login(email, "wrongPassword");
+    cy.signUp("bob", "smith", "bob@smith.com", "rightPassword");
+    cy.login("bob@smith.com", "wrongPassword");
 
     cy.url().should("not.include", "/posts");
   });
