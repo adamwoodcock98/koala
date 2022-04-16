@@ -1,7 +1,6 @@
 describe("Viewing posts", () => {
-  it("A signed in user sees posts in reverse chronological order on /posts", () => {cy.signUp(firstName, lastName, email, password);
-    cy.signUp;
-    cy.login;
+  it("A signed in user sees posts in reverse chronological order on /posts", () => {cy.signUp();
+    cy.login();
     cy.addPost("MEHN stack!");
     cy.addPost("Testing is so fun!");
     cy.addPost("Baddiez don't test!");
