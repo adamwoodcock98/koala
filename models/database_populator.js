@@ -3,7 +3,9 @@ const Post = require("./post");
 const User = require("./user");
 const AboutMe = require("./about_me.js");
 
-mongoose.connect("mongodb://127.0.0.1/acebook", {
+const mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/acebook";
+
+mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -27,7 +29,7 @@ const users = [
     email: "test1@example.com",
     firstName: "Larry",
     lastName: "Larrysson",
-    profilePicture: "/images/users/larry_larryson.jpg",
+    profilePicture: "/images/users/larry_larrysson.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -35,7 +37,7 @@ const users = [
     email: "test2@example.com",
     firstName: "Carrie",
     lastName: "Carriesdottir",
-    profilePicture: "/images/users/carrie_carriedottir.jpg",
+    profilePicture: "/images/users/carrie_carriesdottir.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -43,7 +45,7 @@ const users = [
     email: "test3@example.com",
     firstName: "Gary",
     lastName: "Garysson",
-    profilePicture: "/images/users/gary_garyson.jpg",
+    profilePicture: "/images/users/gary_garysson.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -51,7 +53,7 @@ const users = [
     email: "test4@example.com",
     firstName: "Liam",
     lastName: "Liamsson",
-    profilePicture: "/images/users/liam_liamson.jpg",
+    profilePicture: "/images/users/liam_liamsson.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -59,7 +61,7 @@ const users = [
     email: "test5@example.com",
     firstName: "Monica",
     lastName: "Monicasdottir",
-    profilePicture: "/images/users/monica_monicadottir.jpg",
+    profilePicture: "/images/users/monica_monicasdottir.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -67,7 +69,7 @@ const users = [
     email: "test6@example.com",
     firstName: "Barold",
     lastName: "Baroldsson",
-    profilePicture: "/images/users/barold_baroldson.jpg",
+    profilePicture: "/images/users/barold_baroldsson.jpg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -78,7 +80,7 @@ const users = [
     profilePicture: "/images/users/barry_barry-barroldsson.jpg",
     friends: barrysFriends,
     aboutMe: "625afd523b344e8aab81d05b",
-  }
+  },
 ];
 
 // INFO: This will currently throw an error if there is already a user with the email in the database
@@ -101,17 +103,16 @@ users.forEach((user) => {
 });
 
 // Create an about me
-  try {
-    AboutMe.create({
-      education: "Barry Grammar School for Barry's",
-      workplace: "MarryBarry Dating Service",
-      relationshipStatus: "It's Complicated",
-      pronouns: "They/Them",
-    });
-  } catch (e) {
-    console.log("Caught Error:", e);
-  }
-
+try {
+  AboutMe.create({
+    education: "Barry Grammar School for Barry's",
+    workplace: "MarryBarry Dating Service",
+    relationshipStatus: "It's Complicated",
+    pronouns: "They/Them",
+  });
+} catch (e) {
+  console.log("Caught Error:", e);
+}
 
 const messages = [
   "we iz so confused",
