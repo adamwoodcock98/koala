@@ -11,7 +11,7 @@ describe("Logging Out", () => {
     cy.get("#signOut").click();
 
     cy.url().should("not.include", "/posts");
-    cy.url().should("include", "/sessions");
+    cy.url().should("include", "/sessions/new");
   });
 
   it("A user that has logged out cannot view posts", () => {
@@ -22,6 +22,6 @@ describe("Logging Out", () => {
     cy.visit("/posts");
 
     cy.url().should("not.include", "/posts");
-    cy.url().should("include", "/sessions");
+    cy.url().should("include", "/sessions/new");
   });
 });
