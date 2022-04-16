@@ -4,13 +4,20 @@ const PostsController = {
   // TODO: sort in reverse chronological order
 
   Index: (req, res) => {
-    Post.find((err, posts) => {
-      if (err) {
-        throw err;
-      }
-
-      res.render("posts/index", { posts: posts });
-    });
+    Post.find()
+      .populate("user")
+      .exec((err, posts) => {
+        if (err) {
+          throw err;
+        }
+        req.session; // This line appears to be needed for later access to session properties
+        const session = {
+          posts: posts,
+          user: req.session.user,
+        };
+        console.log("Session:", session);
+        res.render("posts/index", session);
+      });
   },
 
   Create: (req, res) => {
