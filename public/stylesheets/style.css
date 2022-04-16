@@ -70,7 +70,7 @@ body {
 }
 
 .card {
-  background-color: var(--facebook-white);
+  background-color: var(--koala-white);
   border-radius: 25px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
@@ -82,14 +82,7 @@ input[type="text"] {
   color: var(--koala-black);
   border: 1px solid var(--koala-duckegg-blue);
   border-radius: 0.25rem !important;
-  width: 10vw;
-}
-
-input[type="text"]:focus {
-  color: var(--koala-black);
-  border: 1px solid var(--koala-duckegg-blue);
-  border-radius: 0.25rem !important;
-  width: 20vw;
+  width: 30vw;
 }
 
 input[type="submit"] {
