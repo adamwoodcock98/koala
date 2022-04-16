@@ -6,7 +6,7 @@
         id="message-input"
         name="message"
         type="text"
-        placeholder="What's on your mind?"
+        placeholder="Hi {{user.firstName}}, what's on your mind?"
       />
       <input type="submit" value="Post" />
     </form>
@@ -17,7 +17,7 @@
     <div class="post-container card" id="{{this._id}}">
 
       <div class="post-header">
-        <span class="name">Barry Barry</span>
+        <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
         <span class="date-posted">15 mins ago</span>
       </div>
 
