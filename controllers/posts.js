@@ -6,7 +6,7 @@ const PostsController = {
   Index: (req, res) => {
     Post.find()
       .populate("user")
-      .sort( { createdAt: -1 } );
+      .sort({ createdAt: -1 })
       .exec((err, posts) => {
         if (err) {
           throw err;
@@ -24,7 +24,7 @@ const PostsController = {
   Create: (req, res) => {
     const session = {
       message: req.body.message,
-      user: req.session.user
+      user: req.session.user,
     };
     const post = new Post(session);
 
