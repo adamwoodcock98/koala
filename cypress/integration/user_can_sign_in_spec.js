@@ -1,4 +1,4 @@
-describe("Authentication", () => {
+describe.skip("Authentication", () => {
   it("A user signs in and is redirected to /posts", () => {
     cy.signUp();
     cy.login();
