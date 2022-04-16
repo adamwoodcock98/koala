@@ -17,36 +17,42 @@ const users = [
     email: "test1@example.com",
     firstName: "Larry",
     lastName: "Larrysson",
+    profilePicture: "/images/users/larry_larryson.jpg",
   },
   {
     _id: "62596cc70b90a16ceeaf66f1",
     email: "test2@example.com",
     firstName: "Carrie",
     lastName: "Carriesdottir",
+    profilePicture: "/images/users/carrie_carriedottir.jpg",
   },
   {
     _id: "62596cd10b90a16ceeaf66fa",
     email: "test3@example.com",
     firstName: "Gary",
     lastName: "Garysson",
+    profilePicture: "/images/users/gary_garyson.jpg",
   },
   {
     _id: "625979737890bb083ccb43bf",
     email: "test4@example.com",
     firstName: "Liam",
     lastName: "Liamsson",
+    profilePicture: "/images/users/liam_liamson.jpg",
   },
   {
     _id: "6259797f7890bb083ccb43c8",
     email: "test5@example.com",
     firstName: "Monica",
     lastName: "Monicasdottir",
+    profilePicture: "/images/users/monica_monicadottir.jpg",
   },
   {
     _id: "62597a290f8ad516167bcd4d",
     email: "test6@example.com",
     firstName: "Barold",
     lastName: "Baroldsson",
+    profilePicture: "/images/users/barold_baroldson.jpg",
   },
 ];
 
