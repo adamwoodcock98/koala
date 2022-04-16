@@ -15,16 +15,14 @@ const SessionsController = {
       if (user) {
         bcrypt.compare(password, user.password).then((result) => {
           if (result) {
-            console.log(`Look here -------- ${user.password}`);
-            console.log(result);
             req.session.user = user;
             res.redirect("/posts");
           } else {
-            res.status(400).json({ error: "Invalid Password" });
+            res.render("sessions/new", { signInError: true });
           }
         });
       } else {
-        res.status(401).json({ error: "User does not exist" });
+        res.render("sessions/new", { signInError: true });
       }
     });
   },
