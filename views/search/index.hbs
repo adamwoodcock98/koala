@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search</title>
+</head>
+<body>
+  {{#each users}}
+
+    <div class="user-container card" id="{{this._id}}">
+
+      <div class="user-header">
+        <span class="name">{{this.firstName}} {{this.lastName}}</span>
+      </div>
+
+    </div>
+  {{/each}}
+</body>
+</html>
