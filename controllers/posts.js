@@ -4,22 +4,29 @@ const PostsController = {
   // TODO: fix session timestamp issue
 
   Index: (req, res) => {
-    Post.find((err, posts) => {
-      if (err) {
-        throw err;
-      }
-
-      res.render("posts/index", { posts: posts });
-    }).sort( { createdAt: -1 } );
+    Post.find()
+      .populate("user")
+      .sort({ createdAt: -1 })
+      .exec((err, posts) => {
+        if (err) {
+          throw err;
+        }
+        req.session; // This line appears to be needed for later access to session properties
+        const session = {
+          posts: posts,
+          user: req.session.user,
+        };
+        res.render("posts/index", session);
+      });
   },
 
   Create: (req, res) => {
     const session = {
       message: req.body.message,
-      user: req.session.user
+      user: req.session.user,
     };
     const post = new Post(session);
-    
+
     post.save((err) => {
       if (err) {
         throw err;

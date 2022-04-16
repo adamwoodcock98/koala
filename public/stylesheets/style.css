@@ -10,7 +10,16 @@ body {
   --facebook-whitegrey: #f0f2f5;
   --facebook-green: #42b72a;
   --facebook-white: #ffffff;
-  background-color: #eae1f7;
+  --koala-white: #ffffff;
+  --koala-lilac: #eae1f7;
+  --koala-og-lavender: #c3b1e1;
+  --koala-lavender: #a785df;
+  --koala-magenta: #bf40bf;
+  --koala-duckegg-blue: #ced4da;
+  --koala-grey: grey;
+  --koala-background-grey: rgb(240, 242, 245);
+  --koala-black: #1d2129;
+  background-color: var(--koala-background-grey);
 }
 
 .navigation {
@@ -26,21 +35,22 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #ffffff;
+  color: var(--koala-white);
 }
 
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .show > .nav-link {
-  color: #ffffff;
+  color: var(--koala-white);
 }
 
 .koala-image {
-  width: 80px;
-  height: 80px;
+  width: 10px;
+  height: 10px;
 }
 
 .form-control {
   width: 10vw;
+  height: 1rem;
 }
 
 .form-control:focus {
@@ -49,21 +59,21 @@ body {
 
 /* Allows us to override the default stylings of the search button */
 .btn-outline-success {
-  color: var(--facebook-black);
-  border-color: #c3b1e1;
+  color: var(--koala-black);
+  border-color: var(--koala-lavender);
 }
 
 .bg-light {
-  background-color: #c3b1e1 !important;
+  background-color: var(--koala-lavender) !important;
 }
 
 .btn-outline-success:hover {
-  background-color: #bf40bf !important;
-  border-color: #bf40bf;
+  background-color: var(--koala-magenta) !important;
+  border-color: var(--koala-magenta);
 }
 
 .card {
-  background-color: var(--facebook-white);
+  background-color: var(--koala-white);
   border-radius: 25px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
@@ -72,30 +82,23 @@ body {
 }
 
 input[type="text"] {
-  color: var(--facebook-black);
-  border: 1px solid #ced4da;
+  color: var(--koala-black);
+  border: 1px solid var(--koala-duckegg-blue);
   border-radius: 0.25rem !important;
-  width: 10vw;
-}
-
-input[type="text"]:focus {
-  color: var(--facebook-black);
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem !important;
-  width: 20vw;
+  width: 30vw;
 }
 
 input[type="submit"] {
   background: transparent;
-  border-color: #c3b1e1;
+  border-color: var(--koala-lavender);
   border-radius: 25px !important;
   cursor: pointer;
 }
 
 input[type="submit"]:hover {
-  color: #ffffff;
-  background: #bf40bf;
-  border-color: #bf40bf;
+  color: var(--koala-white);
+  background: var(--koala-magenta);
+  border-color: var(--koala-magenta);
   border-radius: 25px !important;
   cursor: pointer;
 }
@@ -119,8 +122,7 @@ input[type="submit"]:hover {
 }
 
 .date-posted {
-  /* color: var(--facebook-grey); */
-  color: grey;
+  color: var(--koala-grey);
 }
 
 .post-body {
