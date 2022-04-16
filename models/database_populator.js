@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Post = require("./post");
 const User = require("./user");
+const AboutMe = require("./about_me.js");
 
 const mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/acebook";
 
@@ -13,6 +14,15 @@ const db = mongoose.connection;
 
 console.log(db.name);
 
+const barrysFriends = [
+  mongoose.Types.ObjectId("62596c9539f4ca6d024cee07"),
+  mongoose.Types.ObjectId("62596cc70b90a16ceeaf66f1"),
+  mongoose.Types.ObjectId("62596cd10b90a16ceeaf66fa"),
+  mongoose.Types.ObjectId("625979737890bb083ccb43bf"),
+  mongoose.Types.ObjectId("6259797f7890bb083ccb43c8"),
+  mongoose.Types.ObjectId("62597a290f8ad516167bcd4d"),
+];
+
 const users = [
   {
     _id: "62596c9539f4ca6d024cee07",
@@ -20,6 +30,7 @@ const users = [
     firstName: "Larry",
     lastName: "Larrysson",
     profilePicture: "/images/users/larry_larrysson.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
   },
   {
     _id: "62596cc70b90a16ceeaf66f1",
@@ -27,6 +38,7 @@ const users = [
     firstName: "Carrie",
     lastName: "Carriesdottir",
     profilePicture: "/images/users/carrie_carriesdottir.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
   },
   {
     _id: "62596cd10b90a16ceeaf66fa",
@@ -34,6 +46,7 @@ const users = [
     firstName: "Gary",
     lastName: "Garysson",
     profilePicture: "/images/users/gary_garysson.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
   },
   {
     _id: "625979737890bb083ccb43bf",
@@ -41,6 +54,7 @@ const users = [
     firstName: "Liam",
     lastName: "Liamsson",
     profilePicture: "/images/users/liam_liamsson.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
   },
   {
     _id: "6259797f7890bb083ccb43c8",
@@ -48,6 +62,7 @@ const users = [
     firstName: "Monica",
     lastName: "Monicasdottir",
     profilePicture: "/images/users/monica_monicasdottir.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
   },
   {
     _id: "62597a290f8ad516167bcd4d",
@@ -55,6 +70,16 @@ const users = [
     firstName: "Barold",
     lastName: "Baroldsson",
     profilePicture: "/images/users/barold_baroldsson.jpg",
+    aboutMe: "625afd523b344e8aab81d05b",
+  },
+  {
+    _id: "625acd9cc936214661cf5692",
+    email: "testx@example.com",
+    firstName: "Barry",
+    lastName: "Barry-Barroldsson",
+    profilePicture: "/images/users/barry_barry-barroldsson.jpg",
+    friends: barrysFriends,
+    aboutMe: "625afd523b344e8aab81d05b",
   },
 ];
 
@@ -66,15 +91,28 @@ users.forEach((user) => {
       _id: user._id,
       email: user.email,
       firstName: user.firstName,
-      friends: [],
+      friends: user.friends || [],
       lastName: user.lastName,
       password: "12345",
       profilePicture: user.profilePicture,
+      aboutMe: user.aboutMe,
     });
   } catch (e) {
     console.log("Caught Error:", e);
   }
 });
+
+// Create an about me
+try {
+  AboutMe.create({
+    education: "Barry Grammar School for Barry's",
+    workplace: "MarryBarry Dating Service",
+    relationshipStatus: "It's Complicated",
+    pronouns: "They/Them",
+  });
+} catch (e) {
+  console.log("Caught Error:", e);
+}
 
 const messages = [
   "we iz so confused",
