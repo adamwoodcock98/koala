@@ -16,7 +16,6 @@ const PostsController = {
           posts: posts,
           user: req.session.user,
         };
-        console.log("Session:", session);
         res.render("posts/index", session);
       });
   },
