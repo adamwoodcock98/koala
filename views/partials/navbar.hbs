@@ -17,6 +17,37 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="dropdown text-end">
+        <a
+          href="#"
+          class="d-block link-dark text-decoration-none dropdown-toggle"
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            {{#if user}}
+              src={{user.profilePicture}}
+            {{else}}
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            {{/if}}
+            alt="mdo"
+            width="60"
+            height="60"
+            class="rounded-circle"
+          />
+        </a>
+        <ul
+          class="dropdown-menu text-small"
+          aria-labelledby="dropdownUser1"
+          style=""
+        >
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
