@@ -41,6 +41,13 @@ body {
   align-items: center;
 }
 
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
 .koala-image {
   width: 10px;
   height: 10px;
@@ -92,12 +99,12 @@ input[type="search"]:focus {
   gap: 10px;
 }
 
-input[type="text"] {
+/* input[type="text"] {
   color: var(--koala-black);
   border: 1px solid var(--koala-duckegg-blue);
   border-radius: 0.25rem !important;
   width: 30vw;
-}
+} */
 
 input[type="submit"] {
   background: transparent;
