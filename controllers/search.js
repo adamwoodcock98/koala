@@ -1,7 +1,8 @@
 const User = require("../models/user");
 
 const SearchController = {
-  Index: (req, res) => {
+  Index: (req, res) => {},
+  Create: (req, res) => {
     const searchArray = req.body.message.split(/[ ,]+/);
 
     const users = [];
@@ -12,7 +13,6 @@ const SearchController = {
       }).then((user) => {
         users.push(user);
         const merged = [].concat.apply([], users);
-        console.log("Merged------>", merged);
         const uniqueArray = merged.filter((value, index) => {
           const _value = JSON.stringify(value);
           return (
