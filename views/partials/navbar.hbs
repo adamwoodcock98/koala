@@ -3,15 +3,16 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="/posts">Koala</a>
         <div class="d-flex">
-        <form class="d-flex" action="/search" method="post">
+        <form class="d-flex" action="/search" method="post" id="searchForm">
           <input
+            id="searchBox"
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
             name="message"
           />
-          <button class="btn btn-outline-success" type="submit"><svg
+          <button class="btn btn-outline-success" type="submit" id="searchButton"><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"

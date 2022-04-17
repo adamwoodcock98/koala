@@ -19,10 +19,10 @@ const SearchController = {
     });
   },
   Create: (req, res) => {
-    const searchArray = req.body.message.split(/[ ,]+/);
+    const searchArray = req.body.message.replace(/[\W_]+/g, " ").split(/[ ,]+/);
 
-    const users = [];
     searchArray.forEach((name) => {
+      const users = [];
       User.find({
         firstName: { $regex: name, $options: "i" },
         // lastName: { $regex: name, $options: "i" },
