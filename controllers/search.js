@@ -9,20 +9,26 @@ const SearchController = {
     searchArray.forEach((name) => {
       User.find({
         firstName: { $regex: name, $options: "i" },
-        lastName: { $regex: name, $options: "i" },
+        // lastName: { $regex: name, $options: "i" },
       }).then((user) => {
         users.push(user);
-        const merged = [].concat.apply([], users);
-        const uniqueArray = merged.filter((value, index) => {
-          const _value = JSON.stringify(value);
-          return (
-            index ===
-            merged.findIndex((obj) => {
-              return JSON.stringify(obj) === _value;
-            })
-          );
+        User.find({
+          // firstName: { $regex: name, $options: "i" },
+          lastName: { $regex: name, $options: "i" },
+        }).then((user) => {
+          users.push(user);
+          const merged = [].concat.apply([], users);
+          const uniqueArray = merged.filter((value, index) => {
+            const _value = JSON.stringify(value);
+            return (
+              index ===
+              merged.findIndex((obj) => {
+                return JSON.stringify(obj) === _value;
+              })
+            );
+          });
+          res.render("search/index", { users: uniqueArray });
         });
-        res.render("search/index", { users: uniqueArray });
       });
     });
   },
