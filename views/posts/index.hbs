@@ -4,6 +4,7 @@
     <form class="post-form" id="new-post-form" action="/posts" method="post">
       <input
         id="message-input"
+        class="message-input"
         name="message"
         type="text"
         placeholder="Hi {{user.firstName}}, what's on your mind?"
@@ -14,7 +15,7 @@
 
   {{#each posts}}
 
-    <div class="post-container card" id="{{this._id}}">
+    <div class="post-container card mb-2" id="{{this._id}}">
 
       <div class="post-header">
         <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>

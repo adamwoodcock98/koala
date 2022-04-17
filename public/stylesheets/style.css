@@ -99,12 +99,17 @@ input[type="search"]:focus {
   gap: 10px;
 }
 
-/* input[type="text"] {
+.post-form > input[type="text"] {
   color: var(--koala-black);
-  border: 1px solid var(--koala-duckegg-blue);
-  border-radius: 0.25rem !important;
-  width: 30vw;
-} */
+  border: none;
+  width: 90%;
+}
+
+.post-form > input[type="text"]:focus {
+  text-size-adjust: 2rem;
+  color: var(--koala-black);
+  outline: none;
+}
 
 input[type="submit"] {
   background: transparent;
