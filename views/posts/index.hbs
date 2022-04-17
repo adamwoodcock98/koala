@@ -16,17 +16,24 @@
 
     <div class="post-container card" id="{{this._id}}">
 
-      <div class="post-header">
-        <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
-        <span class="date-posted">15 mins ago</span>
-      </div>
+      <div class="profile-picture">
+          <img src={{this.user.profilePicture}} width="100"
+            height="100"
+            class="rounded-circle"/>
+        </div>
 
-      <div class="post-body">
-        <p class="message">
-          {{this.message}}
-        </p>
-      </div>
+      <div class="user-info">
+        <div class="post-header">
+          <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
+          <span class="date-posted">15 mins ago</span>
+        </div>
 
+        <div class="post-body">
+          <p class="message">
+            {{this.message}}
+          </p>
+        </div>
+      </div>
     </div>
   {{/each}}
 

@@ -4,19 +4,27 @@
   <title>Search</title>
 </head>
 <body>
-  {{#each users}}
+  <div class="post-list">
+    {{#each users}}
 
-    <div class="user-container card" id="{{this._id}}">
+      <div class="user-container card" id="{{this._id}}">
 
-      <div class="profile-picture">
-        <img src={{this.profilePicture}} />
+        <div class="profile-picture">
+          <img src={{this.profilePicture}} width="100"
+            height="100"
+            class="rounded-circle"/>
+        </div>
+
+        <div class="user-info">
+          <div class="user-header">
+            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+          </div>
+          <div class="user-body">
+            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+          </div>
+        </div>
       </div>
-
-      <div class="user-header">
-        <span class="name">{{this.firstName}} {{this.lastName}}</span>
-      </div>
-
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </body>
 </html>
