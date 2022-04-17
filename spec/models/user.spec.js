@@ -74,27 +74,6 @@ describe("User model", () => {
     );
   });
 
-  it("has an about me section", () => {
-    const user = new User({
-      firstName: "Barry",
-      lastName: "Barry",
-      email: "someone@example.com",
-      password: "password",
-      aboutMe: {
-        education: "Barry Grammar for Barrys",
-        workplace: "Barry X",
-        relationshipStatus: "In a relationship with Barry",
-        pronouns: "they/them",
-      },
-    });
-    expect(user.aboutMe.education).toBe("Barry Grammar for Barrys");
-    expect(user.aboutMe.workplace).toBe("Barry X");
-    expect(user.aboutMe.relationshipStatus).toBe(
-      "In a relationship with Barry"
-    );
-    expect(user.aboutMe.pronouns).toBe("they/them");
-  });
-
   it("has first name as a required field", async () => {
     const user = new User({
       lastName: "Barry",
