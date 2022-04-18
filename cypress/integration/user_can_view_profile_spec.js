@@ -5,8 +5,8 @@ describe.only("Viewing a profile", () => {
     cy.login();
     cy.visit("/profile")
 
-    cy.get("#name-and-pronouns").should("contain", "Barry Barry-Barroldsson");
-    cy.get("#name-and-pronouns").should("contain", "They/Them");
+    cy.get("#name-pronouns").should("contain", "Barry Barry-Barroldsson");
+    cy.get("#name-pronouns").should("contain", "They/Them");
 
     cy.get(".friends-container").should("contain", "FRIENDS");
 
@@ -20,6 +20,8 @@ describe.only("Viewing a profile", () => {
     cy.addPost("MEHN stack!");
     cy.addPost("Testing is so fun!");
     cy.addPost("Baddiez don't test!");
+
+    cy.visit("/profile");
 
     cy.get(".message").should("contain", "Baddiez don't test!");
     cy.get(".message").should("contain", "Testing is so fun!");

@@ -3,26 +3,46 @@
     <title>Profile</title>
   </head>
   <body>
-    <div class="cover-container">
-      <div id="profile-photo">
-        <img
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-          alt="silhouette"
-        />
-      </div>
-      <div id="name-pronouns">
-        <h1>{{user.firstName}} {{user.lastName}}</h1>
-        <H3>HANDLEBAR PRONOUNS</H3>
+
+    <!-- PROFILE HEADER -->
+
+    <div class="cover-container base-layer">
+      <img
+        src="https://i.pinimg.com/originals/cb/fc/a1/cbfca1cf94f77b2585a6bef8ffa756f3.jpg"
+        alt="{{user.firstName}}-{{user.lastName}}-cover-photo"
+        width="100%"
+        height="40%"
+      />
+
+      <div class="cover-info-container child-layer">
+        <div id="profile-photo" class="test">
+          <img
+            src={{user.profilePicture}}
+            alt="silhouette"
+            width="80px"
+            height="80px"
+          />
+        </div>
+        <div id="name-pronouns" class="test">
+          <h1>{{user.firstName}} {{user.lastName}}</h1>
+          <h4>They/Them</h4>
+        </div>
+        <div id="edit-add-friend-button" class="test">
+          <form action="" method="post">
+            <input type="submit" value="ADD FRIEND" name="add-friend" />
+          </form>
+        </div>
       </div>
     </div>
+    <!-- PROFILE CONTENT-->
 
-    <div class="content-container">
-      <div class="friends-container">
+    <div class="profile-content-container">
+      <div class="profile-content-container-child friends-container">
         <h2>FRIENDS</h2>
         HANDLEBAR LOOP
       </div>
 
-      <div class="posts-container">
+      <div class="profile-content-container-child posts-container">
         <h2>SHARED BY YOU...</h2>
         {{#each posts}}
 
@@ -44,13 +64,12 @@
         {{/each}}
       </div>
 
-      <div class="about-container">
+      <div class="profile-content-container-child about-container">
         <h2>ABOUT ME</h2>
         <div class="about-fields">
 
         </div>
       </div>
-
     </div>
   </body>
 </html>
