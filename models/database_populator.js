@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Post = require("./post");
 const User = require("./user");
 const AboutMe = require("./about_me.js");
+const PostLike = require("./post_like.js");
+const PostComment = require("./post_comment.js");
+
+console.log(PostLike);
+console.log(PostComment);
 
 const mongoDb = process.env.MONGODB_TARGET || "acebook";
 const mongoDbUrl = `mongodb://127.0.0.1/${mongoDb}`;
