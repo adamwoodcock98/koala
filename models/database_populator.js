@@ -5,6 +5,9 @@ const AboutMe = require("./about_me.js");
 const PostLike = require("./post_like.js");
 const PostComment = require("./post_comment.js");
 
+console.log(PostLike);
+console.log(PostComment);
+
 const mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/acebook";
 
 mongoose.connect(mongoDbUrl, {
