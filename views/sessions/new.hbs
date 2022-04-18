@@ -1,13 +1,48 @@
-<h1>Sign in</h1>
-
 {{#if signInError}}
-    <h3> Incorrect User or Password </h3>
+  <h3> Incorrect User or Password </h3>
 {{/if}}
 
-<form id="new-session-form" action="/sessions" method="post">
-  <label for="email">Email: </label>
-  <input id="email" type="email" name="email" value="">
-  <label for="password">Password: </label>
-  <input id="password" type="password" name="password" value="">
-  <input id="submit" type="submit" value="Submit">
-</form>
+<body class="text-center">
+  <main class="form-signin">
+    <form
+      id="new-session-form"
+      class="form-signin"
+      action="/sessions"
+      method="post"
+    >
+      <img
+        class="mb-2"
+        src="/images/koala-head-shoulders.svg"
+        alt="Koala"
+        width="120"
+        height="92"
+      />
+      <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="sign-in-email"
+          name="email"
+          placeholder="name@example.com"
+        />
+        <label for="email">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="sign-in-password"
+          name="password"
+          placeholder="Password"
+        />
+        <label for="password">Password</label>
+      </div>
+      <button
+        class="w-100 btn btn-lg btn-primary mt-2"
+        id="submit"
+        type="submit"
+      >Sign in</button>
+    </form>
+  </main>
+</body>
