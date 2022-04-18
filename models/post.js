@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-console.log("Here is before the Post Schema is created", Date.now());
 const PostSchema = new mongoose.Schema({
   message: {
     type: String,
@@ -13,7 +12,6 @@ const PostSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    required: true,
   },
 });
 
