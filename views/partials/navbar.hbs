@@ -1,52 +1,9 @@
 <div class="navigation">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/posts"><img
-          class="koala-image"
-          src="/images/koala.jpeg"
-        />
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="#"
-            >{{user.firstName}}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/user/[:id]">Profile</a></li>
-              <li><a class="dropdown-item" href="/settings">Settings</a></li>
-              <li><a class="dropdown-item" href="/sessions/delete">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
+
+<a class="navbar-brand" href="/posts">Koala</a>
+        <div class="d-flex">
         <form class="d-flex">
           <input
             class="form-control me-2"
@@ -67,7 +24,7 @@
               ></path>
             </svg></button>
         </form>
-              <div class="dropdown text-end">
+        <div class="dropdown text-end">
         <a
           href="#"
           class="d-block link-dark text-decoration-none dropdown-toggle"
@@ -88,15 +45,32 @@
           />
         </a>
         <ul
-          class="dropdown-menu text-small"
+      class="dropdown-menu dropdown-menu-end text-small"
           aria-labelledby="dropdownUser1"
           style=""
         >
+          {{#if user}}
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <li> <form class="dropdown-item" action="/sessions/log-out" method="post" id="signOut"><input type="submit" value="Sign Out" > </input> </form></li>
+          {{else}}
+          <form class="px-3 py-2 user-dropdown-menu">
+            <div class="form-group">
+              <label for="signInEmail">Email address</label>
+              <input type="email" class="form-control input-within-dropdown" id="signInEmail" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+              <label for="signInPassword">Password</label>
+              <input type="password" class="form-control input-within-dropdown" id="signInPassword" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/users/new">Sign up</a>
+          {{/if}}
         </ul>
+      </div>
       </div>
       </div>
     </div>

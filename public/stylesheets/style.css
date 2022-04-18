@@ -2,14 +2,6 @@ body {
   /* padding: 50px; */
   font: 14px Helvetica, Arial, sans-serif;
   text-align: center;
-  --facebook-lighter-blue: #3578e5;
-  --facebook-blue: #1877f2;
-  --facebook-beige: #fff9d7;
-  --facebook-grey: #dddfe2;
-  --facebook-black: #1d2129;
-  --facebook-whitegrey: #f0f2f5;
-  --facebook-green: #42b72a;
-  --facebook-white: #ffffff;
   --koala-white: #ffffff;
   --koala-lilac: #eae1f7;
   --koala-og-lavender: #c3b1e1;
@@ -19,6 +11,8 @@ body {
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
   --koala-black: #1d2129;
+  --border-radius: 25px;
+  --card-gap: 18px;
   background-color: var(--koala-background-grey);
 }
 
@@ -31,7 +25,7 @@ body {
   the higher the z-index value, the greater
   it will allow the navigation tag to stay on top
   of other tags */
-  margin-bottom: 18px !important;
+  margin-bottom: var(--card-gap) !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -43,18 +37,13 @@ body {
   color: var(--koala-white);
 }
 
+.d-flex {
+  align-items: center;
+}
+
 .koala-image {
   width: 10px;
   height: 10px;
-}
-
-.form-control {
-  width: 10vw;
-  height: 1rem;
-}
-
-.form-control:focus {
-  width: 25vw;
 }
 
 /* Allows us to override the default stylings of the search button */
@@ -74,11 +63,33 @@ body {
 
 .card {
   background-color: var(--koala-white);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   margin: auto;
   padding: 14px 10px 14px 10px;
   width: 50vw;
+}
+
+input[type="search"] {
+  width: 10vw;
+  height: calc(1.5rem + 2px);
+}
+
+input[type="search"]:focus {
+  width: 25vw;
+}
+
+.input-within-dropdown {
+  width: 40vw;
+  max-width: 250px;
+}
+
+.user-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
 }
 
 input[type="text"] {
@@ -91,7 +102,7 @@ input[type="text"] {
 input[type="submit"] {
   background: transparent;
   border-color: var(--koala-lavender);
-  border-radius: 25px !important;
+  border-radius: var(--border-radius) !important;
   cursor: pointer;
 }
 
@@ -99,8 +110,20 @@ input[type="submit"]:hover {
   color: var(--koala-white);
   background: var(--koala-magenta);
   border-color: var(--koala-magenta);
-  border-radius: 25px !important;
+  border-radius: var(--border-radius) !important;
   cursor: pointer;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: var(--koala-magenta);
+  border-color: var(--koala-magenta);
 }
 
 .post-list {
@@ -108,7 +131,7 @@ input[type="submit"]:hover {
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .post-container {

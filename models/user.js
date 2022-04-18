@@ -3,13 +3,6 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const salt_work_factor = 10;
 
-const aboutMeSchema = new mongoose.Schema({
-  education: String,
-  workplace: String,
-  relationshipStatus: String,
-  pronouns: String,
-});
-
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -38,7 +31,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   friends: [mongoose.SchemaTypes.ObjectId],
-  aboutMe: aboutMeSchema,
+  aboutMe: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "AboutMe",
+  },
   profilePicture: {
     type: String,
     default:
