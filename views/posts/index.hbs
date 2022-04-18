@@ -4,6 +4,7 @@
     <form class="post-form" id="new-post-form" action="/posts" method="post">
       <input
         id="message-input"
+        class="message-input"
         name="message"
         type="text"
         placeholder="Hi {{user.firstName}}, what's on your mind?"
@@ -20,7 +21,11 @@
           <img src={{this.user.profilePicture}} width="100"
             height="100"
             class="rounded-circle"/>
-        </div>
+      </div>
+      <div class="post-header">
+        <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
+        <div class="date-posted">{{this.createdAt}}</div>
+      </div>
 
       <div class="user-info">
         <div class="post-header">
