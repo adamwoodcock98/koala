@@ -1,17 +1,52 @@
 <h1>Sign up</h1>
-<form id="new-user-form" action="/users" method="post">
-
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" name="firstName" value="" />
-
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" name="lastName" value="" />
-
-  <label for="email">Email: </label>
-  <input id="email" type="email" name="email" value="" />
-
-  <label for="password">Password: </label>
-  <input id="password" type="password" name="password" value="" />
-
-  <input id="submit" type="submit" value="Submit" />
+<form id="new-user-form" class="form-signin" action="/users" method="post">
+  <div class="form-floating">
+    <input
+      id="sign-up-first-name"
+      class="form-control"
+      type="text"
+      name="firstName"
+      placeholder=""
+      value=""
+    />
+    <label for="first-name">First Name</label>
+  </div>
+  <div class="form-floating">
+    <input
+      id="sign-up-last-name"
+      class="form-control"
+      type="text"
+      name="lastName"
+      placeholder=""
+      value=""
+    />
+    <label for="last-name">Last Name</label>
+  </div>
+  <div class="form-floating">
+    <input
+      id="sign-up-email"
+      class="form-control"
+      type="email"
+      name="email"
+      placeholder="name@example.com"
+      value=""
+    />
+    <label for="email">Email</label>
+  </div>
+  <div class="form-floating">
+    <input
+      id="sign-up-password"
+      class="form-control"
+      type="password"
+      name="password"
+      placeholder="Password"
+      value=""
+    />
+    <label for="password">Password</label>
+  </div>
+  <button
+    id="submit"
+    class="w-100 btn btn-lg btn-primary mt-2"
+    type="submit"
+  >Submit</button>
 </form>

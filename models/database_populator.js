@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 const Post = require("./post");
 const User = require("./user");
 const AboutMe = require("./about_me.js");
+const PostLike = require("./post_like.js");
+const PostComment = require("./post_comment.js");
 
-const mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/acebook";
+console.log(PostLike);
+console.log(PostComment);
+
+const mongoDb = process.env.MONGODB_TARGET || "acebook";
+const mongoDbUrl = process.env.MONGODB_URI || `mongodb://127.0.0.1/${mongoDb}`;
 
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,

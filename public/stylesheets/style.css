@@ -1,5 +1,4 @@
 body {
-  /* padding: 50px; */
   font: 14px Helvetica, Arial, sans-serif;
   text-align: center;
   --koala-white: #ffffff;
@@ -12,7 +11,7 @@ body {
   --koala-background-grey: rgb(240, 242, 245);
   --koala-black: #1d2129;
   --border-radius: 25px;
-  --card-gap: 18px;
+  --card-gap: 1rem;
   background-color: var(--koala-background-grey);
 }
 
@@ -39,6 +38,13 @@ body {
 
 .d-flex {
   align-items: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
 }
 
 .koala-image {
@@ -72,7 +78,9 @@ body {
 
 input[type="search"] {
   width: 10vw;
+  min-width: 95px;
   height: calc(1.5rem + 2px);
+  transition: width 0.2s ease-in-out;
 }
 
 input[type="search"]:focus {
@@ -92,11 +100,16 @@ input[type="search"]:focus {
   gap: 10px;
 }
 
-input[type="text"] {
+.post-form > input[type="text"] {
   color: var(--koala-black);
-  border: 1px solid var(--koala-duckegg-blue);
-  border-radius: 0.25rem !important;
-  width: 30vw;
+  font-size: larger;
+  border: none;
+  width: 90%;
+}
+
+.post-form > input[type="text"]:focus {
+  color: var(--koala-black);
+  outline: none;
 }
 
 input[type="submit"] {
@@ -114,6 +127,52 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
+.form-control:hover {
+  border-width: 1.5px;
+  border-color: var(--koala-magenta);
+}
+
+.form-control:focus {
+  box-shadow: inset 0 0 0 3px var(--koala-og-lavender);
+}
+
+#sign-in-email {
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-right-radius: 0rem !important;
+  border-bottom-left-radius: 0rem !important;
+}
+
+#sign-in-password {
+  border-top-left-radius: 0rem !important;
+  border-top-right-radius: 0rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+  border-bottom-left-radius: 0.5rem !important;
+}
+
+#sign-up-first-name {
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-left-radius: 0rem !important;
+  border-bottom-right-radius: 0rem !important;
+}
+
+#sign-up-last-name {
+  border-radius: 0rem;
+}
+
+#sign-up-email {
+  border-radius: 0rem;
+}
+
+#sign-up-password {
+  border-top-left-radius: 0rem !important;
+  border-top-right-radius: 0rem !important;
+  border-bottom-left-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+}
+
+/* Buttons */
 .btn-primary {
   color: #fff;
   background-color: var(--koala-lavender);
@@ -125,7 +184,9 @@ input[type="submit"]:hover {
   background-color: var(--koala-magenta);
   border-color: var(--koala-magenta);
 }
+/* Buttons - End */
 
+/* Posts */
 .post-list {
   display: flex;
   flex-direction: column;
@@ -151,6 +212,7 @@ input[type="submit"]:hover {
 .post-body {
   margin: 20px;
 }
+/* Posts - End */
 
 /* Profile page CSS */
 /* Header secondary classes (grid) */
