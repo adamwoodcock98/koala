@@ -3,7 +3,7 @@ const Post = require("./post");
 const User = require("./user");
 const AboutMe = require("./about_me.js");
 
-const mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/acebook";
+const mongoDbUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1/acebook";
 
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
