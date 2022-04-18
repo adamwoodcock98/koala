@@ -9,7 +9,7 @@ console.log(PostLike);
 console.log(PostComment);
 
 const mongoDb = process.env.MONGODB_TARGET || "acebook";
-const mongoDbUrl = `mongodb://127.0.0.1/${mongoDb}`;
+const mongoDbUrl = process.env.MONGODB_URI || `mongodb://127.0.0.1/${mongoDb}`;
 
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
