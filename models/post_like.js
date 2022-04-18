@@ -11,10 +11,6 @@ const PostLikeSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
 });
 
 const PostLike = mongoose.model("PostLike", PostLikeSchema);
