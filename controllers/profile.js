@@ -9,7 +9,7 @@ const ProfileController = {
 
     userObject.friends.forEach(friend => {
       User.find({ _id: friend }).then(user => {
-        usersFriends.push(user);
+        usersFriends.push(user[0]);
       });
     });
 

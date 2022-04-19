@@ -9,6 +9,7 @@ body {
   --koala-duckegg-blue: #ced4da;
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
+  --koala-dark-grey: rgb(24, 24, 24);
   --koala-black: #1d2129;
   --border-radius: 25px;
   --card-gap: 1rem;
@@ -220,7 +221,6 @@ input[type="submit"]:hover {
 .profile-content-container {
   display: grid;
   grid-template-columns: 25% 50% 20%;
-  border-style: dotted;
   grid-column-gap: 10px;
   grid-gap: 10px;
 }
@@ -235,6 +235,25 @@ input[type="submit"]:hover {
 
 .about-container {
   grid-column: 3, 4;
+}
+
+/* Friends flex box */
+.friends-flex-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 5px;
+  grid-gap: 5px;
+}
+.friends-child {
+}
+
+.friend-image img {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--koala-lavender);
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 /* Header primary classes (flex) */
@@ -253,7 +272,7 @@ input[type="submit"]:hover {
 #name-pronouns {
   flex: 4;
   text-align: left;
-  padding-left: 2.5%;
+  /* padding-left: 2.5%; */
 }
 
 #edit-add-friend-button {
@@ -283,7 +302,11 @@ input[type="submit"]:hover {
 /* Styling changes */
 h1 {
   font-weight: 340;
-  color: rgb(24, 24, 24);
+  color: var(--koala-dark-grey);
+}
+
+h2 {
+  color: var(--koala-dark-grey);
 }
 
 h4 {
@@ -300,7 +323,7 @@ h4 {
 #profile-photo img {
   border-radius: 50%;
   border-style: solid;
-  border-width: 5px;
+  border-width: 4px;
   border-color: white;
   width: 70%;
   height: 70%;
