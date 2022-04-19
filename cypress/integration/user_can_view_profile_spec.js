@@ -8,9 +8,9 @@ describe.only("Viewing a profile", () => {
     cy.get("#name-pronouns").should("contain", "Barry Barry-Barroldsson");
     cy.get("#name-pronouns").should("contain", "They/Them");
 
-    cy.get(".friends-container").should("contain", "FRIENDS");
+    cy.get(".friends-container").should("contain", "Your friends");
 
-    cy.get(".about-container").should("contain", "ABOUT ME")
+    cy.get(".about-container").should("contain", "About me")
   });
 
   it("should display the users posts", () => {
