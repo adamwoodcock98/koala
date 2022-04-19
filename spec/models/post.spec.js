@@ -69,4 +69,10 @@ describe("Post model", () => {
       });
     });
   });
+
+  // TEST FOR PHOTOS
+  it("has a photo", () => {
+    const post = new Post({ image: "some photo link" });
+    expect(post.image).toEqual("some photo link");
+  });
 });
