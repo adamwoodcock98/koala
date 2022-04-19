@@ -9,11 +9,11 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
+  }},
+  {
+    timestamps: true
   },
-  createdAt: {
-    type: Date,
-  },
-});
+);
 
 const Post = mongoose.model("Post", PostSchema);
 

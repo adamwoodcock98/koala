@@ -22,7 +22,6 @@ const PostsController = {
     const session = {
       message: req.body.message,
       user: req.session.user,
-      createdAt: Date.now(),
     };
     const post = new Post(session);
 

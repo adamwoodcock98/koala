@@ -42,7 +42,6 @@ describe("Post model", () => {
     const post = new Post({
       message: "has a user ID",
       user: mockUserId,
-      createdAt: Date.now(),
     });
     expect(post.createdAt).not.toBeNull();
   });

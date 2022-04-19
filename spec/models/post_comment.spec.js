@@ -12,13 +12,13 @@ describe("Post comment model", () => {
     expect(postComment.message).toEqual("some message");
   });
 
-  // it("has a required message", (done) => {
-  //   const postComment = new PostComment({ user: mockUserId });
-  //   postComment.save((err) => {
-  //     expect(err).not.toBeNull();
-  //     done();
-  //   });
-  // });
+  it("has a required message", (done) => {
+    const postComment = new PostComment({ user: mockUserId });
+    postComment.save((err) => {
+      expect(err).not.toBeNull();
+      done();
+    });
+  });
 
   it("has a user ID", () => {
     const postComment = new PostComment({
