@@ -1,5 +1,11 @@
 <h1>Sign up</h1>
+
 <form id="new-user-form" class="form-signin" action="/users" method="post">
+  {{#if errorMessage}}
+    <div id="error-message" class="alert alert-dark" role="alert">
+      {{errorMessage}}
+    </div>
+  {{/if}}
   <div class="form-floating">
     <input
       id="sign-up-first-name"

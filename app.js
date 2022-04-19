@@ -10,6 +10,7 @@ const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const Handlebars = require("handlebars");
+const flash = require('connect-flash')
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
@@ -50,6 +51,8 @@ app.use(
     },
   })
 );
+
+app.use(flash());
 
 // clear the cookies after user logs out
 app.use((req, res, next) => {
