@@ -240,11 +240,10 @@ input[type="submit"]:hover {
 /* Friends flex box */
 .friends-flex-container {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 49%));
   grid-column-gap: 5px;
   grid-gap: 5px;
-}
-.friends-child {
+  justify-content: center;
 }
 
 .friend-image img {
@@ -254,6 +253,10 @@ input[type="submit"]:hover {
   border-color: var(--koala-lavender);
   aspect-ratio: 1;
   object-fit: cover;
+}
+
+.friend-name {
+  text-align: center;
 }
 
 /* Header primary classes (flex) */
