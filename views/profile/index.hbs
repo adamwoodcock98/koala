@@ -8,10 +8,10 @@
 
     <div class="cover-container base-layer">
       <img
-        src="https://i.pinimg.com/originals/cb/fc/a1/cbfca1cf94f77b2585a6bef8ffa756f3.jpg"
+        src="https://i.pinimg.com/originals/22/8a/a0/228aa0f642705dba5835febbcb6d083d.jpg"
         alt="{{user.firstName}}-{{user.lastName}}-cover-photo"
         width="100%"
-        height="40%"
+        height="100%"
       />
 
       <div class="cover-info-container child-layer">
@@ -19,17 +19,15 @@
           <img
             src={{user.profilePicture}}
             alt="silhouette"
-            width="80px"
-            height="80px"
           />
         </div>
         <div id="name-pronouns" class="test">
-          <h1>{{user.firstName}} {{user.lastName}}</h1>
-          <h4>They/Them</h4>
+          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
+          <h4 style="display:inline-block;">  (They/Them)</h4>
         </div>
         <div id="edit-add-friend-button" class="test">
           <form action="" method="post">
-            <input type="submit" value="ADD FRIEND" name="add-friend" />
+            <input type="submit" class="add-edit-profile-button" value="ADD FRIEND" name="add-friend" />
           </form>
         </div>
       </div>

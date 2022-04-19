@@ -247,18 +247,17 @@ input[type="submit"]:hover {
 
 #profile-photo {
   flex: 1;
+  text-align: right;
 }
 
 #name-pronouns {
   flex: 4;
+  text-align: left;
+  padding-left: 2.5%;
 }
 
 #edit-add-friend-button {
   flex: 1;
-}
-
-.test {
-  border-style: solid;
 }
 
 /* CSS Layers secondary classes for primary header */
@@ -279,4 +278,47 @@ input[type="submit"]:hover {
   left: 0px;
   bottom: 2.5%;
   z-index: 2;
+}
+
+/* Styling changes */
+h1 {
+  font-weight: 340;
+  color: rgb(24, 24, 24);
+}
+
+h4 {
+  font-size: medium;
+  color: rgb(47, 47, 47);
+  font-weight: 100;
+  opacity: 90%;
+}
+
+#profile-photo {
+  align-items: flex-end;
+}
+
+#profile-photo img {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  width: 70%;
+  height: 70%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+input[type="submit"].add-edit-profile-button {
+  background: white;
+  border-color: white;
+  padding: 5px 16px;
+  color: var(--koala-lavender);
+  border-radius: 8px;
+}
+
+input[type="submit"].add-edit-profile-button:hover {
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  border-radius: 8px;
 }
