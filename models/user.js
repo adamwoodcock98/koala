@@ -6,15 +6,15 @@ const salt_work_factor = 10;
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
+    required: [true, "First Name is required"],
   },
   lastName: {
     type: String,
-    required: true,
+    required: [true, "Last Name is required"],
   },
   email: {
     type: String,
-    required: true,
+    required: [true, "Email is required"],
     unique: true,
     validate: { 
       validator: validator.isEmail, message: "Invalid Email" 
@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: [true, "Password is required"],
   },
   friends: [mongoose.SchemaTypes.ObjectId],
   aboutMe: {
