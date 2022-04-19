@@ -6,7 +6,9 @@ const User = require("../../models/user");
 describe("User model", () => {
   beforeEach((done) => {
     mongoose.connection.collections.users.drop(() => {
-      done();
+      User.syncIndexes(() => {
+        done();
+      })
     });
   });
 
@@ -47,6 +49,7 @@ describe("User model", () => {
       email: "someone@example.com",
       password: "password",
     });
+    
     expect(user.password).toEqual("password");
   });
 
@@ -108,10 +111,11 @@ describe("User model", () => {
       email: "someoneexample.com",
       password: "password",
     });
+
     await expect(user.save()).rejects.toThrow();
   });
 
-  it("email field has to be a unique entry", async () => {
+  it("email field has to be a unique entry", async() => {
     const user = new User({
       firstName: "Barry",
       lastName: "Barry",
@@ -127,6 +131,7 @@ describe("User model", () => {
       password: "password",
     });
     await expect(user2.save()).rejects.toThrow();
+
   });
 
   it("has password as a required field", async () => {
