@@ -272,7 +272,6 @@ input[type="submit"]:hover {
 #name-pronouns {
   flex: 4;
   text-align: left;
-  /* padding-left: 2.5%; */
 }
 
 #edit-add-friend-button {
@@ -314,6 +313,11 @@ h4 {
   color: rgb(47, 47, 47);
   font-weight: 100;
   opacity: 90%;
+}
+
+h5 {
+  text-align: left;
+  padding-left: 7.5%;
 }
 
 #profile-photo {
