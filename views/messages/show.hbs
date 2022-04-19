@@ -1,0 +1,53 @@
+{{#if messages.length}}
+  {{#each messages}}
+
+    <div class="message-container card" id="{{this._id}}">
+
+      <div class="profile-picture">
+          <img src={{user.profilePicture}} 
+            {{!-- width="100"
+            height="100"
+            class="rounded-circle" --}}/>
+      </div>
+      <div class="message-header">
+        <span class="name">{{this.sender.firstName}} {{this.sender.lastName}}</span>
+        <div class="date-sent">{{this.createdAt}}</div>
+      </div>
+
+      <div class="message-body">
+        <p class="message">
+          {{this.message.text}}
+        </p>
+      </div>
+    </div>
+  {{/each}}
+
+  <div class="card">
+    <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
+      <input
+        id="message-input"
+        class="message-input"
+        name="message"
+        type="text"
+        placeholder="Send {{user.firstName}} a message!"
+      />
+      <input type="submit" value="Post" />
+    </form>
+{{else}}
+  <div class="message-container card" id="{{this._id}}">
+    <p> Start a new conversation </p>
+  </div>
+
+  <div class="card">
+    <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
+      <input
+        id="message-input"
+        class="message-input"
+        name="message"
+        type="text"
+        placeholder="Send {{user.firstName}} a message!"
+      />
+      <input type="submit" value="Post" />
+    </form>
+  </div>
+{{/if}}

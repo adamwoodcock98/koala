@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Messages</title>
+</head>
+<body>
+  <div class="friends-list">
+    {{#each friends}}
+
+      <div class="user-container card" id="{{this._id}}">
+
+        <div class="profile-picture">
+          <img src={{this.profilePicture}} width="100"
+            height="100"
+            class="rounded-circle"/>
+        </div>
+
+        <div class="user-info">
+          <div class="user-header">
+            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+          </div>
+          <div class="user-body">
+            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+          </div>
+        </div>
+
+        <div class="message-button" >
+          <form class="message-form" action="/message/{{this._id}}" method="get">
+            <button class="btn btn-outline-success me-2" type="submit"><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+          </form>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</body>
+</html>

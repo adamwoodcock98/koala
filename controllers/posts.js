@@ -1,8 +1,6 @@
 const Post = require("../models/post");
 
 const PostsController = {
-  // TODO: fix session timestamp issue
-
   Index: (req, res) => {
     Post.find()
       .populate("user")
@@ -24,6 +22,7 @@ const PostsController = {
     const session = {
       message: req.body.message,
       user: req.session.user,
+      createdAt: Date.now(),
     };
     const post = new Post(session);
 
@@ -31,7 +30,6 @@ const PostsController = {
       if (err) {
         throw err;
       }
-
       res.status(201).redirect("/posts");
     });
   },
