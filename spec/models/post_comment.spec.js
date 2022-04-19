@@ -7,33 +7,50 @@ const mockPostId = new mongoose.Types.ObjectId();
 const mockUserId = new mongoose.Types.ObjectId();
 
 describe("Post comment model", () => {
-  it("has a message", () => {
-    const postComment = new PostComment({ message: "some message" });
+  it("has a message, post, and a user", () => {
+    const postComment = new PostComment({
+      post: mockPostId,
+      message: "some message",
+      user: mockUserId,
+    });
+    expect(postComment.post).toEqual(mockPostId);
     expect(postComment.message).toEqual("some message");
+    expect(postComment.user).toEqual(mockUserId);
   });
 
-  it("has a required message", (done) => {
-    const postComment = new PostComment({ user: mockUserId });
+  it("requires a message", (done) => {
+    const postComment = new PostComment({
+      post: mockPostId,
+      user: mockUserId,
+    });
     postComment.save((err) => {
-      expect(err).not.toBeNull();
+      const actualError = err.errors.message.properties.message;
+      expect(actualError).toEqual("Path `message` is required.");
       done();
     });
   });
 
-  it("has a user ID", () => {
+  it("requires a link to a post", (done) => {
     const postComment = new PostComment({
-      message: "has a user ID",
+      message: "some message",
       user: mockUserId,
     });
-    expect(postComment.user).toEqual(mockUserId);
+    postComment.save((err) => {
+      const actualError = err.errors.post.properties.message;
+      expect(actualError).toEqual("Path `post` is required.");
+      done();
+    });
   });
 
-  it("has a post ID", () => {
+  it("requires a user", (done) => {
     const postComment = new PostComment({
       post: mockPostId,
-      message: "has a user ID",
-      user: mockUserId,
+      message: "some message",
     });
-    expect(postComment.post).toEqual(mockPostId);
+    postComment.save((err) => {
+      const actualError = err.errors.user.properties.message;
+      expect(actualError).toEqual("Path `user` is required.");
+      done();
+    });
   });
 });
