@@ -209,6 +209,27 @@ input[type="submit"]:hover {
 /* Buttons - End */
 
 /* Posts */
+/* Posts flex main container */
+.posts-page-grid-container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-column-gap: 10px;
+  grid-gap: 10px;
+}
+
+/* .test-border {
+  /* border-style: solid; */
+/* }
+
+.top-stories-container {
+  box-shadow: 2px 0px 5px rgb(202, 202, 202);
+  border-right-color: var(--koala-og-lavender);
+  border-right-width: 1px;
+  border-right-style: solid;
+  text-align: left;
+}  */
+
+/* Posts flex main container end */
 .post-list {
   display: flex;
   flex-direction: column;
