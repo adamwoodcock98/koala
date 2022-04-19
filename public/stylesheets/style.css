@@ -77,6 +77,27 @@ body {
   width: 50vw;
 }
 
+.user-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 50px;
+}
+
+.user-container:hover {
+  background-color: var(--koala-lavender);
+}
+
+.user-info {
+  flex-direction: column;
+}
+
+.profile-picture {
+  height: 10%;
+  width: 10%;
+}
+
 input[type="search"] {
   width: 10vw;
   min-width: 95px;
@@ -198,11 +219,14 @@ input[type="submit"]:hover {
 
 .post-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
+  justify-content: flex-start;
+  gap: 50px;
 }
 
 .post-header {
+  text-align: left;
   flex-direction: row;
 }
 

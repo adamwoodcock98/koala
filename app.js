@@ -10,11 +10,13 @@ const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const Handlebars = require("handlebars");
+const flash = require('connect-flash')
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
 const sessionsRouter = require("./routes/sessions");
 const usersRouter = require("./routes/users");
+const searchRouter = require("./routes/search");
 const profileRouter = require("./routes/profile");
 
 const app = express();
@@ -50,6 +52,8 @@ app.use(
   })
 );
 
+app.use(flash());
+
 // clear the cookies after user logs out
 app.use((req, res, next) => {
   if (req.cookies.user_sid && !req.session.user) {
@@ -72,6 +76,7 @@ app.use("/", homeRouter);
 app.use("/posts", sessionChecker, postsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
+app.use("/search", sessionChecker, searchRouter);
 app.use("/profile", sessionChecker, profileRouter);
 
 // catch 404 and forward to error handler

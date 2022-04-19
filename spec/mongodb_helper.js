@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 beforeAll(function(done) {
   mongoose.connect('mongodb://127.0.0.1/acebook_test', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   });
 
   var db = mongoose.connection;
