@@ -6,7 +6,9 @@ const User = require("../../models/user");
 describe("User model", () => {
   beforeEach((done) => {
     mongoose.connection.collections.users.drop(() => {
-      done();
+      User.syncIndexes(() => {
+        done();
+      })
     });
   });
 
@@ -47,6 +49,7 @@ describe("User model", () => {
       email: "someone@example.com",
       password: "password",
     });
+    
     expect(user.password).toEqual("password");
   });
 
@@ -71,6 +74,18 @@ describe("User model", () => {
     });
     expect(user.profilePicture).toBe(
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    );
+  });
+
+  it("has a default cover photo", () => {
+    const user = new User({
+      firstName: "Barry",
+      lastName: "Barry",
+      email: "someone@example.com",
+      password: "password",
+    });
+    expect(user.coverPicture).toBe(
+      "/images/koala-cover-1.jpeg"
     );
   });
 
@@ -108,10 +123,11 @@ describe("User model", () => {
       email: "someoneexample.com",
       password: "password",
     });
+
     await expect(user.save()).rejects.toThrow();
   });
 
-  it("email field has to be a unique entry", async () => {
+  it("email field has to be a unique entry", async() => {
     const user = new User({
       firstName: "Barry",
       lastName: "Barry",
@@ -127,6 +143,7 @@ describe("User model", () => {
       password: "password",
     });
     await expect(user2.save()).rejects.toThrow();
+
   });
 
   it("has password as a required field", async () => {

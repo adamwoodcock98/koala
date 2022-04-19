@@ -33,10 +33,10 @@ Cypress.Commands.add(
     password = "123"
   ) => {
     cy.visit("/users/new");
-    cy.get("#sign-up-first-name").type(firstName);
-    cy.get("#sign-up-last-name").type(lastName);
-    cy.get("#sign-up-email").type(email);
-    cy.get("#sign-up-password").type(password);
+    if (firstName) cy.get("#sign-up-first-name").type(firstName);
+    if (lastName) cy.get("#sign-up-last-name").type(lastName);
+    if (email) cy.get("#sign-up-email").type(email);
+    if (password) cy.get("#sign-up-password").type(password);
     cy.get("#submit").click();
   }
 );
