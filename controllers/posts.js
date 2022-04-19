@@ -1,7 +1,13 @@
 const Post = require("../models/post");
+const NewsAPI = require("../models/news_api");
+const api = new NewsAPI;
 
 const PostsController = {
   Index: (req, res) => {
+    api.getNewsInfo(("q=recycling&"), data => {
+      console.log("THIS IS THE DATA: ", data);
+    })
+
     Post.find()
       .populate("user")
       .sort({ createdAt: -1 })
