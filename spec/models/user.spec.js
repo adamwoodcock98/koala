@@ -74,6 +74,18 @@ describe("User model", () => {
     );
   });
 
+  it("has a default cover photo", () => {
+    const user = new User({
+      firstName: "Barry",
+      lastName: "Barry",
+      email: "someone@example.com",
+      password: "password",
+    });
+    expect(user.coverPicture).toBe(
+      "/images/koala-cover-1.jpeg"
+    );
+  });
+
   it("has first name as a required field", async () => {
     const user = new User({
       lastName: "Barry",
