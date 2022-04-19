@@ -41,7 +41,7 @@
       <div class="profile-content-container-child friends-container">
         <h2 style="text-align:center">Your friends</h2>
         <div class="friends-flex-container">
-          {{#each friends}}
+          {{#each user.friends}}
             <div class="friends-child">
               <div class="friend-image">
                 <img
@@ -62,7 +62,7 @@
 
       <div class="profile-content-container-child posts-container">
         <h2>Shared by you...</h2>
-        {{#each posts}}
+        {{#each user.posts}}
 
           <div class="post-container card" id="{{this._id}}">
 

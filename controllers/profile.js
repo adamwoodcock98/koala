@@ -1,24 +1,25 @@
 // const User = require("../models/user");
 const Post = require("../models/post");
-const User = require("../models/user")
+const User = require("../models/user");
+require("../models/about_me");
 
 const ProfileController = {
   Index: (req, res) => {
-    const userObject = req.session.user;
-    const usersFriends = [];
+    const userID = "625b114abc9b30a7e1762fda"
 
-    userObject.friends.forEach(friend => {
-      User.find({ _id: friend }).then(user => {
-        usersFriends.push(user[0]);
+    User.findById(userID)
+      .populate("aboutMe")
+      .populate("friends")
+      .populate()
+      .then(user => {
+        Post.find({ user: user._id }, (err, posts) => {
+          if (err) {
+            console.log(err);
+          }
+          user.posts = posts;
+          res.render("profile/index", { user });
+        });
       });
-    });
-
-    Post.find({ user: userObject._id })
-    .populate("user")
-    .then((posts) => {
-      console.log("CHECKING ADDITION OF USER: ", usersFriends);
-      res.render("profile/index", { user: userObject, posts: posts, friends: usersFriends });
-    });
   },
 };
 
