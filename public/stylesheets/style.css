@@ -11,6 +11,7 @@ body {
   --koala-background-grey: rgb(240, 242, 245);
   --koala-dark-grey: rgb(24, 24, 24);
   --koala-black: #1d2129;
+  --koala-red: #FF7171;
   --border-radius: 25px;
   --card-gap: 1rem;
   background-color: var(--koala-background-grey);
@@ -301,7 +302,7 @@ input[type="submit"]:hover {
   text-align: left;
 }
 
-#edit-add-friend-button {
+#edit-friend-unfriend-button {
   flex: 1;
 }
 

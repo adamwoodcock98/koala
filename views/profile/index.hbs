@@ -20,23 +20,43 @@
           <img src={{user.profilePicture}} alt="silhouette" />
         </div>
         <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
+          <h1 style="display:inline-block;">{{user.firstName}}
+            {{user.lastName}}</h1>
           <h4 style="display:inline-block;"> {{user.aboutMe.pronouns}}</h4>
         </div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-          <div id="edit-add-friend-button" class="test">
-            <form action="/friends/add/{{user._id}}?_method=PATCH" method="post">
-              <input
-                id="add-friend-button"
-                type="submit"
-                class="add-edit-profile-button"
-                value="ADD FRIEND"
-                name="add-friend"
-              />
-            </form>
-          </div>
+            <div id="edit-friend-unfriend-button" class="test">
+              <form
+                action="/friends/add/{{user._id}}?_method=PATCH"
+                method="post"
+              >
+                <input
+                  id="friend-unfriend-button"
+                  type="submit"
+                  class="add-edit-profile-button"
+                  value="Add friend"
+                  name="add-friend"
+                />
+              </form>
+            </div>
           {{/unless}}
+          {{#if user.isFriends}}
+            <div id="edit-friend-unfriend-button" class="test">
+              <form
+                action="/friends/delete/{{user._id}}?_method=DELETE"
+                method="post"
+              >
+                <input
+                  id="friend-unfriend-button"
+                  type="submit"
+                  class="add-edit-profile-button"
+                  value="Unfriend"
+                  name="unfriend"
+                />
+              </form>
+            </div>
+          {{/if}}
         {{/unless}}
       </div>
     </div>
@@ -54,17 +74,17 @@
             <div class="friends-child">
               <div class="friend-image">
                 <a href="/profile/{{this._id}}">
-                <img
-                  src={{this.profilePicture}}
-                  alt="friends-profile-picture"
-                  height="70px"
-                  width="70px"
-                />
+                  <img
+                    src={{this.profilePicture}}
+                    alt="friends-profile-picture"
+                    height="70px"
+                    width="70px"
+                  />
                 </a>
               </div>
               <div class="friend-name">
                 <a href="/profile/{{this._id}}">
-                <h4>{{this.firstName}} {{this.lastName}}</h4>
+                  <h4>{{this.firstName}} {{this.lastName}}</h4>
                 </a>
               </div>
             </div>
