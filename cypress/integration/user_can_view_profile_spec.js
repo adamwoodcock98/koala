@@ -28,13 +28,45 @@ describe.only("Viewing a profile", () => {
     cy.get(".message").should("contain", "MEHN stack!");
   });
 
-  it("should have a add friend button unless profile owner", () => {
+  it("should have an add friend button unless profile owner", () => {
+    cy.signUp();
+    cy.login();
+
+    cy.get("#dropdownUser1").click();
+    cy.get("#dropdown-profile-link").click();
+    cy.get("#add-friend-button").should("not.exist");
+
+    cy.get("#dropdownUser1").click();
+    cy.get("#sign-out-button").click();
+    cy.signUp("Dick", "Dick-Dickinson", "dick@dong.com", "secured1ck");
+    cy.login();
+
+    cy.get("#searchBox").type("Dick Dick-Dickinson");
+    cy.get("#searchButton").click();
+    cy.get(".user-container").click();
+
+    cy.get("#add-friend-button").should("exist");
   });
 
-  it("should have edit profile if profile owner", () => {
+  it("should add a friend and list the friend on the users profile", () => {
+    cy.signUp("Dick", "Dick-Dickinson", "dick@dong.com", "secured1ck");
 
-  });
+    cy.signUp();
+    cy.login();
 
+    cy.get("#searchBox").type("Dick Dick-Dickinson");
+    cy.get("#searchButton").click();
+    cy.get(".user-container").click();
+
+    cy.get("#add-friend-button").click();
+
+    cy.get(".friend-name").should("contain", "Barry Barry-Barroldsson");
+
+    cy.get("#dropdownUser1").click();
+    cy.get("#dropdown-profile-link").click();
+
+    cy.get(".friend-name").should("contain", "Dick Dick-Dickinson");
+  })
 
 });
 

@@ -52,10 +52,10 @@
           style=""
         >
           {{#if user}}
-          <li><a class="dropdown-item" href="/profile/{{ loggedInUserId }}">Profile</a></li>
+          <li><a class="dropdown-item" id="dropdown-profile-link" href="/profile/{{ loggedInUserId }}">Profile</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li> <form class="dropdown-item" action="/sessions/log-out" method="post" id="signOut"><input type="submit" value="Sign Out" > </input> </form></li>
+          <li> <form class="dropdown-item" action="/sessions/log-out" method="post" id="signOut"><input id="sign-out-button" type="submit" value="Sign Out" > </input> </form></li>
           {{else}}
           <form class="px-3 py-2 user-dropdown-menu">
             <div class="form-group">
