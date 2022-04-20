@@ -18,6 +18,9 @@ const postCommentsRouter = require("./routes/post_comments");
 const sessionsRouter = require("./routes/sessions");
 const usersRouter = require("./routes/users");
 const messagesRouter = require("./routes/messages");
+const searchRouter = require("./routes/search");
+const profileRouter = require("./routes/profile");
+const friendsRouter = require("./routes/friends");
 
 const app = express();
 
@@ -85,6 +88,9 @@ app.use("/comments", sessionChecker, postCommentsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
 app.use("/message", messagesRouter);
+app.use("/search", sessionChecker, searchRouter);
+app.use("/profile", sessionChecker, profileRouter);
+app.use("/friends", sessionChecker, friendsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

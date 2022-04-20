@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const aboutMeSchema = new mongoose.Schema({
   education: String,
   workplace: String,
