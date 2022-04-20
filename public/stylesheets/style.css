@@ -94,7 +94,7 @@ body {
 
 .profile-picture {
   height: 10%;
-  width: 10%;
+  width: 30%;
 }
 
 input[type="search"] {
@@ -119,18 +119,6 @@ input[type="search"]:focus {
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
-}
-
-.post-form > input[type="text"] {
-  color: var(--koala-black);
-  font-size: larger;
-  border: none;
-  width: 90%;
-}
-
-.post-form > input[type="text"]:focus {
-  color: var(--koala-black);
-  outline: none;
 }
 
 input[type="submit"] {
@@ -207,7 +195,20 @@ input[type="submit"]:hover {
 }
 /* Buttons - End */
 
-/* Posts */
+/* Posts Index */
+
+.post-form > input[type="text"] {
+  color: var(--koala-black);
+  font-size: larger;
+  border: none;
+  width: 90%;
+}
+
+.post-form > input[type="text"]:focus {
+  color: var(--koala-black);
+  outline: none;
+}
+
 .post-list {
   display: flex;
   flex-direction: column;
@@ -218,10 +219,35 @@ input[type="submit"]:hover {
 
 .post-container {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.comment-container {
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 0.3rem;
+}
+
+.comment-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.actual-post {
+  display: flex;
+  flex-direction: row;
 }
 
 .post-header {

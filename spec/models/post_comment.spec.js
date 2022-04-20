@@ -21,6 +21,7 @@ describe("Post comment model", () => {
   it("requires a message", (done) => {
     const postComment = new PostComment({
       post: mockPostId,
+      // message: "some message",
       user: mockUserId,
     });
     postComment.save((err) => {
@@ -32,6 +33,7 @@ describe("Post comment model", () => {
 
   it("requires a link to a post", (done) => {
     const postComment = new PostComment({
+      // post: mockPostId,
       message: "some message",
       user: mockUserId,
     });
@@ -46,6 +48,7 @@ describe("Post comment model", () => {
     const postComment = new PostComment({
       post: mockPostId,
       message: "some message",
+      // user: mockUserId,
     });
     postComment.save((err) => {
       const actualError = err.errors.user.properties.message;

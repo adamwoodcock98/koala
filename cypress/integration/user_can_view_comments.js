@@ -3,9 +3,10 @@ describe("Viewing comments", () => {
     cy.signUp();
     cy.login();
     cy.addPost("MEHN stack!");
+
     const commentBody = "What excellent content this is";
-    cy.addComment(post_id, commentBody);
     // TODO: Extract the posting a comment into a helper method
+    // cy.addComment(commentBody);
 
     cy.get(".post-container")
       .get(".post-footer")

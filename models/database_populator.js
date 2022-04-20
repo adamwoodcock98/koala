@@ -149,11 +149,9 @@ Post.find().exec((err, posts) => {
   if (err) {
     throw err;
   }
-  console.log("Here are the Posts", posts);
   posts.forEach((post) => {
     let randomUserId = users[Math.floor(Math.random() * users.length)]._id;
     let randomComment = comments[Math.floor(Math.random() * comments.length)];
-    console.log("Making a comment");
     PostComment.create({
       user: randomUserId,
       message: randomComment,
