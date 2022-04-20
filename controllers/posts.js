@@ -1,5 +1,5 @@
 const Post = require("../models/post");
-const { formatDistanceToNowStrict } = require('date-fns’)
+const { formatDistanceToNowStrict } = require('date-fns');
 
 const PostsController = {
   Index: (req, res) => {
