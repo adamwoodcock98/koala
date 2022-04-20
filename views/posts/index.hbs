@@ -57,6 +57,13 @@
             <p>{{this.comments.length}} comments</p>
             {{!-- <p>{{this.likes.length}} likes</p> --}}
             {{! buttons for likes, comments, update post will be here }}
+            <div class="likes">
+              <p>{{this.likes.length}} likes</p>
+              <form class="like-form" action="/likes/new" method="post">
+                <input type="hidden" name="postId" value="{{this._id}}" />
+                <input type="submit" value="Like" />
+              </form>
+            </div>
           </div>
         </div>
       </div>

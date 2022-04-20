@@ -63,6 +63,25 @@ const PostsController = {
       });
     });
   },
+
+  AddLike: (req, res) => {
+    const postId = req.params.postId;
+    const likeId = req.params.likeId;
+
+    Post.findById(postId).exec((err, post) => {
+      if (err) {
+        throw err;
+      }
+      post.likes.push(likeId);
+
+      post.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(204).redirect("/posts");
+      });
+    });
+  },
 };
 
 module.exports = PostsController;
