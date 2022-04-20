@@ -9,6 +9,13 @@
         type="text"
         placeholder="Hi {{user.firstName}}, what's on your mind?"
       />
+      <input
+        id="img-input"
+        class="message-input"
+        name="image"
+        type="text"
+        placeholder="Insert URL"
+      />
       <input type="submit" value="Post" />
     </form>
   </div>
@@ -16,28 +23,69 @@
   {{#each posts}}
 
     <div class="post-container card" id="{{this._id}}">
-
+      <div class ="actual-post">
       <div class="profile-picture">
-          <img src={{this.user.profilePicture}} width="100"
-            height="100"
-            class="rounded-circle"/>
+        <img
+          src={{this.user.profilePicture}}
+          width="100"
+          height="100"
+          class="rounded-circle"
+        />
       </div>
-      <div class="post-header">
-        <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
-        <div class="date-posted">{{this.createdAt}}</div>
-      </div>
-
-      <div class="user-info">
+      <div class="post-body">
         <div class="post-header">
-          <span class="name">{{this.user.firstName}} {{this.user.lastName}}</span>
-          <span class="date-posted">15 mins ago</span>
+          <span class="post-author">{{this.user.firstName}}
+            {{this.user.lastName}}</span>
+          <div class="date-posted">{{this.createdAt}}</div>
         </div>
 
-        <div class="post-body">
+        <div class="post-text">
+          <p class="image">
+            <img src={{this.image}} width="200" height="200">
+          </p>
+          
           <p class="message">
             {{this.message}}
           </p>
+          
         </div>
+
+        <div class="post-footer">
+          {{! buttons for likes, comments, update post will be here }}
+        </div>
+      </div>
+      </div>
+      <div class="comments-list">
+        <form class="comment-form"
+          action="/comments/new" method="post">
+            <input type="hidden" name="postId" value="{{this._id}}" />
+            <input class="comment-input" name="comment" type="text" />
+            <input type="submit" value="Add Comment" />
+          </form>
+        {{#each this.comments}}
+          {{! Loop through all available comments linked to the above post id }}
+          {{! Each comment will have its own div -> user profile picture, name and message +/- time }}
+          <div class="comment-container">
+            <div class="comment-profile-picture">
+              <img
+                src={{../this.user.profilePicture}}
+                width="30"
+                height="30"
+                class="rounded-circle"
+              />
+            </div>
+            <div class="comment-body">
+              <div class="comment-header">
+                <span class="comment-author">Name: {{ this.user.firstName }}</span>
+                <span class="date-posted">Time: {{ this.createdAt }}</span>
+                {{! comment's user name and time posted }}
+              </div>
+              <div class="comment-text">
+                {{ this.message }}
+              </div>
+            </div>
+          </div>
+        {{/each}}
       </div>
     </div>
   {{/each}}

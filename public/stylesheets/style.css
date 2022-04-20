@@ -9,6 +9,7 @@ body {
   --koala-duckegg-blue: #ced4da;
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
+  --koala-dark-grey: rgb(24, 24, 24);
   --koala-black: #1d2129;
   --border-radius: 25px;
   --card-gap: 1rem;
@@ -94,7 +95,7 @@ body {
 
 .profile-picture {
   height: 10%;
-  width: 10%;
+  width: 30%;
 }
 
 input[type="search"] {
@@ -121,6 +122,7 @@ input[type="search"]:focus {
   gap: 10px;
 }
 
+<<<<<<< HEAD
 .post-form > input[type="text"] {
   color: var(--koala-black);
   font-size: larger;
@@ -133,6 +135,8 @@ input[type="search"]:focus {
   outline: none;
 }
 
+=======
+>>>>>>> ef1b84f723d7dbb521fba3ebdbc14953c47d8b08
 input[type="submit"] {
   background: transparent;
   border-color: var(--koala-lavender);
@@ -207,7 +211,20 @@ input[type="submit"]:hover {
 }
 /* Buttons - End */
 
-/* Posts */
+/* Posts Index */
+
+.post-form > input[type="text"] {
+  color: var(--koala-black);
+  font-size: larger;
+  border: none;
+  width: 90%;
+}
+
+.post-form > input[type="text"]:focus {
+  color: var(--koala-black);
+  outline: none;
+}
+
 .post-list {
   display: flex;
   flex-direction: column;
@@ -218,10 +235,35 @@ input[type="submit"]:hover {
 
 .post-container {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.comment-container {
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 0.3rem;
+}
+
+.comment-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.actual-post {
+  display: flex;
+  flex-direction: row;
 }
 
 .post-header {
@@ -249,7 +291,6 @@ input[type="submit"]:hover {
 .profile-content-container {
   display: grid;
   grid-template-columns: 25% 50% 20%;
-  border-style: dotted;
   grid-column-gap: 10px;
   grid-gap: 10px;
 }
@@ -270,6 +311,28 @@ input[type="submit"]:hover {
   grid-column: 3, 4;
 }
 
+/* Friends flex box */
+.friends-flex-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 49%));
+  grid-column-gap: 5px;
+  grid-gap: 5px;
+  justify-content: center;
+}
+
+.friend-image img {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--koala-lavender);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.friend-name {
+  text-align: center;
+}
+
 /* Header primary classes (flex) */
 .cover-info-container {
   display: flex;
@@ -280,18 +343,16 @@ input[type="submit"]:hover {
 
 #profile-photo {
   flex: 1;
+  text-align: right;
 }
 
 #name-pronouns {
   flex: 4;
+  text-align: left;
 }
 
 #edit-add-friend-button {
   flex: 1;
-}
-
-.test {
-  border-style: solid;
 }
 
 /* CSS Layers secondary classes for primary header */
@@ -669,4 +730,54 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
   display: block;
+/* Styling changes */
+h1 {
+  font-weight: 340;
+  color: var(--koala-dark-grey);
+}
+
+h2 {
+  color: var(--koala-dark-grey);
+}
+
+h4 {
+  font-size: medium;
+  color: rgb(47, 47, 47);
+  font-weight: 100;
+  opacity: 90%;
+}
+
+h5 {
+  text-align: left;
+  padding-left: 7.5%;
+}
+
+#profile-photo {
+  align-items: flex-end;
+}
+
+#profile-photo img {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 4px;
+  border-color: white;
+  width: 70%;
+  height: 70%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+input[type="submit"].add-edit-profile-button {
+  background: white;
+  border-color: white;
+  padding: 5px 16px;
+  color: var(--koala-lavender);
+  border-radius: 8px;
+}
+
+input[type="submit"].add-edit-profile-button:hover {
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  border-radius: 8px;
 }

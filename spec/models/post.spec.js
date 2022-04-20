@@ -42,7 +42,6 @@ describe("Post model", () => {
     const post = new Post({
       message: "has a user ID",
       user: mockUserId,
-      createdAt: Date.now(),
     });
     expect(post.createdAt).not.toBeNull();
   });
@@ -68,5 +67,11 @@ describe("Post model", () => {
         done();
       });
     });
+  });
+
+  // TEST FOR PHOTOS
+  it("has a photo", () => {
+    const post = new Post({ image: "some photo link" });
+    expect(post.image).toEqual("some photo link");
   });
 });

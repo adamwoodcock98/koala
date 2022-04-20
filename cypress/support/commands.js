@@ -33,10 +33,10 @@ Cypress.Commands.add(
     password = "123"
   ) => {
     cy.visit("/users/new");
-    cy.get("#sign-up-first-name").type(firstName);
-    cy.get("#sign-up-last-name").type(lastName);
-    cy.get("#sign-up-email").type(email);
-    cy.get("#sign-up-password").type(password);
+    if (firstName) cy.get("#sign-up-first-name").type(firstName);
+    if (lastName) cy.get("#sign-up-last-name").type(lastName);
+    if (email) cy.get("#sign-up-email").type(email);
+    if (password) cy.get("#sign-up-password").type(password);
     cy.get("#submit").click();
   }
 );
@@ -53,3 +53,18 @@ Cypress.Commands.add("addPost", (text) => {
   cy.get("#message-input").type(text, { force: true });
   cy.get("#new-post-form").submit();
 });
+
+Cypress.Commands.add(
+  "addComment",
+  (postNumber = 0, commentBody = "What excellent content!") => {
+    cy.get(
+      ".post-list>.post-container>.comments-list>.comment-form>.comment-input"
+    )
+      .eq(postNumber)
+      .type(commentBody, { force: true });
+
+    cy.get(".post-list>.post-container>.comments-list>.comment-form")
+      .eq(0)
+      .submit();
+  }
+);
