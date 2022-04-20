@@ -9,6 +9,13 @@
         type="text"
         placeholder="Hi {{user.firstName}}, what's on your mind?"
       />
+      <input
+        id="img-input"
+        class="message-input"
+        name="image"
+        type="text"
+        placeholder="Insert URL"
+      />
       <input type="submit" value="Post" />
     </form>
   </div>
@@ -33,9 +40,14 @@
         </div>
 
         <div class="post-text">
+          <p class="image">
+            <img src={{this.image}} width="200" height="200">
+          </p>
+          
           <p class="message">
             {{this.message}}
           </p>
+          
         </div>
 
         <div class="post-footer">

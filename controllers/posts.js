@@ -25,6 +25,7 @@ const PostsController = {
     const session = {
       message: req.body.message,
       user: req.session.user,
+      image: req.body.image,
     };
     const post = new Post(session);
 
