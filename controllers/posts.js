@@ -1,13 +1,9 @@
 const Post = require("../models/post");
 const NewsAPI = require("../models/news_api");
-const api = new NewsAPI;
+// const api = new NewsAPI;
 
 const PostsController = {
-  Index: (req, res) => {
-    api.getNewsInfo(("q=recycling&"), data => {
-      console.log("THIS IS THE DATA: ", data);
-    })
-
+  Index: (req, res) => {  
     Post.find()
       .populate("user")
       .sort({ createdAt: -1 })
@@ -20,7 +16,20 @@ const PostsController = {
           posts: posts,
           user: req.session.user,
         };
-        res.render("posts/index", session);
+
+        res.render("posts/index", { session: session, stories: null });
+
+        
+        // try {
+        //   api.getNewsInfo(("q=recycling&"), data => {
+        //     console.log(data)
+        //     res.render("posts/index", { session: session, stories: data.response.results});
+        //   })
+        // } catch (err) {
+        //   console.log(err);
+        //   res.render("posts/index", { session: session, stories: null });
+        // }
+        
       });
   },
 

@@ -1,7 +1,10 @@
 <div class="posts-page-grid-container">
 
   <div class="top-stories-container test-border">
-    <h2 style="padding-left:3.5% padding-top: 2%">Top stories</h2>
+    <h2 style="padding-left:3.5% padding-top: 2%" id="stories-title">Top stories</h2>
+    <ul class="stories-list">
+
+    </ul>
   </div>
 
   <div class="post-list test-border">
@@ -13,13 +16,13 @@
           class="message-input"
           name="message"
           type="text"
-          placeholder="Hi {{user.firstName}}, what's on your mind?"
+          placeholder="Hi {{session.user.firstName}}, what's on your mind?"
         />
         <input type="submit" value="Post" />
       </form>
     </div>
 
-    {{#each posts}}
+    {{#each session.posts}}
 
       <div class="post-container card" id="{{this._id}}">
 
@@ -60,3 +63,37 @@
   </div>
 
 </div>
+
+<script>
+
+  document.
+
+  let fetchBtn = document.getElementById("fetchBtn");
+  fetchBtn.addEventListener("click", buttonclickhandler);
+
+  function buttonclickhandler() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://content.guardianapis.com/search?q=recycling&api-key=565a3b14-672a-41b6-83e5-634caa6e8967", true);
+
+    xhr.onload = function () {
+      if (this.status === 200) {
+        obj = JSON.parse(this.responseText);
+
+        let list = document.getElementById("stories-list");
+        let str = "";
+
+        for (key in obj.data) {
+          str += <li>${key.body.webTitle}</li>;
+        }
+        list.innerHTML = str;
+      } else {
+        console.log("Something went wrong");
+        document.getElementById("stories-title").text = "Content unavailable";
+      }
+
+      xhr.send()
+    }
+  }
+
+</script>
