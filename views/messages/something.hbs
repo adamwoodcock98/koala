@@ -11,17 +11,31 @@
                     </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
+                  {{session.firstName}}
                 <ul class="list-unstyled chat-list mt-2 mb-0">
                      {{#each friends}}
-                      <a href="/message/{{this._id}}" >
+
+                     <li>{{this.id}}</li>
+
                       <li class="clearfix">
                           <img src={{this.profilePicture}} alt="avatar">
                           <div class="about">
                               <div class="name">{{this.firstName}} {{this.lastName}}</div>
                               {{!-- <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                             --}}
                           </div>
+                          <div class="message-button" >
+                            <form class="message-form" action="/message/{{this._id}}" method="get">
+                              <button class="btn btn-outline-success me-2" type="submit"><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-search"
+                                viewBox="0 0 16 16"
+                              >
+                            </form>
+                          </div>
                       </li>
-                      </a>
                     {{/each}}
                 </ul>
             </div>

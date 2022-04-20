@@ -5,28 +5,57 @@ const MessagesController = {
   Index: (req, res) => {
     const friends = req.session.user.friends;
     const findQuery = [];
-    console.log(friends);
     friends.forEach((id) => {
       const friend = { _id: id };
       findQuery.push(friend);
     });
 
     User.find({ $or: findQuery }).then((friends) => {
-      res.render("messages/index", { friends: friends });
+      res.render("messages/index", {
+        session: req.session.user,
+        friends: friends,
+      });
     });
   },
   Show: (req, res) => {
-    User.findById(req.params.id).then((user) => {
-      Message.find({ users: { $in: [req.session.user, user] } })
-        .populate([
-          { path: "sender", model: "User" },
-          { path: "users", model: "User" },
-        ])
-        .sort({ updatedAt: -1 })
-        .limit(20)
-        .then((messages) => {
-          res.render("messages/show", { messages: messages, user: user });
-        });
+    const friends = req.session.user.friends;
+    const findQuery = [];
+    friends.forEach((id) => {
+      const friend = { _id: id };
+      findQuery.push(friend);
+    });
+
+    console.log(req.params.id);
+
+    User.find({ $or: findQuery }).then((friends) => {
+      console.log(req.params.id);
+      User.findById(req.params.id).then((user) => {
+        console.log(user.firstName);
+        console.log("the session user:", req.session.user);
+        console.log("the person you're chatting to:", user);
+        Message.find({
+          $or: [
+            { users: [req.session.user._id, user._id] },
+            { users: [user._id, req.session.user._id] },
+          ],
+        })
+          .populate([
+            { path: "sender", model: "User" },
+            { path: "users", model: "User" },
+          ])
+          .sort({ updatedAt: -1 })
+          .limit(20)
+          .then((messages) => {
+            console.log(messages);
+            console.log(friends);
+            res.render("messages/show", {
+              messages: messages,
+              user: user,
+              session: req.session.user,
+              friends: friends,
+            });
+          });
+      });
     });
   },
   Create: (req, res) => {

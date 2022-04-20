@@ -20,16 +20,23 @@ const messagesRouter = require("./routes/messages");
 const app = express();
 
 // view engine setup
+const hbs = exphbs.create({
+  defaultLayout: "layout",
+  extname: ".hbs",
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+    },
+  },
+});
+
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  "hbs",
-  exphbs.engine({
-    defaultLayout: "layout",
-    extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
-  })
-);
+app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
+Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
 
 app.use(logger("dev"));
 app.use(express.json());
