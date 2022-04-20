@@ -14,6 +14,7 @@ const mongoDbUrl = process.env.MONGODB_URI || `mongodb://127.0.0.1/${mongoDb}`;
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 const db = mongoose.connection;
@@ -35,7 +36,7 @@ const users = [
     email: "test1@example.com",
     firstName: "Larry",
     lastName: "Larrysson",
-    profilePicture: "/images/users/larry_larrysson.jpg",
+    profilePicture: "/images/users/larry_larrysson.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -43,7 +44,7 @@ const users = [
     email: "test2@example.com",
     firstName: "Carrie",
     lastName: "Carriesdottir",
-    profilePicture: "/images/users/carrie_carriesdottir.jpg",
+    profilePicture: "/images/users/carrie_carriesdottir.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -51,7 +52,7 @@ const users = [
     email: "test3@example.com",
     firstName: "Gary",
     lastName: "Garysson",
-    profilePicture: "/images/users/gary_garysson.jpg",
+    profilePicture: "/images/users/gary_garysson.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -59,7 +60,7 @@ const users = [
     email: "test4@example.com",
     firstName: "Liam",
     lastName: "Liamsson",
-    profilePicture: "/images/users/liam_liamsson.jpg",
+    profilePicture: "/images/users/liam_liamsson.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -67,7 +68,7 @@ const users = [
     email: "test5@example.com",
     firstName: "Monica",
     lastName: "Monicasdottir",
-    profilePicture: "/images/users/monica_monicasdottir.jpg",
+    profilePicture: "/images/users/monica_monicasdottir.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -75,7 +76,7 @@ const users = [
     email: "test6@example.com",
     firstName: "Barold",
     lastName: "Baroldsson",
-    profilePicture: "/images/users/barold_baroldsson.jpg",
+    profilePicture: "/images/users/barold_baroldsson.jpeg",
     aboutMe: "625afd523b344e8aab81d05b",
   },
   {
@@ -83,7 +84,7 @@ const users = [
     email: "testx@example.com",
     firstName: "Barry",
     lastName: "Barry-Barroldsson",
-    profilePicture: "/images/users/barry_barry-barroldsson.jpg",
+    profilePicture: "/images/users/barry_barry-barroldsson.jpeg",
     friends: barrysFriends,
     aboutMe: "625afd523b344e8aab81d05b",
   },

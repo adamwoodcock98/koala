@@ -23,16 +23,20 @@
           <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
           <h4 style="display:inline-block;"> (They/Them)</h4>
         </div>
-        <div id="edit-add-friend-button" class="test">
-          <form action="" method="post">
-            <input
-              type="submit"
-              class="add-edit-profile-button"
-              value="ADD FRIEND"
-              name="add-friend"
-            />
-          </form>
-        </div>
+        {{#unless user.isProfileOwner}}
+          {{#unless user.isFriends}}
+          <div id="edit-add-friend-button" class="test">
+            <form action="/friends/add/{{user._id}}?_method=PATCH" method="post">
+              <input
+                type="submit"
+                class="add-edit-profile-button"
+                value="ADD FRIEND"
+                name="add-friend"
+              />
+            </form>
+          </div>
+          {{/unless}}
+        {{/unless}}
       </div>
     </div>
     <!-- PROFILE CONTENT-->

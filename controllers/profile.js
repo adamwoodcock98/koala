@@ -16,7 +16,15 @@ const ProfileController = {
             console.log(err);
           }
           user.posts = posts;
-          res.render("profile/index", { user });
+          user.isProfileOwner = (userID === req.session.user._id);
+
+          const friendIDArray = user.friends.map(user => {
+            return user._id;
+          })
+          
+          user.isFriends = friendIDArray.includes(req.session.user._id);
+          
+          res.render("profile/index", { user: user, loggedInUserId: req.session.user._id });
         });
       });
   },

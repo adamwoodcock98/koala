@@ -13,6 +13,7 @@ const PostsController = {
         const session = {
           posts: posts,
           user: req.session.user,
+          loggedInUserId: req.session.user._id
         };
         res.render("posts/index", session);
       });
