@@ -49,15 +49,19 @@
           {{#each user.friends}}
             <div class="friends-child">
               <div class="friend-image">
+                <a href="/profile/{{this._id}}">
                 <img
                   src={{this.profilePicture}}
                   alt="friends-profile-picture"
                   height="70px"
                   width="70px"
                 />
+                </a>
               </div>
               <div class="friend-name">
+                <a href="/profile/{{this._id}}">
                 <h4>{{this.firstName}} {{this.lastName}}</h4>
+                </a>
               </div>
             </div>
           {{/each}}

@@ -376,3 +376,8 @@ input[type="submit"].add-edit-profile-button:hover {
   color: var(--koala-lavender);
   border-radius: 8px;
 }
+
+a {
+  text-decoration: none;
+  color: var(--koala-dark-grey);
+}
