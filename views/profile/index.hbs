@@ -23,16 +23,21 @@
           <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
           <h4 style="display:inline-block;"> (They/Them)</h4>
         </div>
-        <div id="edit-add-friend-button" class="test">
-          <form action="" method="post">
-            <input
-              type="submit"
-              class="add-edit-profile-button"
-              value="ADD FRIEND"
-              name="add-friend"
-            />
-          </form>
-        </div>
+        {{#unless user.isProfileOwner}}
+          {{#unless user.isFriends}}
+          <div id="edit-add-friend-button" class="test">
+            <form action="/friends/add/{{user._id}}?_method=PATCH" method="post">
+              <input
+                id="add-friend-button"
+                type="submit"
+                class="add-edit-profile-button"
+                value="ADD FRIEND"
+                name="add-friend"
+              />
+            </form>
+          </div>
+          {{/unless}}
+        {{/unless}}
       </div>
     </div>
     <!-- PROFILE CONTENT-->
@@ -41,7 +46,7 @@
       <div class="profile-content-container-child friends-container">
         <h2 style="text-align:center">Your friends</h2>
         <div class="friends-flex-container">
-          {{#each friends}}
+          {{#each user.friends}}
             <div class="friends-child">
               <div class="friend-image">
                 <img
@@ -62,7 +67,7 @@
 
       <div class="profile-content-container-child posts-container">
         <h2>Shared by you...</h2>
-        {{#each posts}}
+        {{#each user.posts}}
 
           <div class="post-container card" id="{{this._id}}">
 
