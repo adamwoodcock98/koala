@@ -53,3 +53,18 @@ Cypress.Commands.add("addPost", (text) => {
   cy.get("#message-input").type(text, { force: true });
   cy.get("#new-post-form").submit();
 });
+
+Cypress.Commands.add(
+  "addComment",
+  (postNumber = 0, commentBody = "What excellent content!") => {
+    cy.get(
+      ".post-list>.post-container>.comments-list>.comment-form>.comment-input"
+    )
+      .eq(postNumber)
+      .type(commentBody, { force: true });
+
+    cy.get(".post-list>.post-container>.comments-list>.comment-form")
+      .eq(0)
+      .submit();
+  }
+);

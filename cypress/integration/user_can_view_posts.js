@@ -1,5 +1,6 @@
 describe("Viewing posts", () => {
-  it("A signed in user sees posts in reverse chronological order on /posts", () => {cy.signUp();
+  it("A signed in user sees posts in reverse chronological order on /posts", () => {
+    cy.signUp();
     cy.login();
     cy.addPost("MEHN stack!");
     cy.addPost("Testing is so fun!");
@@ -12,7 +13,5 @@ describe("Viewing posts", () => {
     cy.get(".message").should("contain", "Baddiez don't test!");
     cy.get(".message").should("contain", "Testing is so fun!");
     cy.get(".message").should("contain", "MEHN stack!");
-    
-    
   });
 });
