@@ -4,7 +4,7 @@
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card chat-app">
-            <div id="plist" class="people-list">
+            <div id="plist" class="people-list card">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -14,7 +14,7 @@
                 <ul class="list-unstyled chat-list mt-2 mb-0">
                      {{#each friends}}
                       <a href="/message/{{this._id}}" >
-                      <li class="clearfix">
+                      <li class="clearfix friend">
                           <img src={{this.profilePicture}} alt="avatar">
                           <div class="about">
                               <div class="name">{{this.firstName}} {{this.lastName}}</div>
@@ -41,28 +41,7 @@
                 <div class="chat-history">
                   <ul class="m-b-0">
                 {{#if messages.length}}
-
-                  {{#each messages}}
-                    {{#ifEquals this.sender._id ../session._id}}
-                      <li class="clearfix">
-                        <div class="message-data">
-                            <span class="message-data-time">{{this.createdAt}}</span>
-                            <img class="float-right" src={{this.sender.profilePicture}} alt="avatar">
-                        </div>
-                        <div class="message my-message">{{this.message.text}}</div>                                    
-                      </li>    
-                    {{else}}
-                      <li class="clearfix">
-                        <div class="message-data text-right">
-                            <span class="message-data-time">{{this.createdAt}}</span>
-                            <img class="float-right" src={{this.sender.profilePicture}} alt="avatar">
-                        </div>
-                        <div class="message other-message float-right"> {{this.message.text}} </div>
-                      </li>
-                    {{/ifEquals}}
-                  {{/each}}
-
-                  <div class="chat-message clearfix">
+                    <div class="chat-message clearfix">
                     <div class="input-group mb-0">
                         <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
                         <input
@@ -76,16 +55,30 @@
                       </form>                                  
                     </div>
                   </div>
-                {{else}}
-                  <div class="message-container card" id="{{this._id}}">
-                    <p> Start a new conversation </p>
-                  </div>
+                  {{#each messages}}
+                    {{#ifEquals this.sender._id ../session._id}}
+                      <li class="clearfix message">
+                        <div class="message-data">
+                            <img src={{this.sender.profilePicture}} alt="avatar">
+                            <span class="message-data-time">{{this.createdAt}}</span>
+                        </div>
+                        <div class="message my-message">{{this.message.text}}</div>                                    
+                      </li>    
+                    {{else}}
+                      <li class="clearfix message">
+                        <div class="message-data text-right">
+                            <span class="message-data-time">{{this.createdAt}}</span>
+                            <img class="float-right" src={{this.sender.profilePicture}} alt="avatar">
+                        </div>
+                        <div class="message other-message float-right"> {{this.message.text}} </div>
+                      </li>
+                    {{/ifEquals}}
+                  {{/each}}
 
-                  <div class="chat-message clearfix">
+                  
+                {{else}}
+                <div class="chat-message clearfix">
                     <div class="input-group mb-0">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fa fa-send"></i></span>
-                      </div>
                       <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
                         <input
                           id="message-input"
@@ -99,11 +92,15 @@
                     </div>
                   </div>
                   </div>
+                  <div class="message-container card" id="{{this._id}}">
+                    <p> Start a new conversation </p>
+                  </div>
                 {{/if}}
                 </ul>
               </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>

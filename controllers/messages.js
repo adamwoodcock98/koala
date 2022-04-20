@@ -30,9 +30,6 @@ const MessagesController = {
     User.find({ $or: findQuery }).then((friends) => {
       console.log(req.params.id);
       User.findById(req.params.id).then((user) => {
-        console.log(user.firstName);
-        console.log("the session user:", req.session.user);
-        console.log("the person you're chatting to:", user);
         Message.find({
           $or: [
             { users: [req.session.user._id, user._id] },
@@ -46,8 +43,6 @@ const MessagesController = {
           .sort({ updatedAt: -1 })
           .limit(20)
           .then((messages) => {
-            console.log(messages);
-            console.log(friends);
             res.render("messages/show", {
               messages: messages,
               user: user,

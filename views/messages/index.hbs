@@ -13,14 +13,15 @@
                 </div>
                 <ul class="list-unstyled chat-list mt-2 mb-0">
                      {{#each friends}}
-                      <a href="/message/{{this._id}}"
-                      <li class="clearfix">
+                      <a href="/message/{{this._id}}" >
+                      <li class="clearfix friend">
                           <img src={{this.profilePicture}} alt="avatar">
                           <div class="about">
                               <div class="name">{{this.firstName}} {{this.lastName}}</div>
                               {{!-- <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                             --}}
                           </div>
                       </li>
+                      </a>
                     {{/each}}
                 </ul>
             </div>
@@ -39,7 +40,7 @@
               </div>
                 <div class="chat-history">
                   <ul class="m-b-0">
-                    <li class="clearfix"> Choose a conversation </li>
+                    <li class="clearfix message"> Choose a conversation </li>
                   </ul>
               </div>
             </div>
