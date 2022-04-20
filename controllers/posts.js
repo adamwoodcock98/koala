@@ -4,15 +4,16 @@ const PostsController = {
   Index: (req, res) => {
     Post.find()
       .populate("user")
-      .populate("comments")
+      .populate({
+        path: "comments",
+        populate: { path: "user" },
+      })
       .sort({ createdAt: -1 })
       .exec((err, posts) => {
         if (err) {
           throw err;
         }
         req.session; // This line appears to be needed for later access to session properties
-        console.log("Posts: ", posts);
-        // console.log("Comments: ", posts[0].comments);
         const session = {
           posts: posts,
           user: req.session.user,
