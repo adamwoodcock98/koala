@@ -1,6 +1,6 @@
 describe.only("Viewing a profile", () => {
   
-  it("should displays the users details", () => {
+  xit("should displays the users details", () => {
     cy.signUp();
     cy.login();
     cy.visit("/profile")
@@ -13,7 +13,7 @@ describe.only("Viewing a profile", () => {
     cy.get(".about-container").should("contain", "About me")
   });
 
-  it("should display the users posts", () => {
+  xit("should display the users posts", () => {
     cy.signUp();
     cy.login();
 
@@ -28,4 +28,14 @@ describe.only("Viewing a profile", () => {
     cy.get(".message").should("contain", "MEHN stack!");
   });
 
+  it("should have a add friend button unless profile owner", () => {
+  });
+
+  it("should have edit profile if profile owner", () => {
+
+  });
+
+
 });
+
+

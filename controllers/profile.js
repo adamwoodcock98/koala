@@ -5,12 +5,11 @@ require("../models/about_me");
 
 const ProfileController = {
   Index: (req, res) => {
-    const userID = "625b114abc9b30a7e1762fda"
+    const userID = req.params.userID
 
     User.findById(userID)
       .populate("aboutMe")
       .populate("friends")
-      .populate()
       .then(user => {
         Post.find({ user: user._id }, (err, posts) => {
           if (err) {
