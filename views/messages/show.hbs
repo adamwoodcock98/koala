@@ -1,14 +1,12 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
 <div class="container">
-<div class="row clearfix">
+{{!-- <div class="row clearfix"> --}}
     <div class="col-lg-12">
         <div class="card chat-app">
-            <div id="plist" class="people-list card">
+            <div id="plist" class="people-list">
                 <div class="input-group">
-                    <div class="input-group-prepend">
+                    {{!-- <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
-                    </div>
+                    </div> --}}
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
                 <ul class="list-unstyled chat-list mt-2 mb-0">
@@ -85,15 +83,12 @@
                           class="message-input form-control"
                           name="message"
                           type="text"
-                          placeholder="Send {{user.firstName}} a message!"
+                          placeholder="Start a conversation with {{user.firstName}}!"
                         />
                         <input type="submit" value="Post" />
                       </form>
                     </div>
                   </div>
-                  </div>
-                  <div class="message-container card" id="{{this._id}}">
-                    <p> Start a new conversation </p>
                   </div>
                 {{/if}}
                 </ul>
