@@ -1,5 +1,6 @@
 <html lang="en">
   <head>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <title>Profile</title>
   </head>
   <body>
@@ -11,25 +12,25 @@
         src={{user.coverPicture}}
         alt="{{user.firstName}}-{{user.lastName}}-cover-photo"
         width="100%"
-        height="40%"
+        height="100%"
       />
 
       <div class="cover-info-container child-layer">
         <div id="profile-photo" class="test">
-          <img
-            src={{user.profilePicture}}
-            alt="silhouette"
-            width="80px"
-            height="80px"
-          />
+          <img src={{user.profilePicture}} alt="silhouette" />
         </div>
         <div id="name-pronouns" class="test">
-          <h1>{{user.firstName}} {{user.lastName}}</h1>
-          <h4>They/Them</h4>
+          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
+          <h4 style="display:inline-block;"> (They/Them)</h4>
         </div>
         <div id="edit-add-friend-button" class="test">
           <form action="" method="post">
-            <input type="submit" value="ADD FRIEND" name="add-friend" />
+            <input
+              type="submit"
+              class="add-edit-profile-button"
+              value="ADD FRIEND"
+              name="add-friend"
+            />
           </form>
         </div>
       </div>
@@ -38,12 +39,29 @@
 
     <div class="profile-content-container">
       <div class="profile-content-container-child friends-container">
-        <h2>FRIENDS</h2>
-        HANDLEBAR LOOP
+        <h2 style="text-align:center">Your friends</h2>
+        <div class="friends-flex-container">
+          {{#each friends}}
+            <div class="friends-child">
+              <div class="friend-image">
+                <img
+                  src={{this.profilePicture}}
+                  alt="friends-profile-picture"
+                  height="70px"
+                  width="70px"
+                />
+              </div>
+              <div class="friend-name">
+                <h4>{{this.firstName}} {{this.lastName}}</h4>
+              </div>
+            </div>
+          {{/each}}
+
+        </div>
       </div>
 
       <div class="profile-content-container-child posts-container">
-        <h2>SHARED BY YOU...</h2>
+        <h2>Shared by you...</h2>
         {{#each posts}}
 
           <div class="post-container card" id="{{this._id}}">
@@ -65,9 +83,20 @@
       </div>
 
       <div class="profile-content-container-child about-container">
-        <h2>ABOUT ME</h2>
+        <h2>About me</h2>
         <div class="about-fields">
-
+          <div class="education">
+            <h5>Education</h5>
+            <p></p>
+          </div>
+          <div class="workplace">
+            <h5>Workplace</h5>
+            <p></p>
+          </div>
+          <div class="relationship-status">
+            <h5>Relationship status</h5>
+            <p></p>
+          </div>
         </div>
       </div>
     </div>
