@@ -25,10 +25,7 @@ const MessagesController = {
       findQuery.push(friend);
     });
 
-    console.log(req.params.id);
-
     User.find({ $or: findQuery }).then((friends) => {
-      console.log(req.params.id);
       User.findById(req.params.id).then((user) => {
         Message.find({
           $or: [
