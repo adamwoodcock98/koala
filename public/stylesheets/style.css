@@ -437,6 +437,11 @@ input[type="submit"].add-edit-profile-button:hover {
   width: "100";
 }
 
+.chat-app {
+  display: flex;
+  flex-direction: ;
+}
+
 .chat-app .people-list {
   width: 280px;
   position: absolute;
@@ -482,9 +487,14 @@ input[type="submit"].add-edit-profile-button:hover {
   border-radius: 50%;
 }
 
+.people-list > .friend-container > .friend-image {
+  width: 45px;
+}
+
 .people-list img {
   float: left;
   border-radius: 50%;
+  width: 8vw;
 }
 
 .people-list .about {
