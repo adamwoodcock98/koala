@@ -7,10 +7,8 @@ const SessionsController = {
   },
 
   Create: (req, res) => {
-    console.log("trying to log in");
     const email = req.body.email;
     const password = req.body.password;
-    console.log(password);
     User.findOne({ email: email }).then((user) => {
       if (user) {
         bcrypt.compare(password, user.password).then((result) => {
