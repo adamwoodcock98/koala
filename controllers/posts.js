@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const { formatDistanceToNowStrict } = require('date-fns');
 
 const PostsController = {
   Index: (req, res) => {
@@ -10,6 +11,12 @@ const PostsController = {
           throw err;
         }
         req.session; // This line appears to be needed for later access to session properties
+
+        posts.forEach((post) => {
+            const datePosted = formatDistanceToNowStrict(new Date(post.createdAt), { addSuffix: true })
+            post.datePosted = datePosted
+        });
+
         const session = {
           posts: posts,
           user: req.session.user,
@@ -19,10 +26,11 @@ const PostsController = {
   },
 
   Create: (req, res) => {
+  
     const session = {
       message: req.body.message,
       user: req.session.user,
-      createdAt: Date.now(),
+      createdAt: DateTime.local(),
       image: req.body.image
     };
     const post = new Post(session);
