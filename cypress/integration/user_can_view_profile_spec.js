@@ -103,4 +103,17 @@ describe.only("Viewing a profile", () => {
     cy.get(".friend-name").should("contain", "Rick Rick-Rickinsson");
   });
 
+  // it("should allow the user to edit their profile", () => {
+  //   cy.signUp();
+  //   cy.login();
+
+  //   cy.get("#education").should("contain", "");
+  //   cy.get("#workplace").should("contain", "");
+  //   cy.get("#relationshipStatus").should("contain", "");
+
+  //   cy.get("#education").should("contain", "");
+  //   cy.get("#workplace").should("contain", "");
+  //   cy.get("#relationshipStatus").should("contain", "");
+  // });
+
 });

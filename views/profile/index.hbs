@@ -64,7 +64,7 @@
     <div class="profile-content-container">
       <div class="profile-content-container-child friends-container">
         {{#if user.isProfileOwner}}
-          <h2 style="text-align:center">Your friends</h2>
+          <h1 style="text-align:center">Your friends</h1>
         {{else}}
           <h2 style="text-align:center">{{user.firstName}}'s friends</h2>
         {{/if}}
@@ -94,9 +94,9 @@
 
       <div class="profile-content-container-child posts-container">
         {{#if user.isProfileOwner}}
-          <h2>Shared by you...</h2>
+          <h1>Shared by you...</h1>
         {{else}}
-          <h2>Shared by {{user.firstName}}</h2>
+          <h1>Shared by {{user.firstName}}</h1>
         {{/if}}
         {{#each user.posts}}
 
@@ -119,7 +119,7 @@
       </div>
 
       <div class="profile-content-container-child about-container">
-        <h2>About me</h2>
+        <h1>About me</h1>
           {{#if user.isEditing}}
             <form action="/profile/{{user._id}}/edit" method="get">
           {{else}}
