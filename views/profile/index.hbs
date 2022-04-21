@@ -159,7 +159,11 @@
             </div>
             <div class="large-button">
               {{#if user.isProfileOwner}}
-                <input type="submit" name="edit-profile" value="Edit profile"/>
+                {{#if user.isEditing}}
+                  <input type="submit" name="edit-profile" value="Edit profile"/>
+                {{else}}
+                  <input type="submit" name="edit-profile" value="Save changes"/>
+                {{/if}}
               {{else}}
                 <input type="submit" name="edit-profile" value="Edit profile" style="display: none;"/>
               {{/if}}
