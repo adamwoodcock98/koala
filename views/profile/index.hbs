@@ -9,10 +9,9 @@
 
     <div class="cover-container base-layer">
       <img
+        class="actual-cover-photo"
         src={{user.coverPicture}}
         alt="{{user.firstName}}-{{user.lastName}}-cover-photo"
-        width="100%"
-        height="100%"
       />
 
       <div class="cover-info-container child-layer">
@@ -121,7 +120,12 @@
 
       <div class="profile-content-container-child about-container">
         <h2>About me</h2>
-        <form action="/profile/{{user._id}}/edit?_method=PATCH" method="post">
+
+        {{#if user.isEditing}}
+          <form action="/profile/{{user._id}}/edit" method="get">
+        {{else}}
+          <form action="/profile/{{user._id}}/edit" method="post">
+        {{/if}}
         <div class="about-fields">
           <div class="education about-fields-child">
             <div class="about-me-icon-label">
@@ -129,7 +133,7 @@
             </div>
             <div class="about-me-text">
               <h4>Education</h4>
-              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.education}} placeholder="Add your education"/>
+              <input type="text" id="education" name="education" value="{{user.aboutMe.education}}" placeholder="Add your education" {{user.isEditing}}/>
             </div>
           </div>
           <div class="workplace about-fields-child">
@@ -138,7 +142,7 @@
             </div>
             <div class="about-me-text">
               <h4>Workplace</h4>
-              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.workplace}} placeholder="Add your workplace"/>
+              <input type="text" id="workplace" name="workplace" value="{{user.aboutMe.workplace}}" placeholder="Add your workplace" {{user.isEditing}}/>
             </div>
           </div>
           <div class="relationship-status about-fields-child">
@@ -147,7 +151,7 @@
             </div>
             <div class="about-me-text">
               <h4>Relationship status</h4>
-              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.relationshipStatus}} placeholder="Add your relationship status"/>
+              <input type="text" id="relationshipStatus" name="relationshipStatus" value="{{user.aboutMe.relationshipStatus}}" placeholder="Add your relationship status" {{user.isEditing}}/>
             </div>
           </div>
           <div class="edit-update-button-container about-fields-child">
