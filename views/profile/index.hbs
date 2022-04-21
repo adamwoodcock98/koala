@@ -20,26 +20,27 @@
           <img src={{user.profilePicture}} alt="silhouette" />
         </div>
         <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
+          <h1 style="display:inline-block;">{{user.firstName}}
+            {{user.lastName}}</h1>
           <h4 style="display:inline-block;"> {{user.aboutMe.pronouns}}</h4>
         </div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-              <div id="edit-friend-unfriend-button" class="test">
-                <form
-                  action="/friends/add/{{user._id}}?_method=PATCH"
-                  method="post"
-                >
-                  <input
-                    id="friend-unfriend-button"
-                    type="submit"
-                    class="add-edit-profile-button"
-                    value="Add friend"
-                    name="add-friend"
-                  />
-                </form>
-              </div>
-            {{/unless}}
+            <div id="edit-friend-unfriend-button" class="test">
+              <form
+                action="/friends/add/{{user._id}}?_method=PATCH"
+                method="post"
+              >
+                <input
+                  id="friend-unfriend-button"
+                  type="submit"
+                  class="add-edit-profile-button"
+                  value="Add friend"
+                  name="add-friend"
+                />
+              </form>
+            </div>
+          {{/unless}}
           {{#if user.isFriends}}
             <div id="edit-friend-unfriend-button" class="test">
               <form
@@ -121,17 +122,32 @@
       <div class="profile-content-container-child about-container">
         <h2>About me</h2>
         <div class="about-fields">
-          <div class="education">
-            <h5>Education: {{user.aboutMe.education}}</h5>
-            <p></p>
+          <div class="education about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/book-half.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Education</h4>
+              <p>{{user.aboutMe.education}}</p>
+            </div>
           </div>
-          <div class="workplace">
-            <h5>Workplace: {{user.aboutMe.workplace}}</h5>
-            <p></p>
+          <div class="workplace about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/briefcase-fill.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Workplace</h4>
+              <p>{{user.aboutMe.workplace}}</p>
+            </div>
           </div>
-          <div class="relationship-status">
-            <h5>Relationship status: {{user.aboutMe.relationshipStatus}}</h5>
-            <p></p>
+          <div class="relationship-status about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/person-hearts.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Relationship status</h4>
+              <p>{{user.aboutMe.relationshipStatus}}</p>
+            </div>
           </div>
         </div>
       </div>
