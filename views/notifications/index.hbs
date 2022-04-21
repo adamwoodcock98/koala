@@ -1,21 +1,64 @@
-  <div class="post-list">
-      <a href="/profile/dddd">
-        <div class="user-container card" id="dd">
+<h1>Notifications</h1>
 
-          <div class="profile-picture">
-            <img src="/" width="100"
-              height="100"
-              class="rounded-circle"/>
+  {{#if friendConfirmation}}
+  {{friendConfirmation}}
+  {{/if}}
+
+  
+{{#each notifications}}
+
+  <div class="post-container card" id="{{this._id}}">
+      <div class="actual-post">
+        <div class="profile-picture">
+          <img
+            src={{this.user.profilePicture}}
+            width="100"
+            height="100"
+            class="rounded-circle"
+          />
+        </div>
+        <div class="post-body">
+          <div class="post-header">
+            <span class="post-author">{{this.user.firstName}} {{this.user.lastName}}</span>
+            <div class="date-posted">{{this.createdAtFormatted}}</div>
           </div>
 
-          <div class="user-info">
-            <div class="user-header">
-              <span class="name">Barry Barroldsson</span>
+          <div class="post-content">
+            <p class="message">
+              {{this.category}}
+              {{#if this.isFriendRequest}}
+              <div id="edit-add-friend-button" class="test">
+                <form action="/friends/confirm/{{this.user._id}}/notification/{{this._id}}" method="post">
+                  <input
+                    id="add-friend-button"
+                    type="submit"
+                    class="add-edit-profile-button"
+                    value="Confirm"
+                    name="add-friend"
+                  />
+                </form>
             </div>
-            <div class="user-body">
-              <span class="name">Barry Barroldsson</span>
+            {{/if}}
+            <div id="edit-add-friend-button" class="test">
+                <form action="/notifications/delete/{{this._id}}?_method=DELETE" method="post">
+                  <input
+                    id="add-friend-button"
+                    type="submit"
+                    class="add-edit-profile-button"
+                    value="Delete Notification"
+                    name="add-friend"
+                  />
+                </form>
             </div>
+            </p>
           </div>
         </div>
-      </a>
-  </div>
+      </div>
+    </div>
+
+
+
+{{/each}}
+  
+  
+  

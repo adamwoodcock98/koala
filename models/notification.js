@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const notificationsSchema = new mongoose.Schema({
+const notificationSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: ["Friend Request", "Message", "Comment", "Like"],
@@ -10,9 +10,12 @@ const notificationsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
-  },
-});
+  }},
+  {
+    timestamps: true
+  }
+);
 
-const Notifications = mongoose.model("Notifications", notificationsSchema);
+const Notification = mongoose.model("Notification", notificationSchema);
 
-module.exports = Notifications;
+module.exports = Notification;

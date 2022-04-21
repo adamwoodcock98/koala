@@ -1,19 +1,36 @@
 const User = require("../models/user");
+const Notification = require("../models/notification");
 
 const FriendsController = {
-  Update: (req, res) => {
-    const requesterUserID = req.session.user._id
-    const receiverUserID = req.params.userID
+  Request: (req, res) => {
+    const requesterUserID = req.session.user._id;
+    const receiverUserID = req.params.userID;
 
-    User.findOne({ _id: receiverUserID }).then((user) => {
-      user.friends.push(requesterUserID);
-      user.save(() => {
-        User.findOne({ _id: requesterUserID}).then(user2 => {
-          user2.friends.push(receiverUserID)
-          user2.save(() => {
-            res.redirect(`/profile/${receiverUserID}`);
+    const notification = new Notification({category: "Friend Request", user: requesterUserID});
+    notification.save(() => {
+      User.findOne({ _id: receiverUserID }).then((user) => {
+        user.notifications.push(notification);
+        user.save(() => {
+          res.redirect(`/profile/${receiverUserID}`);
           });
-        })
+      });
+    })
+  },
+  Confirm: (req, res) => {
+    const requesterUserId = req.params.userId;
+    const receiverUserId = req.session.user._id;
+    const notificationId = req.params.notificationId
+
+    User.findById(requesterUserId).then((user) => {
+      user.friends.push(receiverUserId)
+      user.save(() => {
+        User.findById(receiverUserId).then((user2) => {
+          user2.friends.push(requesterUserId)
+          user2.save(() => {
+            req.flash("friendConfirmation", `You are now friends with ${user.firstName} ${user.lastName}`)
+            res.redirect(`/notifications/delete/${notificationId}`);
+          });
+        });
       });
     });
   }

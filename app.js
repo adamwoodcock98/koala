@@ -74,9 +74,27 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
+// const generateNotification = (req, res, next) => {
+//   let notification;
+//   switch (req.originalUrl) {
+//     case "/friends/add/":
+//       notification = new Notification({category: "Friend Request", user: req.session.used._id})
+//       notification.save(()=>{
+//         next();
+//       })
+//     case "/comments/new/":
+//       notification = new Notification({category: "Comment", user: req.session.used._id})
+//       notification.save(()=>{
+//         next();
+//       })
+//     default:
+//       next();
+//   }
+// }
+
 // route setup
 app.use("/", homeRouter);
-app.use("/posts", sessionChecker, postsRouter);
+app.use("/posts", postsRouter);
 app.use("/comments", sessionChecker, postCommentsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);

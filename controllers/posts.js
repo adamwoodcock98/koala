@@ -1,5 +1,7 @@
 const Post = require("../models/post");
 const { formatDistanceToNowStrict } = require('date-fns');
+const Notification = require("../models/notification");
+const User = require("../models/user")
 
 const PostsController = {
   Index: (req, res) => {
@@ -55,12 +57,19 @@ const PostsController = {
         throw err;
       }
       post.comments.push(commentId);
-
       post.save((err) => {
         if (err) {
           throw err;
         }
-        res.status(204).redirect("/posts");
+        const notification = new Notification({category: "Comment", user: req.session.user._id})
+        notification.save(() => {
+          User.findById(post.user).then((user) => {
+            user.notifications.push(notification);
+            user.save(() => {
+              res.status(204).redirect("/posts");
+            })
+          })
+        })
       });
     });
   },
