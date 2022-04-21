@@ -18,9 +18,6 @@ const PostsController = {
         if (err) {
           throw err;
         }
-        // console.log(posts);
-        console.log(posts[0].likes, "string");
-        // console.log(posts[0].comments, "another string");
         req.session; // This line appears to be needed for later access to session properties
 
         posts.forEach((post) => {
@@ -28,6 +25,12 @@ const PostsController = {
             new Date(post.createdAt),
             { addSuffix: true }
           );
+          const likers = post.likes.map((like) => {
+            return like.user._id;
+          });
+          // TODO: return boolean
+          console.log(req.session.user._id);
+          post.userLiked = likers.includes(req.session.user._id);
           post.datePosted = datePosted;
         });
 

@@ -61,18 +61,21 @@
               <p>{{this.likes.length}} likes</p>
               {{! use handlebars conditional to show the like button when the post hasn't been liked }}
               {{!-- {{#ifIn ../loggedInUserId this.likes.user}} --}}
-              <p>{{this.likes}} users go here</p>
-              <form class="unlike-form" action="/likes/remove" method="delete">
-                <input type="hidden" name="postId" value="{{this._id}}" />
-                <input type="submit" value="Unlike" />
-              </form>
-              <p>{{../loggedInUserId}} logged in user goes here</p>
-              {{!-- {{else}} --}}
-              <form class="like-form" action="/likes/new" method="post">
-                <input type="hidden" name="postId" value="{{this._id}}" />
-                <input type="submit" value="Like" />
-              </form>
-              {{!-- {{/ifIn}} --}}
+              {{#if this.userLiked}}
+                <form
+                  class="unlike-form"
+                  action="/likes/remove"
+                  method="delete"
+                >
+                  <input type="hidden" name="postId" value="{{this._id}}" />
+                  <input type="submit" value="Unlike" />
+                </form>
+              {{else}}
+                <form class="like-form" action="/likes/new" method="post">
+                  <input type="hidden" name="postId" value="{{this._id}}" />
+                  <input type="submit" value="Like" />
+                </form>
+              {{/if}}
             </div>
           </div>
         </div>
