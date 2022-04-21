@@ -123,18 +123,21 @@ input[type="search"]:focus {
 }
 
 input[type="submit"] {
-  background: transparent;
+  background: white;
+  color: var(--koala-lavender);
   border-color: var(--koala-lavender);
-  border-radius: var(--border-radius) !important;
+  border-radius: 4px !important;
   cursor: pointer;
+  box-shadow: none;
 }
 
 input[type="submit"]:hover {
-  color: var(--koala-white);
-  background: var(--koala-magenta);
-  border-color: var(--koala-magenta);
-  border-radius: var(--border-radius) !important;
+  background-color: var(--koala-lavender);
+  color: white;
+  border-color: var(--koala-ma);
+  border-radius: 4px !important;
   cursor: pointer;
+  box-shadow: none;
 }
 
 .form-control:hover {
@@ -389,16 +392,7 @@ h5 {
 }
 
 input[type="submit"].add-edit-profile-button {
-  background: white;
-  border-color: white;
   padding: 5px 16px;
-  color: var(--koala-lavender);
-  border-radius: 8px;
 }
 
 input[type="submit"].add-edit-profile-button:hover {
-  background: white;
-  border-color: var(--koala-lavender);
-  color: var(--koala-lavender);
-  border-radius: 8px;
-}
