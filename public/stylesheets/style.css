@@ -195,9 +195,28 @@ input[type="submit"]:hover {
   background-color: var(--koala-magenta);
   border-color: var(--koala-magenta);
 }
+
+.login-signup-btn {
+  color: #fff;
+  background-color: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+}
+
+.login-signup-btn:hover {
+  transform: translateY(-1px);
+}
+
 /* Buttons - End */
 
 /* Posts Index */
+#img-input {
+  padding-left: 26px;
+  font-size: 10px;
+}
+
+.date-posted {
+  font-size: 10px;
+}
 
 .post-form > input[type="text"] {
   color: var(--koala-black);
@@ -250,11 +269,15 @@ input[type="submit"]:hover {
 .actual-post {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 50%;
 }
 
 .post-header {
   text-align: left;
   flex-direction: row;
+  padding-bottom: 20px;
 }
 
 .date-posted {
@@ -263,7 +286,21 @@ input[type="submit"]:hover {
 
 .post-body {
   margin: 20px;
+  text-align: left;
 }
+
+.post-content {
+  width: 500px;
+}
+
+.post-content img {
+  width: 100%;
+}
+
+.post-footer {
+  font-size: 10px;
+}
+
 /* Posts - End */
 
 /* Profile page CSS */
@@ -377,6 +414,15 @@ h5 {
 a {
   text-decoration: none;
   color: var(--koala-dark-grey);
+}
+
+.login-signup-prompt a {
+  color: var(--koala-lavender);
+}
+
+.login-signup-prompt a:hover {
+  color: var(--koala-lavender);
+  text-decoration: underline var(--koala-lavender);
 }
 
 #profile-photo {
