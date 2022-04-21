@@ -121,6 +121,7 @@
 
       <div class="profile-content-container-child about-container">
         <h2>About me</h2>
+        <form action="/profile/{{user._id}}/edit?_method=PATCH" method="post">
         <div class="about-fields">
           <div class="education about-fields-child">
             <div class="about-me-icon-label">
@@ -128,7 +129,7 @@
             </div>
             <div class="about-me-text">
               <h4>Education</h4>
-              <p>{{user.aboutMe.education}}</p>
+              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.education}} placeholder="Add your education"/>
             </div>
           </div>
           <div class="workplace about-fields-child">
@@ -137,7 +138,7 @@
             </div>
             <div class="about-me-text">
               <h4>Workplace</h4>
-              <p>{{user.aboutMe.workplace}}</p>
+              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.workplace}} placeholder="Add your workplace"/>
             </div>
           </div>
           <div class="relationship-status about-fields-child">
@@ -146,10 +147,19 @@
             </div>
             <div class="about-me-text">
               <h4>Relationship status</h4>
-              <p>{{user.aboutMe.relationshipStatus}}</p>
+              <input type="text" id="relationship-status-input" name="relationship-status-input" value={{user.aboutMe.relationshipStatus}} placeholder="Add your relationship status"/>
+            </div>
+          </div>
+          <div class="edit-update-button-container about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/person-hearts.png" style="display:none"/>
+            </div>
+            <div class="large-button">
+              <input type="submit" name="edit-profile" value="Edit profile"/>
             </div>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </body>

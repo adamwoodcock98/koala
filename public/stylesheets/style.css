@@ -126,7 +126,7 @@ input[type="search"]:focus {
 input[type="submit"] {
   background: transparent;
   border-color: var(--koala-lavender);
-  border-radius: var(--border-radius) !important;
+  border-radius: var(--border-radius) ;
   cursor: pointer;
 }
 
@@ -134,7 +134,7 @@ input[type="submit"]:hover {
   color: var(--koala-white);
   background: var(--koala-magenta);
   border-color: var(--koala-magenta);
-  border-radius: var(--border-radius) !important;
+  border-radius: var(--border-radius) ;
   cursor: pointer;
 }
 
@@ -373,6 +373,10 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
+.edit-update-button-container{
+  text-align: center;
+}
+
 .about-me-icon-label img {
   width: 55%;
   height: 55%;
@@ -391,11 +395,17 @@ input[type="submit"]:hover {
   margin-bottom: 2%;
 }
 
-.about-me-text p {
+/* .about-me-text p {
   align-items: center;
   /* padding-top: 1%;
-  padding-bottom: 3%; */
+  padding-bottom: 3%;
+ } */
+
+
+.about-me-text input[type="text"] {
   margin-bottom: 2%;
+  background: transparent;
+  border: none;
 }
 
 /* About me ends */
@@ -455,4 +465,28 @@ input[type="submit"].add-edit-profile-button:hover {
   border-color: var(--koala-lavender);
   color: var(--koala-lavender);
   border-radius: 8px;
+}
+
+.large-button {
+  
+}
+
+.large-button input[type="submit"] {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  padding: 7px 0px;
+}
+
+.large-button input[type="submit"]:hover {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+  color: white;
+  padding: 7px 0px;
 }
