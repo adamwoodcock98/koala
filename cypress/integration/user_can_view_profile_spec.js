@@ -1,5 +1,4 @@
 describe.only("Viewing a profile", () => {
-  
   it("should displays the users details", () => {
     cy.signUp();
     cy.login();
@@ -11,12 +10,12 @@ describe.only("Viewing a profile", () => {
 
     cy.get(".friends-container").should("contain", "Your friends");
 
-    cy.get(".about-container").should("contain", "About me")
-    cy.get(".posts-container").should("contain", "Shared by you")
+    cy.get(".about-container").should("contain", "About me");
+    cy.get(".posts-container").should("contain", "Shared by you");
   });
 
   it("should dynamically change the profile labelling", () => {
-    cy.signUp("Harry", "Harry-Harrisson", "harry@example.com", "h4rry")
+    cy.signUp("Harry", "Harry-Harrisson", "harry@example.com", "h4rry");
     cy.signUp();
     cy.login();
 
@@ -26,7 +25,6 @@ describe.only("Viewing a profile", () => {
 
     cy.get(".friends-container").should("contain", "Harry's friends");
     cy.get(".posts-container").should("contain", "Shared by Harry");
-
   });
 
   it("should display the users posts", () => {
@@ -51,7 +49,7 @@ describe.only("Viewing a profile", () => {
 
     cy.get("#dropdownUser1").click();
     cy.get("#dropdown-profile-link").click();
-    cy.get("#add-friend-button").should("not.exist");
+    cy.get("#friend-unfriend-button").should("not.exist");
 
     cy.get("#dropdownUser1").click();
     cy.get("#sign-out-button").click();
@@ -62,7 +60,27 @@ describe.only("Viewing a profile", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
 
-    cy.get("#add-friend-button").should("exist");
+    cy.get("#friend-unfriend-button").should("exist");
+  });
+
+  it("should have a remove friend button if already friends", () => {
+    cy.signUp("Rick", "Rick-Rickinsson", "rick@ick.com", "securer1ck");
+
+    cy.signUp();
+    cy.login();
+
+    cy.get("#searchBox").type("Rick Rick-Rickinsson");
+    cy.get("#searchButton").click();
+    cy.get(".user-container").click();
+
+    cy.get("#friend-unfriend-button").click(); //Now they're a friend
+
+    cy.get("#friend-unfriend-button").should("contain", "Unfriend");
+    cy.get("#friend-unfriend-button").click();
+
+
+    cy.get("#friend-unfriend-button").should("contain", "Add friend");
+    cy.get("#friend-name").should("not.exist");
   });
 
   it("should add a friend and list the friend on the users profile", () => {
@@ -75,7 +93,7 @@ describe.only("Viewing a profile", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
 
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
 
     cy.get(".friend-name").should("contain", "Barry Barry-Barroldsson");
 
@@ -83,8 +101,6 @@ describe.only("Viewing a profile", () => {
     cy.get("#dropdown-profile-link").click();
 
     cy.get(".friend-name").should("contain", "Rick Rick-Rickinsson");
-  })
+  });
 
 });
-
-

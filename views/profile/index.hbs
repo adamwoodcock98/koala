@@ -26,21 +26,37 @@
         </div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-            <div id="edit-add-friend-button" class="test">
+              <div id="edit-friend-unfriend-button" class="test">
+                <form
+                  action="/friends/add/{{user._id}}?_method=PATCH"
+                  method="post"
+                >
+                  <input
+                    id="friend-unfriend-button"
+                    type="submit"
+                    class="add-edit-profile-button"
+                    value="Add friend"
+                    name="add-friend"
+                  />
+                </form>
+              </div>
+            {{/unless}}
+          {{#if user.isFriends}}
+            <div id="edit-friend-unfriend-button" class="test">
               <form
-                action="/friends/add/{{user._id}}?_method=PATCH"
+                action="/friends/delete/{{user._id}}?_method=DELETE"
                 method="post"
               >
                 <input
-                  id="add-friend-button"
+                  id="friend-unfriend-button"
                   type="submit"
                   class="add-edit-profile-button"
-                  value="ADD FRIEND"
-                  name="add-friend"
+                  value="Unfriend"
+                  name="unfriend"
                 />
               </form>
             </div>
-          {{/unless}}
+          {{/if}}
         {{/unless}}
       </div>
     </div>
@@ -115,7 +131,7 @@
             <p></p>
           </div>
           <div class="relationship-status">
-           <h5>Relationship status: {{user.aboutMe.relationshipStatus}}</h5>
+            <h5>Relationship status: {{user.aboutMe.relationshipStatus}}</h5>
             <p></p>
           </div>
         </div>
