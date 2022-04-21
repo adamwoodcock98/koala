@@ -16,13 +16,10 @@ const PostLikesController = {
       if (err) {
         throw err;
       }
-      // console.log(
-      //   "Redirecting to",
-      //   `/posts/${session.post}/comments/${postCommentId}`
-      // );
       res.redirect(307, `/posts/${session.post}/likes/${postLikeId}`);
     });
   },
+  // Add a remove/delete method
 };
 
 module.exports = PostLikesController;

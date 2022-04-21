@@ -59,10 +59,20 @@
             {{! buttons for likes, comments, update post will be here }}
             <div class="likes">
               <p>{{this.likes.length}} likes</p>
+              {{! use handlebars conditional to show the like button when the post hasn't been liked }}
+              {{!-- {{#ifIn ../loggedInUserId this.likes.user}} --}}
+              <p>{{this.likes}} users go here</p>
+              <form class="unlike-form" action="/likes/remove" method="delete">
+                <input type="hidden" name="postId" value="{{this._id}}" />
+                <input type="submit" value="Unlike" />
+              </form>
+              <p>{{../loggedInUserId}} logged in user goes here</p>
+              {{!-- {{else}} --}}
               <form class="like-form" action="/likes/new" method="post">
                 <input type="hidden" name="postId" value="{{this._id}}" />
                 <input type="submit" value="Like" />
               </form>
+              {{!-- {{/ifIn}} --}}
             </div>
           </div>
         </div>
@@ -93,6 +103,25 @@
               </div>
               <div class="comment-text">
                 {{this.message}}
+              </div>
+              <div class="comment-footer">
+                <div class="likes">
+                  {{! I want to display the number of likes a comment has here }}
+                  {{! Each post has an array of comments, trying to work out how to iterate through them }}
+                  <p>{{this.likes.length}} likes</p>
+                  <form
+                    class="comment-like-form"
+                    action="/comment-likes/new"
+                    method="post"
+                  >
+                    <input
+                      type="hidden"
+                      name="commentId"
+                      value="{{this._id}}"
+                    />
+                    <input type="submit" value="Like" />
+                  </form>
+                </div>
               </div>
             </div>
           </div>

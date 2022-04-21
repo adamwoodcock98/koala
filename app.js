@@ -20,19 +20,30 @@ const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/search");
 const profileRouter = require("./routes/profile");
 const postLikesRouter = require("./routes/post_likes");
+const commentLikesRouter = require("./routes/comment_likes");
 
 const app = express();
 
 // view engine setup
+const hbs = exphbs.create({
+  defaultLayout: "layout",
+  extname: ".hbs",
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+    },
+    ifIn: function (elem, list, options) {
+      if (list.indexOf(elem) > -1) {
+        return options.fn(this);
+      }
+      return options.inverse(this)
+    },
+  },
+});
+
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  "hbs",
-  exphbs.engine({
-    defaultLayout: "layout",
-    extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
-  })
-);
+app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
 app.use(logger("dev"));
@@ -78,6 +89,7 @@ app.use("/", homeRouter);
 app.use("/posts", sessionChecker, postsRouter);
 app.use("/comments", sessionChecker, postCommentsRouter);
 app.use("/likes", sessionChecker, postLikesRouter);
+app.use("/comment-likes", sessionChecker, commentLikesRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
 app.use("/search", sessionChecker, searchRouter);

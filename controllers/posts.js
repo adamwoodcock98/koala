@@ -1,10 +1,14 @@
 const Post = require("../models/post");
-const { formatDistanceToNowStrict } = require('date-fns');
+const { formatDistanceToNowStrict } = require("date-fns");
 
 const PostsController = {
   Index: (req, res) => {
     Post.find()
       .populate("user")
+      .populate({
+        path: "likes",
+        populate: { path: "user" },
+      })
       .populate({
         path: "comments",
         populate: { path: "user" },
@@ -14,11 +18,17 @@ const PostsController = {
         if (err) {
           throw err;
         }
+        // console.log(posts);
+        console.log(posts[0].likes, "string");
+        // console.log(posts[0].comments, "another string");
         req.session; // This line appears to be needed for later access to session properties
 
         posts.forEach((post) => {
-          const datePosted = formatDistanceToNowStrict(new Date(post.createdAt), { addSuffix: true })
-          post.datePosted = datePosted
+          const datePosted = formatDistanceToNowStrict(
+            new Date(post.createdAt),
+            { addSuffix: true }
+          );
+          post.datePosted = datePosted;
         });
 
         const session = {
