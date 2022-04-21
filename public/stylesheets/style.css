@@ -373,6 +373,11 @@ h5 {
   padding-left: 7.5%;
 }
 
+a {
+  text-decoration: none;
+  color: var(--koala-dark-grey);
+} 
+
 #profile-photo {
   align-items: flex-end;
 }

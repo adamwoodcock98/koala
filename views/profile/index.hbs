@@ -20,22 +20,26 @@
           <img src={{user.profilePicture}} alt="silhouette" />
         </div>
         <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
+          <h1 style="display:inline-block;">{{user.firstName}}
+            {{user.lastName}}</h1>
           <h4 style="display:inline-block;"> (They/Them)</h4>
         </div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-          <div id="edit-add-friend-button" class="test">
-            <form action="/friends/add/{{user._id}}?_method=PATCH" method="post">
-              <input
-                id="add-friend-button"
-                type="submit"
-                class="add-edit-profile-button"
-                value="ADD FRIEND"
-                name="add-friend"
-              />
-            </form>
-          </div>
+            <div id="edit-add-friend-button" class="test">
+              <form
+                action="/friends/add/{{user._id}}?_method=PATCH"
+                method="post"
+              >
+                <input
+                  id="add-friend-button"
+                  type="submit"
+                  class="add-edit-profile-button"
+                  value="ADD FRIEND"
+                  name="add-friend"
+                />
+              </form>
+            </div>
           {{/unless}}
         {{/unless}}
       </div>
@@ -49,15 +53,19 @@
           {{#each user.friends}}
             <div class="friends-child">
               <div class="friend-image">
-                <img
-                  src={{this.profilePicture}}
-                  alt="friends-profile-picture"
-                  height="70px"
-                  width="70px"
-                />
+                <a href="/profile/{{this._id}}">
+                  <img
+                    src={{this.profilePicture}}
+                    alt="friends-profile-picture"
+                    height="70px"
+                    width="70px"
+                  />
+                </a>
               </div>
               <div class="friend-name">
-                <h4>{{this.firstName}} {{this.lastName}}</h4>
+                <a href="/profile/{{this._id}}">
+                  <h4>{{this.firstName}} {{this.lastName}}</h4>
+                </a>
               </div>
             </div>
           {{/each}}
