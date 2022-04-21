@@ -82,17 +82,21 @@ const MessagesController = {
       sender: req.session.user,
     });
 
-    message
-      .populate([
-        { path: "sender", model: "User" },
-        { path: "users", model: "User" },
-      ])
-      .save((err) => {
-        if (err) {
-          throw err;
-        }
-        res.status(201).redirect(`/message/${req.params.id}`);
-      });
+    if (req.body.message) {
+      message
+        .populate([
+          { path: "sender", model: "User" },
+          { path: "users", model: "User" },
+        ])
+        .save((err) => {
+          if (err) {
+            throw err;
+          }
+          res.status(201).redirect(`/message/${req.params.id}`);
+        });
+    } else {
+      res.status(201).redirect(`/message/${req.params.id}`);
+    }
   },
 };
 
