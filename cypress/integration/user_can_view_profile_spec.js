@@ -12,6 +12,21 @@ describe.only("Viewing a profile", () => {
     cy.get(".friends-container").should("contain", "Your friends");
 
     cy.get(".about-container").should("contain", "About me")
+    cy.get(".posts-container").should("contain", "Shared by you")
+  });
+
+  it("should dynamically change the profile labelling", () => {
+    cy.signUp("Harry", "Harry-Harrisson", "harry@example.com", "h4rry")
+    cy.signUp();
+    cy.login();
+
+    cy.get("#searchBox").type("Harry Harry-Harrisson");
+    cy.get("#searchButton").click();
+    cy.get(".user-container").click();
+
+    cy.get(".friends-container").should("contain", "Harry's friends");
+    cy.get(".posts-container").should("contain", "Shared by Harry");
+
   });
 
   it("should display the users posts", () => {
