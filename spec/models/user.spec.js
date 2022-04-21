@@ -146,6 +146,16 @@ describe("User model", () => {
 
   });
 
+  it("the email is not case-sensitive", async () => {
+    const user = new User({
+      firstName: "Jerry",
+      lastName: "Berry",
+      email: "JerryBerry@example.com",
+      password: "password",
+    });
+    await expect(user.email).toBe("jerryberry@example.com")
+  });
+
   it("has password as a required field", async () => {
     const user = new User({
       firstName: "Barry",
