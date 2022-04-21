@@ -6,7 +6,6 @@ const PostLike = require("./post_like.js");
 const PostComment = require("./post_comment.js");
 
 console.log(PostLike);
-console.log(PostComment);
 
 const mongoDb = process.env.MONGODB_TARGET || "acebook";
 const mongoDbUrl = process.env.MONGODB_URI || `mongodb://127.0.0.1/${mongoDb}`;
@@ -14,7 +13,7 @@ const mongoDbUrl = process.env.MONGODB_URI || `mongodb://127.0.0.1/${mongoDb}`;
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 
 const db = mongoose.connection;
@@ -133,7 +132,39 @@ messages.forEach((message) => {
   const post = new Post({
     message: message,
     user: randomUserId,
-    createdAt: Date.now(),
   });
   post.save();
+});
+
+const comments = [
+  "What fantastic content!",
+  "Like me on Koala!",
+  "Such a cute dog",
+  "Please review my code",
+  "Such good times LOL",
+  "I swipe right for gingers",
+  "Simps 4 Barry",
+];
+
+Post.find().exec((err, posts) => {
+  if (err) {
+    throw err;
+  }
+  posts.forEach((post) => {
+    let randomUserId = users[Math.floor(Math.random() * users.length)]._id;
+    let randomComment = comments[Math.floor(Math.random() * comments.length)];
+    const comment = PostComment.create({
+      user: randomUserId,
+      message: randomComment,
+      post: post._id,
+    });
+    const commentId = comment._id;
+    Post.findById(post._id).exec((err, post) => {
+      if (err) {
+        throw err;
+      }
+      post.comments.push(commentId);
+      post.save();
+    });
+  });
 });
