@@ -21,13 +21,14 @@
   </div>
 
   {{#each posts}}
-
-    <div class="post-container card" id="{{this._id}}">
+    {{#each ../user.friends}}
+    {{#ifEquals this ../this.user._id}}
+    <div class="post-container card" id="{{../this._id}}">
       <div class="actual-post">
         <div class="profile-picture">
-          <a href="/profile/{{this.user._id}}">
+          <a href="/profile/{{../this.user._id}}">
             <img
-              src={{this.user.profilePicture}}
+              src={{../this.user.profilePicture}}
               width="100"
               height="100"
               class="rounded-circle"
@@ -36,29 +37,29 @@
         </div>
         <div class="post-body">
           <div class="post-header">
-            <a href="/profile/{{this.user._id}}">
-              <span class="post-author">{{this.user.firstName}}
-                {{this.user.lastName}}</span>
+            <a href="/profile/{{../this.user._id}}">
+              <span class="post-author">{{../this.user.firstName}}
+                {{../this.user.lastName}}</span>
             </a>
-            <div class="date-posted">{{this.createdAtFormatted}}</div>
+            <div class="date-posted">{{../this.createdAtFormatted}}</div>
           </div>
 
           <div class="post-content">
-            {{#if this.image}}
+            {{#if ../this.image}}
               <p class="image">
-                <img src={{this.image}} width="200" height="200" />
+                <img src={{../this.image}} width="200" height="200" />
               </p>
             {{/if}}
 
             <p class="message">
-              {{this.message}}
+              {{../this.message}}
             </p>
 
           </div>
 
           <div class="post-footer">
 
-            <p>{{this.comments.length}} comments</p>
+            <p>{{../this.comments.length}} comments</p>
             {{!-- <p>{{this.likes.length}} likes</p> --}}
             {{! buttons for likes, comments, update post will be here }}
           </div>
@@ -66,11 +67,11 @@
       </div>
       <div class="comments-list">
         <form class="comment-form" action="/comments/new" method="post">
-          <input type="hidden" name="postId" value="{{this._id}}" />
+          <input type="hidden" name="postId" value="{{../this._id}}" />
           <input class="comment-input" name="comment" type="text" />
           <input type="submit" value="Add Comment" />
         </form>
-        {{#each this.comments}}
+        {{#each ../this.comments}}
           {{! Loop through all available comments linked to the above post id }}
           {{! Each comment will have its own div -> user profile picture, name and message +/- time }}
           <div class="comment-container">
@@ -96,6 +97,8 @@
         {{/each}}
       </div>
     </div>
+    {{/ifEquals}}
+  {{/each}}
   {{/each}}
 
 </div>
