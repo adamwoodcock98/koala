@@ -14,7 +14,7 @@
         class="message-input"
         name="image"
         type="text"
-        placeholder="Insert URL"
+        placeholder="Insert image URL"
       />
       <input type="submit" value="Post" />
     </form>
@@ -36,7 +36,7 @@
           <div class="post-header">
             <span class="post-author">{{this.user.firstName}}
               {{this.user.lastName}}</span>
-            <div class="date-posted">{{this.datePosted}}</div>
+            <div class="date-posted">{{this.createdAtFormatted}}</div>
           </div>
 
           <div class="post-content">
@@ -88,7 +88,7 @@
             <div class="comment-body">
               <div class="comment-header">
                 <span class="comment-author">{{this.user.firstName}}</span>
-                <span class="date-posted">{{this.createdAt}}</span>
+                <span class="date-posted">{{this.createdAtFormatted}}</span>
                 {{! comment's user name and time posted }}
               </div>
               <div class="comment-text">
