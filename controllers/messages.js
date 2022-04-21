@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Message = require("../models/messages");
+const { formatDistanceToNowStrict } = require("date-fns");
 
 const MessagesController = {
   Index: (req, res) => {
@@ -40,6 +41,13 @@ const MessagesController = {
           .sort({ updatedAt: -1 })
           .limit(20)
           .then((messages) => {
+            messages.forEach((message) => {
+              const datePosted = formatDistanceToNowStrict(
+                new Date(message.createdAt),
+                { addSuffix: true }
+              );
+              message.datePosted = datePosted;
+            });
             res.render("messages/show", {
               messages: messages,
               user: user,

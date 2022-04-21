@@ -469,6 +469,8 @@ input[type="submit"].add-edit-profile-button:hover {
 }
 
 .chat {
+  display: flex;
+  flex-direction: column;
   width: 70%;
   min-width: 220px;
 }
@@ -604,11 +606,10 @@ input[type="submit"].add-edit-profile-button:hover {
   line-height: 26px;
   font-size: 16px;
   border-radius: 7px;
-  display: inline-block;
   position: relative;
 }
 
-.chat .chat-history .message:after {
+/* .chat .chat-history .message:after {
   bottom: 100%;
   left: 7%;
   border: solid transparent;
@@ -620,14 +621,34 @@ input[type="submit"].add-edit-profile-button:hover {
   border-bottom-color: #fff;
   border-width: 10px;
   margin-left: -10px;
+} */
+
+.message-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.chat .chat-history .my-message {
+.message-list .message {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+}
+
+.message-list .my-message {
   background: #efefef;
   display: flex;
+  align-items: flex-start;
+  /* width: fit-content; */
 }
 
-.chat .chat-history .my-message:after {
+.message-list .other-message {
+  display: flex;
+  /* width: fit-content; */
+  align-items: flex-end;
+  background: #e8f1f3;
+}
+
+/* .chat .chat-history .my-message:after {
   bottom: 100%;
   left: 30px;
   border: solid transparent;
@@ -639,9 +660,9 @@ input[type="submit"].add-edit-profile-button:hover {
   border-bottom-color: #efefef;
   border-width: 10px;
   margin-left: -10px;
-}
+} */
 
-.chat .chat-history .other-message {
+/* .chat .chat-history .other-message {
   background: #e8f1f3;
   text-align: right;
   display: flex;
@@ -651,7 +672,7 @@ input[type="submit"].add-edit-profile-button:hover {
 .chat .chat-history .other-message:after {
   border-bottom-color: #e8f1f3;
   left: 93%;
-}
+} */
 
 .chat-history > input[type="text"] {
   color: var(--koala-black);
@@ -688,6 +709,10 @@ input[type="submit"].add-edit-profile-button:hover {
   float: right;
 }
 
+.float-left {
+  float: left;
+}
+
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -697,8 +722,15 @@ input[type="submit"].add-edit-profile-button:hover {
   height: 0;
 }
 
-.chat-app > .input-group {
+.chat-app > .message-input-group {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.message-input-group {
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -715,4 +747,18 @@ input[type="submit"].add-edit-profile-button:hover {
 .message-friend-name {
   color: var(--koala-grey);
   padding-left: 1vw;
+  font-weight: bold;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.message-form > input[type="text"] {
+  color: var(--koala-black);
+  font-size: larger;
+  border: none;
+  width: 100%;
 }
