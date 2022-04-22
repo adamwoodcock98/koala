@@ -15,6 +15,7 @@ body {
   --border-radius: 25px;
   --card-gap: 1rem;
   background-color: var(--koala-background-grey);
+  margin-top: -18px;
 }
 
 .navigation {
@@ -312,24 +313,48 @@ input[type="submit"]:hover {
 
 /* Header primary classes (flex) */
 .cover-info-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
   justify-content: flex-start;
   align-items: flex-end;
 }
 
 #profile-photo {
-  flex: 1;
   text-align: right;
 }
 
-#name-pronouns {
-  flex: 4;
+.name-pronouns {
   text-align: left;
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 15px 15px 15px 0px;
 }
 
-#edit-friend-unfriend-button {
-  flex: 1;
+.empty-header-div {
+  width: 20%;
+}
+
+.profile-name {
+  background: transparent;
+  border: none;
+  font-weight: 340;
+  font-size: xx-large;
+  color: var(--koala-dark-grey);
+  width: fit-content;
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+.profile-pronouns {
+  background: transparent;
+  border: none;
+  font-size: medium;
+  color: var(--koala-dark-grey);
+  font-weight: 340;
+  opacity: 90%;
+  width: fit-content;
+  padding-bottom: 3%;
+  padding-left: 2%;
 }
 
 /* CSS Layers secondary classes for primary header */
@@ -396,16 +421,8 @@ input[type="submit"]:hover {
 
 .about-me-text h4 {
   align-items: center;
-  /* padding: 0%; */
   margin-bottom: 2%;
 }
-
-/* .about-me-text p {
-  align-items: center;
-  /* padding-top: 1%;
-  padding-bottom: 3%;
- } */
-
 
 .about-me-text input[type="text"] {
   margin-bottom: 2%;
@@ -428,7 +445,7 @@ h2 {
 
 h4 {
   font-size: medium;
-  color: rgb(47, 47, 47);
+  color: rgb(35, 35, 35);
   font-weight: 100;
   opacity: 90%;
 }
@@ -473,10 +490,6 @@ input[type="submit"].add-edit-profile-button:hover {
   border-radius: 8px;
 }
 
-.large-button {
-  
-}
-
 .large-button input[type="submit"] {
   width: 80%;
   height: 100%;
@@ -488,6 +501,30 @@ input[type="submit"].add-edit-profile-button:hover {
 }
 
 .large-button input[type="submit"]:hover {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+  color: white;
+  padding: 7px 0px;
+}
+
+.lavendar-primary-white-accent {
+  
+}
+
+.white-primary-lavendar-accent {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  padding: 7px 0px;
+}
+
+.white-primary-lavendar-accent:hover {
   width: 80%;
   height: 100%;
   border-radius: 5px;

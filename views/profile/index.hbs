@@ -4,10 +4,11 @@
     <title>Profile</title>
   </head>
   <body>
-
-    <!-- PROFILE HEADER -->
+    
+     <!-- PROFILE HEADER -->
 
     <div class="cover-container base-layer">
+      
       <img
         class="actual-cover-photo"
         src={{user.coverPicture}}
@@ -15,17 +16,18 @@
       />
 
       <div class="cover-info-container child-layer">
-        <div id="profile-photo" class="test">
+        <div id="profile-photo" >
           <img src={{user.profilePicture}} alt="silhouette" />
         </div>
-        <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{user.firstName}}
-            {{user.lastName}}</h1>
-          <h4 style="display:inline-block;"> {{user.aboutMe.pronouns}}</h4>
+        <div class="name-pronouns">
+          <input type="text" class="profile-name" value="{{user.firstName}} {{user.lastName}}"/>
+          <input type="text" class="profile-pronouns" value="{{user.aboutMe.pronouns}}"/>
         </div>
+        <div class="empty-header-div"></div>
+        <div class="empty-header-div"></div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-            <div id="edit-friend-unfriend-button" class="test">
+            <div id="edit-friend-unfriend-button" >
               <form
                 action="/friends/add/{{user._id}}?_method=PATCH"
                 method="post"
@@ -33,7 +35,7 @@
                 <input
                   id="friend-unfriend-button"
                   type="submit"
-                  class="add-edit-profile-button"
+                  class="add-edit-profile-button white-primary-lavendar-accent"
                   value="Add friend"
                   name="add-friend"
                 />
@@ -41,7 +43,7 @@
             </div>
           {{/unless}}
           {{#if user.isFriends}}
-            <div id="edit-friend-unfriend-button" class="test">
+            <div id="edit-friend-unfriend-button" >
               <form
                 action="/friends/delete/{{user._id}}?_method=DELETE"
                 method="post"
@@ -58,6 +60,7 @@
           {{/if}}
         {{/unless}}
       </div>
+
     </div>
     <!-- PROFILE CONTENT-->
 
@@ -120,7 +123,8 @@
 
       <div class="profile-content-container-child about-container">
         <h1>About me</h1>
-          {{#if user.isEditing}}
+        {{!-- Conditionals for editing the route --}}
+          {{#if user.isEditingInfo}}
             <form action="/profile/{{user._id}}/edit" method="get">
           {{else}}
             <form action="/profile/{{user._id}}/edit" method="post">
@@ -132,7 +136,7 @@
             </div>
             <div class="about-me-text">
               <h4>Education</h4>
-              <input type="text" id="education" name="education" value="{{user.aboutMe.education}}" placeholder="No education info" {{user.isEditing}}/>
+              <input type="text" id="education" name="education" value="{{user.aboutMe.education}}" placeholder="No education info" {{user.isEditingInfo}}/>
             </div>
           </div>
           <div class="workplace about-fields-child">
@@ -141,7 +145,7 @@
             </div>
             <div class="about-me-text">
               <h4>Workplace</h4>
-              <input type="text" id="workplace" name="workplace" value="{{user.aboutMe.workplace}}" placeholder="No workplace info" {{user.isEditing}}/>
+              <input type="text" id="workplace" name="workplace" value="{{user.aboutMe.workplace}}" placeholder="No workplace info" {{user.isEditingInfo}}/>
             </div>
           </div>
           <div class="relationship-status about-fields-child">
@@ -150,7 +154,7 @@
             </div>
             <div class="about-me-text">
               <h4>Relationship status</h4>
-              <input type="text" id="relationshipStatus" name="relationshipStatus" value="{{user.aboutMe.relationshipStatus}}" placeholder="No relationship info" {{user.isEditing}}/>
+              <input type="text" id="relationshipStatus" name="relationshipStatus" value="{{user.aboutMe.relationshipStatus}}" placeholder="No relationship info" {{user.isEditingInfo}}/>
             </div>
           </div>
           <div class="edit-update-button-container about-fields-child">
@@ -159,7 +163,7 @@
             </div>
             <div class="large-button">
               {{#if user.isProfileOwner}}
-                {{#if user.isEditing}}
+                {{#if user.isEditingInfo}}
                   <input type="submit" name="edit-profile" value="Edit profile"/>
                 {{else}}
                   <input type="submit" name="edit-profile" value="Save changes"/>
@@ -173,5 +177,7 @@
         </form>
       </div>
     </div>
+
+    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg"/>
   </body>
 </html>

@@ -23,9 +23,9 @@ const ProfileController = {
           });
 
           if (req.originalUrl.includes("edit")) {
-            user.isEditing = "";
+            user.isEditingInfo = "";
           } else {
-            user.isEditing = "disabled";
+            user.isEditingInfo = "disabled";
           }
 
           user.isFriends = friendIDArray.includes(req.session.user._id);
@@ -40,17 +40,16 @@ const ProfileController = {
   Update: (req, res) => {
     const data = req.body;
 
-    console.log("THE ABOUT ME: ", req.session.user.aboutMe);
+    console.log("THE IS THE DATA: ", data);
 
-    AboutMe.findById(req.session.user.aboutMe)
-      .then((aboutMe) => {
-        aboutMe.education = data.education;
-        aboutMe.workplace = data.workplace;
-        aboutMe.relationshipStatus = data.relationshipStatus;
-        aboutMe.save().then(() => {
-          res.redirect(`/profile/${req.session.user._id}`);
-        })
+    AboutMe.findById(req.session.user.aboutMe).then((aboutMe) => {
+      aboutMe.education = data.education;
+      aboutMe.workplace = data.workplace;
+      aboutMe.relationshipStatus = data.relationshipStatus;
+      aboutMe.save().then(() => {
+        res.redirect(`/profile/${req.session.user._id}`);
       });
+    });
   },
 };
 
