@@ -5,26 +5,33 @@ require("../models/about_me");
 
 const ProfileController = {
   Index: (req, res) => {
-    const userID = req.params.userID
+    const userID = req.params.userID;
 
     User.findById(userID)
       .populate("aboutMe")
       .populate("friends")
-      .then(user => {
+      .then((user) => {
         Post.find({ user: user._id }, (err, posts) => {
           if (err) {
             console.log(err);
           }
           user.posts = posts;
-          user.isProfileOwner = (userID === req.session.user._id);
+          user.isProfileOwner = userID === req.session.user._id;
 
-          const friendIDArray = user.friends.map(user => {
+          const friendIDArray = user.friends.map((user) => {
             return user._id;
-          })
-          
+          });
+
           user.isFriends = friendIDArray.includes(req.session.user._id);
-          
-          res.render("profile/index", { user: user, loggedInUserId: req.session.user._id });
+
+          const handlebarsObject = {
+            sessionUser: req.session.user,
+            data: {
+              user: user,
+            },
+          };
+
+          res.render("profile/index", handlebarsObject);
         });
       });
   },

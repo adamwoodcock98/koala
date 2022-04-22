@@ -1,7 +1,6 @@
 <html lang="en">
   <head>
-    
-    <title>Profile</title>
+  <title>Profile</title>
   </head>
   <body>
 
@@ -9,41 +8,43 @@
 
     <div class="cover-container base-layer">
       <img
-        src={{user.coverPicture}}
-        alt="{{user.firstName}}-{{user.lastName}}-cover-photo"
+        src={{data.user.coverPicture}}
+        alt="{{data.user.firstName}}-{{data.user.lastName}}-cover-photo"
         width="100%"
         height="100%"
       />
 
       <div class="cover-info-container child-layer">
         <div id="profile-photo" class="test">
-          <img src={{user.profilePicture}} alt="silhouette" />
+          <img src={{data.user.profilePicture}} alt="silhouette" />
         </div>
         <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{user.firstName}} {{user.lastName}}</h1>
-          <h4 style="display:inline-block;"> {{user.aboutMe.pronouns}}</h4>
+          <h1 style="display:inline-block;">{{data.user.firstName}}
+            {{data.user.lastName}}</h1>
+          <h4 style="display:inline-block;">
+            {{data.user.aboutMe.pronouns}}</h4>
         </div>
-        {{#unless user.isProfileOwner}}
-          {{#unless user.isFriends}}
-              <div id="edit-friend-unfriend-button" class="test">
-                <form
-                  action="/friends/add/{{user._id}}?_method=PATCH"
-                  method="post"
-                >
-                  <input
-                    id="friend-unfriend-button"
-                    type="submit"
-                    class="add-edit-profile-button"
-                    value="Add friend"
-                    name="add-friend"
-                  />
-                </form>
-              </div>
-            {{/unless}}
-          {{#if user.isFriends}}
+        {{#unless data.user.isProfileOwner}}
+          {{#unless data.user.isFriends}}
             <div id="edit-friend-unfriend-button" class="test">
               <form
-                action="/friends/delete/{{user._id}}?_method=DELETE"
+                action="/friends/add/{{data.user._id}}?_method=PATCH"
+                method="post"
+              >
+                <input
+                  id="friend-unfriend-button"
+                  type="submit"
+                  class="add-edit-profile-button"
+                  value="Add friend"
+                  name="add-friend"
+                />
+              </form>
+            </div>
+          {{/unless}}
+          {{#if data.user.isFriends}}
+            <div id="edit-friend-unfriend-button" class="test">
+              <form
+                action="/friends/delete/{{data.user._id}}?_method=DELETE"
                 method="post"
               >
                 <input
@@ -63,13 +64,13 @@
 
     <div class="profile-content-container">
       <div class="profile-content-container-child friends-container">
-        {{#if user.isProfileOwner}}
+        {{#if data.user.isProfileOwner}}
           <h2 style="text-align:center">Your friends</h2>
         {{else}}
-          <h2 style="text-align:center">{{user.firstName}}'s friends</h2>
+          <h2 style="text-align:center">{{data.user.firstName}}'s friends</h2>
         {{/if}}
         <div class="friends-flex-container">
-          {{#each user.friends}}
+          {{#each data.user.friends}}
             <div class="friends-child">
               <div class="friend-image">
                 <a href="/profile/{{this._id}}">
@@ -93,17 +94,17 @@
       </div>
 
       <div class="profile-content-container-child posts-container">
-        {{#if user.isProfileOwner}}
+        {{#if data.user.isProfileOwner}}
           <h2>Shared by you...</h2>
         {{else}}
-          <h2>Shared by {{user.firstName}}</h2>
+          <h2>Shared by {{data.user.firstName}}</h2>
         {{/if}}
-        {{#each user.posts}}
+        {{#each data.user.posts}}
 
           <div class="post-container card" id="{{this._id}}">
 
             <div class="post-header">
-              <span class="name">{{this.user.firstName}}</span>
+              <span class="name">{{this.data.user.firstName}}</span>
               <span class="date-posted">15 mins ago</span>
             </div>
 
@@ -122,15 +123,16 @@
         <h2>About me</h2>
         <div class="about-fields">
           <div class="education">
-            <h5>Education: {{user.aboutMe.education}}</h5>
+            <h5>Education: {{data.user.aboutMe.education}}</h5>
             <p></p>
           </div>
           <div class="workplace">
-            <h5>Workplace: {{user.aboutMe.workplace}}</h5>
+            <h5>Workplace: {{data.user.aboutMe.workplace}}</h5>
             <p></p>
           </div>
           <div class="relationship-status">
-            <h5>Relationship status: {{user.aboutMe.relationshipStatus}}</h5>
+            <h5>Relationship status:
+              {{data.user.aboutMe.relationshipStatus}}</h5>
             <p></p>
           </div>
         </div>

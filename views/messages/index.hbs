@@ -1,0 +1,60 @@
+{{! 
+chat-app - main div flex row small gap
+  side-bar - column
+    search-div
+    people-list (column with small gap) <------------- to do
+      multiple friend divs <------------ need gaps
+  messages-view - column
+    chat-header (Either you or the friend you chat with)
+    chat-history (column)
+      new-message-form
+      message-container }}
+
+<div class="card chat-app">
+    <div class="side-bar">
+        <div class="people-list list-unstyled chat-list mt-2 mb-0">
+        <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..." />
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+        </div>
+        {{#each data.friends}}
+            <div class="friend-container">
+            <a class="friend-anchor" href="/message/{{this._id}}">
+                <img
+                class="friend-image"
+                src={{this.profilePicture}}
+                alt={{this.firstName}}
+                />
+                {{!-- <div class="about"> --}}
+                <span class="message-friend-name">{{this.firstName}} {{this.lastName}}</span>
+                {{! <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                             }}
+                {{!-- </div> --}}
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+    <div class="chat">
+        <div class="chat-header clearfix">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a
+                    href="javascript:void(0);"
+                    data-toggle="modal"
+                    data-target="#view_info"
+                    >
+                    <img src={{sessionUser.profilePicture}} alt="avatar" />
+                    </a>
+                    <div class="chat-about">
+                        <h6 class="m-b-0">{{sessionUser.firstName}} {{sessionUser.lastName}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-history">
+            <ul class="m-b-0">
+            <li class="clearfix message"> Choose a conversation </li>
+            </ul>
+        </div>
+    </div>
+</div>

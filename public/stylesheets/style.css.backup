@@ -6,7 +6,6 @@ body {
   --koala-og-lavender: #c3b1e1;
   --koala-lavender: #a785df;
   --koala-magenta: #bf40bf;
-  --koala-red: #ff7171;
   --koala-duckegg-blue: #ced4da;
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
@@ -86,11 +85,6 @@ body {
   gap: 50px;
 }
 
-.user-container .profile-picture img {
-  width: 100px;
-  height: 100px;
-}
-
 .user-container:hover {
   background-color: var(--koala-lavender);
 }
@@ -120,12 +114,7 @@ input[type="search"]:focus {
   max-width: 250px;
 }
 
-#dropdownSessionUser-profile-picture {
-  width: 30px;
-  height: 30px;
-}
-
-.dropdown .user-dropdown-menu {
+.user-dropdown-menu {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -205,35 +194,9 @@ input[type="submit"]:hover {
   background-color: var(--koala-magenta);
   border-color: var(--koala-magenta);
 }
-
-.login-signup-btn {
-  color: #fff;
-  background-color: var(--koala-lavender) !important;
-  border: none;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-.login-signup-btn:hover {
-  transform: translateY(-5px);
-  text-decoration: none;
-}
-
 /* Buttons - End */
 
 /* Posts Index */
-#img-input {
-  padding-left: 26px;
-  font-size: 10px;
-}
-
-.date-posted {
-  font-size: 10px;
-}
 
 .post-form > input[type="text"] {
   color: var(--koala-black);
@@ -274,16 +237,6 @@ input[type="submit"]:hover {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0.3rem;
-   /* position: relative; */
-   /* margin-left: 5px;
-   margin-right: 5px;
-   width: 100%;
-   border-bottom: 1px solid #7A7A7A; */
-}
-
-.comment-container .comment-profile-picture img {
-  width: 30px;
-  height: 30px;
 }
 
 .comment-body {
@@ -293,21 +246,9 @@ input[type="submit"]:hover {
   flex-direction: column;
 }
 
-.comment-text {
-  font-size: 12px;
-}
-
 .actual-post {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 50%;
-}
-
-.actual-post .profile-picture img {
-  width: 100px;
-  height: 100px;
 }
 
 .post-header {
@@ -317,59 +258,12 @@ input[type="submit"]:hover {
 
 .date-posted {
   color: var(--koala-grey);
-  font-style: italic;
 }
 
 .post-body {
   margin: 20px;
-  text-align: left;
 }
-
-.post-content {
-  padding-top: 30px;
-  width: 500px;
-}
-
-.post-content img {
-  max-width: 300px;
-  max-height: 300px;
-  object-fit: contain;
-}
-
-.post-footer {
-  font-size: 10px;
-}
-
 /* Posts - End */
-
-/* Homepage */
-
-.title {
-  color: var(--koala-lavender);
-}
-
-.homepage-body {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-.homepage-footer {
-  bottom: 0%;
-  position: fixed;
-  font-size: 10px;
-}
-
-.homepage-logo {
-  width: 300px;
-  height: 300px;
-}
-
-
-
-/* Homepage - End */
 
 /* Profile page CSS */
 /* Header secondary classes (grid) */
@@ -387,6 +281,15 @@ input[type="submit"]:hover {
 
 .posts-container {
   grid-column: 2, 3;
+}
+
+.message-container {
+  grid-column: 2, 3;
+}
+
+.rounded-circle {
+  width: "100";
+  height: "100";
 }
 
 .about-container {
@@ -433,7 +336,7 @@ input[type="submit"]:hover {
   text-align: left;
 }
 
-#edit-friend-unfriend-button {
+#edit-add-friend-button {
   flex: 1;
 }
 
@@ -457,77 +360,7 @@ input[type="submit"]:hover {
   z-index: 2;
 }
 
-/* Styling changes */
-h1 {
-  font-weight: 340;
-  color: var(--koala-dark-grey);
-}
-
-h2 {
-  color: var(--koala-dark-grey);
-}
-
-h4 {
-  font-size: medium;
-  color: rgb(47, 47, 47);
-  font-weight: 100;
-  opacity: 90%;
-}
-
-h5 {
-  text-align: left;
-  padding-left: 7.5%;
-}
-
-a {
-  text-decoration: none;
-  color: var(--koala-dark-grey);
-}
-
-.login-signup-prompt a {
-  color: var(--koala-lavender);
-}
-
-.login-signup-prompt a:hover {
-  color: var(--koala-lavender);
-  text-decoration: underline var(--koala-lavender);
-}
-
-#profile-photo {
-  align-items: flex-end;
-}
-
-#profile-photo img {
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 4px;
-  border-color: white;
-  width: 70%;
-  height: 70%;
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-
-input[type="submit"].add-edit-profile-button {
-  background: white;
-  border-color: white;
-  padding: 5px 16px;
-  color: var(--koala-lavender);
-  border-radius: 8px;
-}
-
-input[type="submit"].add-edit-profile-button:hover {
-  background: white;
-  border-color: var(--koala-lavender);
-  color: var(--koala-lavender);
-  border-radius: 8px;
-}
-
-/* messages */
-
-.message-container {
-  grid-column: 2, 3;
-}
+/* Messages */
 .message-header {
   text-align: left;
   flex-direction: row;
@@ -540,8 +373,13 @@ input[type="submit"].add-edit-profile-button:hover {
 .message-body {
   margin: 20px;
 }
+/* End of Messages */
 
-.message-container > .card {
+body {
+  background-color: #f4f7f6;
+  margin-top: 20px;
+}
+.card {
   background: #fff;
   transition: 0.5s;
   border: 0;
@@ -551,48 +389,18 @@ input[type="submit"].add-edit-profile-button:hover {
   width: 100%;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 }
-
-.message-container > .rounded-circle {
-  height: 100%;
-  width: 100%;
-}
-
-.chat-app {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  min-width: 450px;
-}
-
-.side-bar {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  min-width: 200px;
-}
-
 .chat-app .people-list {
   width: 280px;
-  /* position: absolute; */
+  position: absolute;
   left: 0;
   top: 0;
   padding: 20px;
   z-index: 7;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5vh;
 }
 
 .chat-app .chat {
-  margin-left: 5vw;
+  margin-left: 280px;
   border-left: 1px solid #eaeaea;
-}
-
-.chat {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  min-width: 220px;
 }
 
 .people-list {
@@ -626,40 +434,9 @@ input[type="submit"].add-edit-profile-button:hover {
   border-radius: 50%;
 }
 
-.people-list > .friend-container {
-  display: flex;
-  flex-direction: row;
-  padding: 0.25rem;
-  border-radius: 1rem;
-}
-
-.people-list > .friend-container:hover {
-  background-color: var(--koala-lilac);
-}
-
-.people-list > .friend-container > .friend-image {
-  width: 45px;
-}
-
-.friend-anchor {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-decoration: none;
-}
-
-.friend-anchor:hover {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-decoration: none;
-  color: var(--koala-white);
-}
-
 .people-list img {
   float: left;
   border-radius: 50%;
-  width: 8vw;
 }
 
 .people-list .about {
@@ -726,10 +503,11 @@ input[type="submit"].add-edit-profile-button:hover {
   line-height: 26px;
   font-size: 16px;
   border-radius: 7px;
+  display: inline-block;
   position: relative;
 }
 
-/* .chat .chat-history .message:after {
+.chat .chat-history .message:after {
   bottom: 100%;
   left: 7%;
   border: solid transparent;
@@ -741,34 +519,14 @@ input[type="submit"].add-edit-profile-button:hover {
   border-bottom-color: #fff;
   border-width: 10px;
   margin-left: -10px;
-} */
-
-.message-list {
-  display: flex;
-  flex-direction: column;
 }
 
-.message-list .message {
-  display: flex;
-  flex-direction: column;
-  /* align-items: flex-start; */
-}
-
-.message-list .my-message {
+.chat .chat-history .my-message {
   background: #efefef;
   display: flex;
-  align-items: flex-start;
-  /* width: fit-content; */
 }
 
-.message-list .other-message {
-  display: flex;
-  /* width: fit-content; */
-  align-items: flex-end;
-  background: #e8f1f3;
-}
-
-/* .chat .chat-history .my-message:after {
+.chat .chat-history .my-message:after {
   bottom: 100%;
   left: 30px;
   border: solid transparent;
@@ -780,9 +538,9 @@ input[type="submit"].add-edit-profile-button:hover {
   border-bottom-color: #efefef;
   border-width: 10px;
   margin-left: -10px;
-} */
+}
 
-/* .chat .chat-history .other-message {
+.chat .chat-history .other-message {
   background: #e8f1f3;
   text-align: right;
   display: flex;
@@ -792,13 +550,6 @@ input[type="submit"].add-edit-profile-button:hover {
 .chat .chat-history .other-message:after {
   border-bottom-color: #e8f1f3;
   left: 93%;
-} */
-
-.chat-history > input[type="text"] {
-  color: var(--koala-black);
-  font-size: larger;
-  border: none;
-  width: 100%;
 }
 
 .chat .chat-message {
@@ -829,10 +580,6 @@ input[type="submit"].add-edit-profile-button:hover {
   float: right;
 }
 
-.float-left {
-  float: left;
-}
-
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -842,15 +589,54 @@ input[type="submit"].add-edit-profile-button:hover {
   height: 0;
 }
 
-.chat-app > .message-input-group {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+@media only screen and (max-width: 767px) {
+  .chat-app .people-list {
+    height: 465px;
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    left: -400px;
+    display: none;
+  }
+  .chat-app .people-list.open {
+    left: 0;
+  }
+  .chat-app .chat {
+    margin: 0;
+  }
+  .chat-app .chat .chat-header {
+    border-radius: 0.55rem 0.55rem 0 0;
+  }
+  .chat-app .chat-history {
+    height: 300px;
+    overflow-x: auto;
+  }
 }
 
-.message-input-group {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .chat-app .chat-list {
+    height: 650px;
+    overflow-x: auto;
+  }
+  .chat-app .chat-history {
+    height: 600px;
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .chat-app .chat-list {
+    height: 480px;
+    overflow-x: auto;
+  }
+  .chat-app .chat-history {
+    height: calc(100vh - 350px);
+    overflow-x: auto;
+  }
+}
+
+.input-group {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -864,21 +650,120 @@ input[type="submit"].add-edit-profile-button:hover {
   margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 
-.message-friend-name {
-  color: var(--koala-grey);
-  padding-left: 1vw;
-  font-weight: bold;
-}
-
-.message-form {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.message-form > input[type="text"] {
-  color: var(--koala-black);
-  font-size: larger;
+/* Dropdown Button */
+.dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
   border: none;
-  width: 100%;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  background-image: url("searchicon.png");
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+/* Styling changes */
+h1 {
+  font-weight: 340;
+  color: var(--koala-dark-grey);
+}
+
+h2 {
+  color: var(--koala-dark-grey);
+}
+
+h4 {
+  font-size: medium;
+  color: rgb(47, 47, 47);
+  font-weight: 100;
+  opacity: 90%;
+}
+
+h5 {
+  text-align: left;
+  padding-left: 7.5%;
+}
+
+#profile-photo {
+  align-items: flex-end;
+}
+
+#profile-photo img {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 4px;
+  border-color: white;
+  width: 70%;
+  height: 70%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+input[type="submit"].add-edit-profile-button {
+  background: white;
+  border-color: white;
+  padding: 5px 16px;
+  color: var(--koala-lavender);
+  border-radius: 8px;
+}
+
+input[type="submit"].add-edit-profile-button:hover {
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  border-radius: 8px;
 }
