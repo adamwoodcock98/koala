@@ -1,7 +1,4 @@
-const { rawListeners } = require("../models/post");
-const Post = require("../models/post");
 const PostLike = require("../models/post_like");
-// const Post = require("../models/post_like")
 
 const PostLikesController = {
   Create: (req, res) => {

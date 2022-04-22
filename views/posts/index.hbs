@@ -69,7 +69,7 @@
               {{#if this.userLiked}}
                 <form
                   class="unlike-form"
-                  action="/posts/delete/{{this._id}}/{{../user._id}}?_method=DELETE"
+                  action="/posts/delete/{{this._id}}/{{../sessionUser._id}}?_method=DELETE"
                   method="post"
                 >
                   <input type="hidden" name="postId" value="{{this._id}}" />
