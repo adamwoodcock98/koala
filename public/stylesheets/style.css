@@ -136,7 +136,7 @@ input[type="search"]:focus {
 input[type="submit"] {
   background: transparent;
   border-color: var(--koala-lavender);
-  border-radius: var(--border-radius) !important;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
@@ -144,7 +144,7 @@ input[type="submit"]:hover {
   color: var(--koala-white);
   background: var(--koala-magenta);
   border-color: var(--koala-magenta);
-  border-radius: var(--border-radius) !important;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
@@ -415,24 +415,53 @@ input[type="submit"]:hover {
 
 /* Header primary classes (flex) */
 .cover-info-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
   justify-content: flex-start;
   align-items: flex-end;
 }
 
 #profile-photo {
-  flex: 1;
   text-align: right;
 }
 
-#name-pronouns {
-  flex: 4;
+.name-pronouns {
   text-align: left;
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 15px 15px 15px 0px;
 }
 
-#edit-friend-unfriend-button {
-  flex: 1;
+#dynamic-cover-button {
+  width: 70%;
+  text-align: right;
+}
+
+.empty-header-div {
+  width: 20%;
+}
+
+.profile-name {
+  background: transparent;
+  border: none;
+  font-weight: 340;
+  font-size: xx-large;
+  color: var(--koala-dark-grey);
+  width: fit-content;
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+.profile-pronouns {
+  background: transparent;
+  border: none;
+  font-size: medium;
+  color: var(--koala-dark-grey);
+  font-weight: 340;
+  opacity: 90%;
+  width: fit-content;
+  padding-bottom: 3%;
+  padding-left: 2%;
 }
 
 /* CSS Layers secondary classes for primary header */
@@ -445,6 +474,11 @@ input[type="submit"]:hover {
   z-index: 1;
 }
 
+.actual-cover-photo {
+  width: 100%;
+  height: 100%
+}
+
 .child-layer {
   position: absolute;
   width: 100%;
@@ -454,6 +488,57 @@ input[type="submit"]:hover {
   bottom: 2.5%;
   z-index: 2;
 }
+
+/* CSS Flex box for about me */
+.about-fields {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.about-fields-child {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 20% 80%;
+  /* grid-row-gap: 12px; */
+  padding: 10px;
+}
+
+.about-me-icon-label {
+  grid-row: 1 / 3;
+  text-align: center;
+}
+
+.edit-update-button-container {
+  text-align: center;
+}
+
+.about-me-icon-label img {
+  width: 55%;
+  height: 55%;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-me-text {
+  border-bottom: 1px solid #a785df;
+}
+
+.about-me-text h4 {
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.about-me-text input[type="text"] {
+  margin-bottom: 2%;
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+/* About me ends */
 
 /* Styling changes */
 h1 {
@@ -467,7 +552,7 @@ h2 {
 
 h4 {
   font-size: medium;
-  color: rgb(47, 47, 47);
+  color: rgb(35, 35, 35);
   font-weight: 100;
   opacity: 90%;
 }
@@ -506,7 +591,7 @@ a {
   object-fit: cover;
 }
 
-input[type="submit"].add-edit-profile-button {
+input[type="submit"].dynamic-cover-button-class {
   background: white;
   border-color: white;
   padding: 5px 16px;
@@ -514,18 +599,59 @@ input[type="submit"].add-edit-profile-button {
   border-radius: 8px;
 }
 
-input[type="submit"].add-edit-profile-button:hover {
+input[type="submit"].dynamic-cover-button-class:hover {
   background: white;
   border-color: var(--koala-lavender);
   color: var(--koala-lavender);
   border-radius: 8px;
 }
 
+
+.large-button input[type="submit"] {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  padding: 7px 0px;
+}
+
+.large-button input[type="submit"]:hover {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+  color: white;
+  padding: 7px 0px;
+}
+
+.white-primary-lavendar-accent {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: white;
+  border-color: var(--koala-lavender);
+  color: var(--koala-lavender);
+  padding: 7px 0px;
+}
+
+.white-primary-lavendar-accent:hover {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--koala-lavender);
+  border-color: var(--koala-lavender);
+  color: white;
+  padding: 7px 0px;
+}
 /* messages */
 
 .message-container {
   grid-column: 2, 3;
 }
+
 .message-header {
   text-align: left;
   flex-direction: row;

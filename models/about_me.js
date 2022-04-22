@@ -4,7 +4,6 @@ const aboutMeSchema = new mongoose.Schema({
   education: String,
   workplace: String,
   relationshipStatus: String,
-  pronouns: String,
 });
 
 const AboutMe = mongoose.model("AboutMe", aboutMeSchema);
