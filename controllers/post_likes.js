@@ -24,11 +24,6 @@ const PostLikesController = {
   },
 
   Delete: (req, res) => {
-    // const session = {
-    //   post: req.body.postId,
-    //   user: req.session.user._id,
-    // };
-    // Find the like id via the user id and post id then delete it from post likes table
     PostLike.deleteOne({
       $and: [{ user: req.session.user._id }, { post: req.params.postId }],
     }).then(() => {
@@ -39,21 +34,6 @@ const PostLikesController = {
         res.redirect(307, `/posts/`);
       });
     });
-
-    // PostLike.findById(postLikeId).then(postLike => {
-    //   postLike.
-    // })
-
-    // console.log("likesSession", session);
-    // const postLike = new PostLike(session);
-    // const postLikeId = postLike._id;
-
-    // PostLike.save((err) => {
-    //   if (err) {
-    //     throw err;
-    //   }
-    //   res.redirect(307, `/posts/`);
-    // });
   },
 };
 

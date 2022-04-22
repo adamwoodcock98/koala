@@ -2,32 +2,29 @@ const PostComment = require("../models/post_comment");
 
 const PostCommentsController = {
   Create: (req, res) => {
-    // console.log("===============================");
-    // console.log("Request Headers", req.headers);
-    // console.log("===============================");
-    // console.log("Request Body", req.body);
-    // console.log("===============================");
-    // console.log("Request Session", req.session);
-    // console.log("===============================");
-    const session = {
+    const mongooseObject = {
       post: req.body.postId,
       message: req.body.comment,
       user: req.session.user._id,
     };
-    const postComment = new PostComment(session);
-    const postCommentId = postComment._id;
 
-    console.log("postCommentId", postCommentId);
+    const postCommentMessage = req.body.comment;
 
-    if (req.body.message) {
+    if (postCommentMessage) {
+      const postComment = new PostComment(mongooseObject);
+      const postCommentId = postComment._id;
+
       postComment.save((err) => {
         if (err) {
           throw err;
         }
-        res.redirect(307, `/posts/${session.post}/comments/${postCommentId}`);
+        res.redirect(
+          307,
+          `/posts/${mongooseObject.post}/comments/${postCommentId}`
+        );
       });
     } else {
-      res.redirect(307, `/posts/`);
+      res.redirect(300, `/posts/`);
     }
   },
 
@@ -46,13 +43,11 @@ const PostCommentsController = {
           throw err;
         }
         res.status(204).redirect(`/posts`);
-        // /${session.post}/comments/${postCommentId}
       });
     });
   },
 
   RemoveLike: (req, res) => {
-    console.log("We are deleting a like from a comment!!!!!!!");
     const commentId = req.params.commentId;
     const commentLikeId = req.params.commentLikeId;
 
@@ -68,7 +63,6 @@ const PostCommentsController = {
           throw err;
         }
         res.status(204).redirect(`/posts`);
-        // /${session.post}/comments/${postCommentId}
       });
     });
   },

@@ -39,14 +39,10 @@ const PostsController = {
           });
           post.userLiked = likers.includes(req.session.user._id);
           post.datePosted = datePosted;
-          // URGENT!!!! needed for like/unlike button in comments
           post.comments.forEach((comment) => {
-            console.log(comment);
             const commentLikers = comment.likes.map((like) => {
-              console.log(like.user);
               return like.user;
             });
-            console.log(req.session.user._id);
             comment.userLikedComment = commentLikers.includes(
               req.session.user._id
             );
