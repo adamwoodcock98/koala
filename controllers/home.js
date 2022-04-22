@@ -1,5 +1,6 @@
 const HomeController = {
   Index: (req, res) => {
+    
     const handlebarsObject = {
       sessionUser: req.session.user,
       data: {
