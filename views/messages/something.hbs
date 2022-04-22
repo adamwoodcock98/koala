@@ -1,0 +1,123 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card chat-app">
+            <div id="plist" class="people-list">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                  {{session.firstName}}
+                <ul class="list-unstyled chat-list mt-2 mb-0">
+                     {{#each friends}}
+
+                     <li>{{this.id}}</li>
+
+                      <li class="clearfix">
+                          <img src={{this.profilePicture}} alt="avatar">
+                          <div class="about">
+                              <div class="name">{{this.firstName}} {{this.lastName}}</div>
+                              {{!-- <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                             --}}
+                          </div>
+                          <div class="message-button" >
+                            <form class="message-form" action="/message/{{this._id}}" method="get">
+                              <button class="btn btn-outline-success me-2" type="submit"><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-search"
+                                viewBox="0 0 16 16"
+                              >
+                            </form>
+                          </div>
+                      </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="chat">
+              <div class="chat-header clearfix">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                              <img src={{user.profilePicture}} alt="avatar">
+                          </a>
+                          <div class="chat-about">
+                              <h6 class="m-b-0">{{user.firstName}}{{user.lastName}}</h6>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <div class="chat-history">
+                  <ul class="m-b-0">
+                {{#if messages.length}}
+
+                  {{#each messages}}
+                    {{#ifEquals this.sender._id ../session._id}}
+                      <li class="clearfix">
+                        <div class="message-data">
+                            <span class="message-data-time">{{this.createdAt}}</span>
+                            <img class="float-right" src={{this.sender.profilePicture}} alt="avatar">
+                        </div>
+                        <div class="message my-message">{{this.message.text}}</div>                                    
+                      </li>    
+                    {{else}}
+                      <li class="clearfix">
+                        <div class="message-data text-right">
+                            <span class="message-data-time">{{this.createdAt}}</span>
+                            <img class="float-right" src={{this.sender.profilePicture}} alt="avatar">
+                        </div>
+                        <div class="message other-message float-right"> {{this.message.text}} </div>
+                      </li>
+                    {{/ifEquals}}
+                  {{/each}}
+
+                  <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                        <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
+                        <input
+                          id="message-input"
+                          class="message-input form-control"
+                          name="message"
+                          type="text"
+                          placeholder="Send {{user.firstName}} a message!"
+                        />
+                        <input type="submit" value="Post" />
+                      </form>                                  
+                    </div>
+                  </div>
+                {{else}}
+                  <div class="message-container card" id="{{this._id}}">
+                    <p> Start a new conversation </p>
+                  </div>
+
+                  <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-send"></i></span>
+                      </div>
+                      <form class="post-form" id="new-post-form" action="/message/{{user._id}}" method="post">
+                        <input
+                          id="message-input"
+                          class="message-input form-control"
+                          name="message"
+                          type="text"
+                          placeholder="Send {{user.firstName}} a message!"
+                        />
+                        <input type="submit" value="Post" />
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+                {{/if}}
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -7,7 +7,7 @@ describe("Logging Out", () => {
   it("A user that logs out is redirected to /sessions", () => {
     cy.signUp(firstName, lastName, email, password);
     cy.login(email, password);
-    cy.get("#dropdownUser1").click();
+    cy.get("#dropdownSessionUser").click();
     cy.get("#signOut").click();
 
     cy.url().should("not.include", "/posts");
@@ -17,7 +17,7 @@ describe("Logging Out", () => {
   it("A user that has logged out cannot view posts", () => {
     cy.signUp(firstName, lastName, email, password);
     cy.login(email, password);
-    cy.get("#dropdownUser1").click();
+    cy.get("#dropdownSessionUser").click();
     cy.get("#signOut").click();
     cy.visit("/posts");
 
