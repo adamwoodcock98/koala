@@ -12,16 +12,17 @@ const MessagesController = {
         findQuery.push(friend);
       });
 
+      const handlebarsObject = {
+        sessionUser: req.session.user,
+        data: {},
+      };
+
       if (!findQuery.length) {
-        res.render("messages/index", {
-          session: req.session.user,
-        });
+        res.render("messages/index", handlebarsObject);
       } else {
         User.find({ $or: findQuery }).then((friends) => {
-          res.render("messages/index", {
-            session: req.session.user,
-            friends: friends,
-          });
+          handlebarsObject.data.friends = friends;
+          res.render("messages/index", handlebarsObject);
         });
       }
     });
@@ -62,12 +63,15 @@ const MessagesController = {
                 );
                 message.datePosted = datePosted;
               });
-              res.render("messages/show", {
-                messages: messages,
-                user: user2,
-                session: req.session.user,
-                friends: friends,
-              });
+              const handlebarsObject = {
+                sessionUser: req.session.user,
+                data: {
+                  messages: messages,
+                  user: user2,
+                  friends: friends,
+                },
+              };
+              res.render("messages/show", handlebarsObject);
             });
         });
       });

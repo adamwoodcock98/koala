@@ -17,7 +17,7 @@ chat-app - main div flex row small gap
         <input type="text" class="form-control" placeholder="Search..." />
             <span class="input-group-text"><i class="fa fa-search"></i></span>
         </div>
-        {{#each friends}}
+        {{#each data.friends}}
             <div class="friend-container">
             <a class="friend-anchor" href="/message/{{this._id}}">
                 <img
@@ -43,10 +43,10 @@ chat-app - main div flex row small gap
                     data-toggle="modal"
                     data-target="#view_info"
                     >
-                    <img src={{session.profilePicture}} alt="avatar" />
+                    <img src={{sessionUser.profilePicture}} alt="avatar" />
                     </a>
                     <div class="chat-about">
-                        <h6 class="m-b-0">{{session.firstName}} {{session.lastName}}</h6>
+                        <h6 class="m-b-0">{{sessionUser.firstName}} {{sessionUser.lastName}}</h6>
                     </div>
                 </div>
             </div>

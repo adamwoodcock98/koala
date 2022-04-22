@@ -5,7 +5,7 @@
             <input type="text" class="form-control" placeholder="Search..." />
             <span class="input-group-text"><i class="fa fa-search"></i></span>
           </div>
-          {{#each friends}}
+          {{#each data.friends}}
               <div class="friend-container">
                 <a class="friend-anchor" href="/message/{{this._id}}">
                     <img
@@ -27,31 +27,31 @@
           <div class="row">
               <div class="col-lg-6">
                   <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                      <img src={{user.profilePicture}} alt="avatar">
+                      <img src={{data.user.profilePicture}} alt="avatar">
                   </a>
                   <div class="chat-about">
-                      <h6 class="m-b-0">{{user.firstName}} {{user.lastName}}</h6>
+                      <h6 class="m-b-0">{{data.user.firstName}} {{data.user.lastName}}</h6>
                   </div>
               </div>
           </div>
       </div>
       <div class="chat-history">
-          {{#if messages.length}}
+          {{#if data.messages.length}}
             <div class="message-input-group mb-0">
-                <form class="message-form" action="/message/{{user._id}}" method="post">
+                <form class="message-form" action="/message/{{data.user._id}}" method="post">
                   <input
                     id="message-input"
                     class="message-input form-control"
                     name="message"
                     type="text"
-                    placeholder="Send {{user.firstName}} a message!"
+                    placeholder="Send {{data.user.firstName}} a message!"
                   />
                   <input type="submit" value="Send Message" />
               </form>                                  
             </div>
             <div class="message-list" >
-              {{#each messages}}
-                {{#ifEquals this.sender._id ../session._id}}
+              {{#each data.messages}}
+                {{#ifEquals this.sender._id ../sessionUser._id}}
                   <div class="message">
                     <div class="message-data">
                         <img class="float-left" src={{this.sender.profilePicture}} alt="avatar">
@@ -78,13 +78,13 @@
             
           {{else}}
             <div class="message-input-group mb-0">
-                <form class="message-form" action="/message/{{user._id}}" method="post">
+                <form class="message-form" action="/message/{{data.user._id}}" method="post">
                   <input
                     id="message-input"
                     class="message-input form-control"
                     name="message"
                     type="text"
-                    placeholder="Start a conversation with {{user.firstName}}!"
+                    placeholder="Start a conversation with {{data.user.firstName}}!"
                   />
                   <input type="submit" value="Start Conversation" />
               </form>                                  
