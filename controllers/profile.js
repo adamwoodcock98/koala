@@ -2,6 +2,7 @@
 const Post = require("../models/post");
 const User = require("../models/user");
 const AboutMe = require("../models/about_me");
+const { formatDistanceToNowStrict } = require("date-fns");
 
 const ProfileController = {
   Index: (req, res) => {
@@ -12,17 +13,39 @@ const ProfileController = {
       .populate("aboutMe")
       .populate("friends")
       .then((user) => {
-        Post.find({ user: user._id }, (err, posts) => {
+        Post.find({ user: user._id })
+        .populate("user")
+        .populate({
+          path: "comments",
+          populate: { path: "user" },
+        })
+        .sort({ createdAt: -1 })
+        .exec((err, posts) => {
           if (err) {
-            console.log(err);
+            throw err;
           }
+          req.session; // This line appears to be needed for later access to session properties
+
+          posts.forEach((post) => {
+            post.createdAtFormatted = formatDistanceToNowStrict(
+              new Date(post.createdAt),
+              { addSuffix: true }
+            );
+            post.comments.forEach((comment) => {
+              comment.createdAtFormatted = formatDistanceToNowStrict(
+                new Date(comment.createdAt),
+                { addSuffix: true }
+              );
+            });
+          });
+
           user.posts = posts;
+          
           user.isProfileOwner = userID === req.session.user._id;
 
           const friendIDArray = user.friends.map((user) => {
             return user._id;
           });
-
 
           if (originalUrl.includes(`${userID}/edit`)) {
             user.isEditingInfo = "";
@@ -48,6 +71,7 @@ const ProfileController = {
           };
 
           res.render("profile/index", handlebarsObject);
+
         });
       });
   },

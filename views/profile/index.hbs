@@ -129,25 +129,105 @@
         {{else}}
           <h1>Shared by {{data.user.firstName}}</h1>
         {{/if}}
-        {{#each data.user.posts}}
+        <div class="post-list">
 
-          <div class="post-container card" id="{{this._id}}">
+          {{!-- <div class="card">
+            <form class="post-form" id="new-post-form" action="/posts" method="post">
+              <input
+                id="message-input"
+                class="message-input"
+                name="message"
+                type="text"
+                placeholder="Hi {{sessionUser.firstName}}, what's on your mind?"
+              />
+              <input
+                id="img-input"
+                class="message-input"
+                name="image"
+                type="text"
+                placeholder="Upload Image"
+              />
+              <input type="submit" value="Post" />
+            </form>
+          </div> --}}
 
-            <div class="post-header">
-              <span class="name">{{this.firstName}}</span>
-              <span class="date-posted">15 mins ago</span>
+          {{#each data.user.posts}}
+
+            <div class="post-container card" id="{{this._id}}">
+              <div class="actual-post">
+                <div class="profile-picture">
+                  <a href="/profile/{{this.user._id}}">
+                    <img class="rounded-circle" 
+                    {{#if this.user.profilePicture}}
+                      src={{this.user.profilePicture}}
+                    {{else}}
+                      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    {{/if}}
+                    />
+                  </a>
+                </div>
+                <div class="post-body">
+                  <div class="post-header">
+                    <a href="/profile/{{this.user._id}}"></a>
+                    <span class="post-author">{{this.user.firstName}}
+                      {{this.user.lastName}}</span>
+                    <div class="date-posted">{{this.createdAtFormatted}}</div>
+                  </div>
+
+                  <div class="post-content">
+                    {{#if this.image}}
+                      <p class="image">
+                        <img src={{this.image}} />
+                      </p>
+                    {{/if}}
+
+                    <p class="message">
+                      {{this.message}}
+                    </p>
+
+                  </div>
+
+                  <div class="post-footer">
+
+                    <p>{{this.comments.length}} comments</p>
+                    {{!-- <p>{{this.likes.length}} likes</p> --}}
+                    {{! buttons for likes, comments, update post will be here }}
+                  </div>
+                </div>
+              </div>
+              <div class="comments-list">
+                <form class="comment-form" action="/comments/new" method="post">
+                  <input type="hidden" name="postId" value="{{this._id}}" />
+                  <input class="comment-input" name="comment" type="text" />
+                  <input type="submit" value="Add Comment" />
+                </form>
+                {{#each this.comments}}
+                  <div class="comment-container">
+                    <div class="comment-profile-picture">
+                      <img class="rounded-circle"
+                      {{#if this.user.profilePicture}}
+                        src={{this.user.profilePicture}}
+                      {{else}}
+                      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                      {{/if}}
+                      />
+                    </div>
+                    <div class="comment-body">
+                      <div class="comment-header">
+                        <span class="comment-author">{{this.user.firstName}}</span>
+                        <span class="date-posted">{{this.createdAtFormatted}}</span>
+                      </div>
+                      <div class="comment-text">
+                        {{this.message}}
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
             </div>
-
-            <div class="post-body">
-              <p class="message">
-                {{this.message}}
-              </p>
-            </div>
-
-          </div>
-
-        {{/each}}
-      </div>
+          {{/each}}
+        </div>
+              </div>
 
       <div class="profile-content-container-child about-container">
         <h1>About me</h1>
@@ -205,7 +285,5 @@
         </form>
       </div>
     </div>
-
-    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg"/>
   </body>
 </html>
