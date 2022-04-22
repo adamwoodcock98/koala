@@ -15,7 +15,6 @@ body {
   --border-radius: 25px;
   --card-gap: 1rem;
   background-color: var(--koala-background-grey);
-  margin-top: -18px;
 }
 
 .navigation {
