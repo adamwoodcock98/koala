@@ -64,8 +64,8 @@
               {{#if this.userLiked}}
                 <form
                   class="unlike-form"
-                  action="/likes/remove"
-                  method="delete"
+                  action="/posts/delete/{{this._id}}/{{../user._id}}?_method=DELETE"
+                  method="post"
                 >
                   <input type="hidden" name="postId" value="{{this._id}}" />
                   <input type="submit" value="Unlike" />
@@ -115,15 +115,15 @@
                   {{#if this.userLikedComment}}
                     <form
                       class="comment-unlike-form"
-                      action="/comment-likes/remove"
-                      method="delete"
+                      action="/comments/delete/{{this._id}}/{{../user._id}}?_method=DELETE"
+                      method="post"
                     >
                     <input
                       type="hidden"
                       name="commentId"
                       value="{{this._id}}"
                     />
-                    <input type="submit" value="Like" />
+                    <input type="submit" value="Unlike" />
                   {{else}}
                     <form
                       class="comment-like-form"

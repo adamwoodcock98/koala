@@ -19,16 +19,16 @@ const PostCommentsController = {
 
     console.log("postCommentId", postCommentId);
 
-    postComment.save((err) => {
-      if (err) {
-        throw err;
-      }
-      console.log(
-        "Redirecting to",
-        `/posts/${session.post}/comments/${postCommentId}`
-      );
-      res.redirect(307, `/posts/${session.post}/comments/${postCommentId}`);
-    });
+    if (req.body.message) {
+      postComment.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.redirect(307, `/posts/${session.post}/comments/${postCommentId}`);
+      });
+    } else {
+      res.redirect(307, `/posts/`);
+    }
   },
 
   AddLike: (req, res) => {
@@ -60,7 +60,8 @@ const PostCommentsController = {
       if (err) {
         throw err;
       }
-      comment.likes.filter((like) => like != commentLikeId);
+      const likeIndex = comment.likes.indexOf(commentLikeId);
+      comment.likes.splice(likeIndex, 1);
 
       comment.save((err) => {
         if (err) {

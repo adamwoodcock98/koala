@@ -11,7 +11,16 @@ const PostsController = {
       })
       .populate({
         path: "comments",
-        populate: { path: "user" },
+        populate: {
+          path: "user",
+        },
+      })
+      .populate({
+        path: "comments",
+        populate: {
+          path: "likes",
+          populate: { path: "commentlike" },
+        },
       })
       .sort({ createdAt: -1 })
       .exec((err, posts) => {
@@ -30,15 +39,18 @@ const PostsController = {
           });
           post.userLiked = likers.includes(req.session.user._id);
           post.datePosted = datePosted;
-          // URGENT!!!!
-          // post.comments.forEach((comment) => {
-          //   const commentLikers = comment.likes.map((like) => {
-          //     return like.user._id;
-          //   });
-          //   comment.userLikedComment = commentLikers.includes(
-          //     req.session.user._id
-          //   );
-          // });
+          // URGENT!!!! needed for like/unlike button in comments
+          post.comments.forEach((comment) => {
+            console.log(comment);
+            const commentLikers = comment.likes.map((like) => {
+              console.log(like.user);
+              return like.user;
+            });
+            console.log(req.session.user._id);
+            comment.userLikedComment = commentLikers.includes(
+              req.session.user._id
+            );
+          });
         });
 
         const session = {
@@ -57,12 +69,16 @@ const PostsController = {
     };
     const post = new Post(session);
 
-    post.save((err) => {
-      if (err) {
-        throw err;
-      }
+    if (req.body.message) {
+      post.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(201).redirect("/posts");
+      });
+    } else {
       res.status(201).redirect("/posts");
-    });
+    }
   },
 
   AddComment: (req, res) => {
@@ -111,7 +127,8 @@ const PostsController = {
       if (err) {
         throw err;
       }
-      post.likes.filter((like) => like != likeId);
+      const likeIndex = post.likes.indexOf(likeId);
+      post.likes.splice(likeIndex, 1);
 
       post.save((err) => {
         if (err) {
