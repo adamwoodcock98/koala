@@ -3,7 +3,8 @@ describe("Messages", () => {
     cy.signUp();
     cy.login();
 
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#message-dropdown").click();
 
     cy.get(".message").should("contain", "Choose a conversation");
@@ -18,7 +19,8 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#message-dropdown").click();
 
     cy.get(".friend-container").should("contain", "Rick Rick-Rickinsson");
@@ -34,7 +36,8 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
 
@@ -54,8 +57,10 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#message-dropdown").click();
+    
     cy.get(".friend-anchor").click();
 
     cy.get(".message-input").type("Hi Rick!");
@@ -73,7 +78,9 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
 
@@ -96,7 +103,8 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
 
@@ -104,7 +112,9 @@ describe("Messages", () => {
     cy.get(".message-form").submit();
 
     cy.login("rick@ick.com", "securer1ck");
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
 
@@ -120,7 +130,9 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
 
@@ -128,7 +140,9 @@ describe("Messages", () => {
     cy.get(".message-form").submit();
 
     cy.login("rick@ick.com", "securer1ck");
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
     cy.get(".message-input").type("Hi!");
@@ -152,7 +166,9 @@ describe("Messages", () => {
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
     cy.get("#friend-unfriend-button").click();
-    cy.get("#dropdownSessionUser").click();
+
+    cy.get("#dropdownSessionUser-profile-picture").click();
+
     cy.get("#message-dropdown").click();
     cy.get(".friend-container").contains("Rick Rick-Rickinsson").click();
 

@@ -2,31 +2,60 @@
   <head>
     <title>Profile</title>
   </head>
-  <body>
-
-    <!-- PROFILE HEADER -->
+  <body style="margin-top: -18px;">
+    
+     <!-- PROFILE HEADER -->
 
     <div class="cover-container base-layer">
+      {{#if data.user.isEditingProfile}}
+        <form action="/profile/user/{{data.user._id}}/edit" method="get">
+      {{else}}
+        <form action="/profile/user/{{data.user._id}}/edit" method="post">
+      {{/if}}
       <img
+        class="actual-cover-photo"
         src={{data.user.coverPicture}}
         alt="{{data.user.firstName}}-{{data.user.lastName}}-cover-photo"
-        width="100%"
-        height="100%"
       />
 
       <div class="cover-info-container child-layer">
-        <div id="profile-photo" class="test">
+        <div id="profile-photo" >
           <img src={{data.user.profilePicture}} alt="silhouette" />
         </div>
-        <div id="name-pronouns" class="test">
-          <h1 style="display:inline-block;">{{data.user.firstName}}
-            {{data.user.lastName}}</h1>
-          <h4 style="display:inline-block;">
-            {{data.user.aboutMe.pronouns}}</h4>
+        <div class="name-pronouns">
+          <input type="text" name="profileName" class="profile-name" value="{{data.user.firstName}} {{data.user.lastName}}" {{data.user.isEditingProfile}}/>
+          <input type="text" name="profilePronouns" class="profile-pronouns" value="{{data.user.pronouns}}" {{data.user.isEditingProfile}}/>
         </div>
-        {{#unless data.user.isProfileOwner}}
+        <div class="empty-header-div"></div>
+        <div class="empty-header-div"></div>
+        {{#if data.user.isProfileOwner}}
+          {{#if data.user.isEditingProfile}}
+          <div id="dynamic-cover-button" class="large-button">
+            <input
+              id="update-profile-button"
+              type="submit"
+              class="dynamic-cover-button-class white-primary-lavendar-accent"
+              value="Edit profile"
+              name="update-profile-friend"
+            />
+          </form>
+          </div>
+          {{else}}
+          <div id="dynamic-cover-button" class="large-button">
+            <input
+              id="update-profile-button"
+              type="submit"
+              class="dynamic-cover-button-class white-primary-lavendar-accent"
+              value="Save changes"
+              name="update-profile-friend"
+            />
+          </form>
+          </div>
+          {{/if}}
+        {{else}}
           {{#unless data.user.isFriends}}
-            <div id="edit-friend-unfriend-button" class="test">
+          </form>
+            <div id="dynamic-cover-button" class="large-button">
               <form
                 action="/friends/add/{{data.user._id}}?_method=PATCH"
                 method="post"
@@ -34,7 +63,7 @@
                 <input
                   id="friend-unfriend-button"
                   type="submit"
-                  class="add-edit-profile-button"
+                  class="dynamic-cover-button-class white-primary-lavendar-accent"
                   value="Add friend"
                   name="add-friend"
                 />
@@ -42,7 +71,8 @@
             </div>
           {{/unless}}
           {{#if data.user.isFriends}}
-            <div id="edit-friend-unfriend-button" class="test">
+          </form>
+            <div id="dynamic-cover-button" class="large-button">
               <form
                 action="/friends/delete/{{data.user._id}}?_method=DELETE"
                 method="post"
@@ -50,14 +80,14 @@
                 <input
                   id="friend-unfriend-button"
                   type="submit"
-                  class="add-edit-profile-button"
+                  class="dynamic-cover-button-class"
                   value="Unfriend"
                   name="unfriend"
                 />
               </form>
             </div>
           {{/if}}
-        {{/unless}}
+        {{/if}}
       </div>
     </div>
     <!-- PROFILE CONTENT-->
@@ -65,7 +95,7 @@
     <div class="profile-content-container">
       <div class="profile-content-container-child friends-container">
         {{#if data.user.isProfileOwner}}
-          <h2 style="text-align:center">Your friends</h2>
+          <h1 style="text-align:center">Your friends</h1>
         {{else}}
           <h2 style="text-align:center">{{data.user.firstName}}'s friends</h2>
         {{/if}}
@@ -95,16 +125,16 @@
 
       <div class="profile-content-container-child posts-container">
         {{#if data.user.isProfileOwner}}
-          <h2>Shared by you...</h2>
+          <h1>Shared by you...</h1>
         {{else}}
-          <h2>Shared by {{data.user.firstName}}</h2>
+          <h1>Shared by {{data.user.firstName}}</h1>
         {{/if}}
         {{#each data.user.posts}}
 
           <div class="post-container card" id="{{this._id}}">
 
             <div class="post-header">
-              <span class="name">{{this.data.user.firstName}}</span>
+              <span class="name">{{this.firstName}}</span>
               <span class="date-posted">15 mins ago</span>
             </div>
 
@@ -120,23 +150,62 @@
       </div>
 
       <div class="profile-content-container-child about-container">
-        <h2>About me</h2>
+        <h1>About me</h1>
+        {{!-- Conditionals for editing the route --}}
+          {{#if data.user.isEditingInfo}}
+            <form action="/profile/{{data.user._id}}/edit" method="get">
+          {{else}}
+            <form action="/profile/{{data.user._id}}/edit" method="post">
+          {{/if}}
         <div class="about-fields">
-          <div class="education">
-            <h5>Education: {{data.user.aboutMe.education}}</h5>
-            <p></p>
+          <div class="education about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/book-half.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Education</h4>
+              <input type="text" id="education" name="education" value="{{data.user.aboutMe.education}}" placeholder="No education info" {{data.user.isEditingInfo}}/>
+            </div>
           </div>
-          <div class="workplace">
-            <h5>Workplace: {{data.user.aboutMe.workplace}}</h5>
-            <p></p>
+          <div class="workplace about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/briefcase-fill.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Workplace</h4>
+              <input type="text" id="workplace" name="workplace" value="{{data.user.aboutMe.workplace}}" placeholder="No workplace info" {{data.user.isEditingInfo}}/>
+            </div>
           </div>
-          <div class="relationship-status">
-            <h5>Relationship status:
-              {{data.user.aboutMe.relationshipStatus}}</h5>
-            <p></p>
+          <div class="relationship-status about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/person-hearts.png" />
+            </div>
+            <div class="about-me-text">
+              <h4>Relationship status</h4>
+              <input type="text" id="relationshipStatus" name="relationshipStatus" value="{{data.user.aboutMe.relationshipStatus}}" placeholder="No relationship info" {{data.user.isEditingInfo}}/>
+            </div>
+          </div>
+          <div class="edit-update-button-container about-fields-child">
+            <div class="about-me-icon-label">
+              <img src="/images/assets/person-hearts.png" style="display:none"/>
+            </div>
+            <div class="large-button">
+              {{#if data.user.isProfileOwner}}
+                {{#if data.user.isEditingInfo}}
+                  <input type="submit" id="dynamic-about-me-button" name="edit-profile" value="Update info"/>
+                {{else}}
+                  <input type="submit" id="dynamic-about-me-button" name="edit-profile" value="Save changes"/>
+                {{/if}}
+              {{else}}
+                <input type="submit" name="edit-profile" value="Edit profile" style="display: none;"/>
+              {{/if}}
+            </div>
           </div>
         </div>
+        </form>
       </div>
     </div>
+
+    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg"/>
   </body>
 </html>
