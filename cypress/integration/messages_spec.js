@@ -17,7 +17,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
 
@@ -33,7 +33,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
@@ -53,7 +53,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
@@ -72,7 +72,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
@@ -95,7 +95,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
@@ -121,7 +121,7 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-anchor").click();
@@ -151,11 +151,11 @@ describe("Messages", () => {
     cy.get("#searchBox").type("Rick Rick-Rickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#searchBox").type("Mick Mick-Mickinsson");
     cy.get("#searchButton").click();
     cy.get(".user-container").click();
-    cy.get("#add-friend-button").click();
+    cy.get("#friend-unfriend-button").click();
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
     cy.get(".friend-container").contains("Rick Rick-Rickinsson").click();
