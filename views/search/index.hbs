@@ -5,25 +5,30 @@
 </head>
 <body>
   <div class="post-list">
-    {{#each users}}
+    {{#each data.users}}
+      <a href="/profile/{{this._id}}">
+        <div class="user-container card" id="{{this._id}}">
 
-      <div class="user-container card" id="{{this._id}}">
-
-        <div class="profile-picture">
-          <img src={{this.profilePicture}} width="100"
-            height="100"
-            class="rounded-circle"/>
-        </div>
-
-        <div class="user-info">
-          <div class="user-header">
-            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+          <div class="profile-picture">
+            <img 
+            {{#if this.profilePicture}}
+              src={{this.profilePicture}}
+            {{else}}
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            {{/if}}
+              class="rounded-circle"/>
           </div>
-          <div class="user-body">
-            <span class="name">{{this.firstName}} {{this.lastName}}</span>
+
+          <div class="user-info">
+            <div class="user-header">
+              <span class="name">{{this.firstName}} {{this.lastName}}</span>
+            </div>
+            <div class="user-body">
+              <span class="name">{{this.firstName}} {{this.lastName}}</span>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     {{/each}}
   </div>
 </body>

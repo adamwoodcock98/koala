@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Email is required"],
     unique: true,
+    lowercase: true,
     validate: {
       validator: validator.isEmail,
       message: "Invalid Email",
@@ -25,7 +26,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is required"],
   },
-  friends: [mongoose.SchemaTypes.ObjectId],
+  friends: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
   aboutMe: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "AboutMe",

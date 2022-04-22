@@ -7,36 +7,41 @@
         class="message-input"
         name="message"
         type="text"
-        placeholder="Hi {{user.firstName}}, what's on your mind?"
+        placeholder="Hi {{sessionUser.firstName}}, what's on your mind?"
       />
       <input
         id="img-input"
         class="message-input"
         name="image"
         type="text"
-        placeholder="Insert URL"
+        placeholder="Insert image URL"
       />
       <input type="submit" value="Post" />
     </form>
   </div>
 
-  {{#each posts}}
+  {{#each data.posts}}
 
     <div class="post-container card" id="{{this._id}}">
       <div class="actual-post">
         <div class="profile-picture">
-          <img
-            src={{this.user.profilePicture}}
-            width="100"
-            height="100"
-            class="rounded-circle"
-          />
+          <a href="/profile/{{this.user._id}}">
+            <img class="rounded-circle" 
+            {{#if this.user.profilePicture}}
+              src={{this.user.profilePicture}}
+            {{else}}
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            {{/if}}
+            />
+          </a>
         </div>
         <div class="post-body">
           <div class="post-header">
-            <span class="post-author">{{this.user.firstName}}
-              {{this.user.lastName}}</span>
-            <div class="date-posted">{{this.datePosted}}</div>
+            <a href="/profile/{{this.user._id}}">
+              <span class="post-author">{{this.user.firstName}}
+                {{this.user.lastName}}</span>
+            </a>
+            <div class="date-posted">{{this.createdAtFormatted}}</div>
           </div>
 
           <div class="post-content">
@@ -87,22 +92,20 @@
           <input type="submit" value="Add Comment" />
         </form>
         {{#each this.comments}}
-          {{! Loop through all available comments linked to the above post id }}
-          {{! Each comment will have its own div -> user profile picture, name and message +/- time }}
           <div class="comment-container">
             <div class="comment-profile-picture">
-              <img
+              <img class="rounded-circle"
+              {{#if this.user.profilePicture}}
                 src={{this.user.profilePicture}}
-                width="30"
-                height="30"
-                class="rounded-circle"
+              {{else}}
+               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              {{/if}}
               />
             </div>
             <div class="comment-body">
               <div class="comment-header">
                 <span class="comment-author">{{this.user.firstName}}</span>
-                <span class="date-posted">{{this.createdAt}}</span>
-                {{! comment's user name and time posted }}
+                <span class="date-posted">{{this.createdAtFormatted}}</span>
               </div>
               <div class="comment-text">
                 {{this.message}}
@@ -146,5 +149,4 @@
       </div>
     </div>
   {{/each}}
-
 </div>

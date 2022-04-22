@@ -2,8 +2,9 @@ const PostComment = require("../models/post_comment");
 
 const PostCommentsController = {
   Create: (req, res) => {
+    const postId = req.body.postId;
     const mongooseObject = {
-      post: req.body.postId,
+      post: postId,
       message: req.body.comment,
       user: req.session.user._id,
     };

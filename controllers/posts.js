@@ -30,7 +30,7 @@ const PostsController = {
         req.session; // This line appears to be needed for later access to session properties
 
         posts.forEach((post) => {
-          const datePosted = formatDistanceToNowStrict(
+          post.createdAtFormatted = formatDistanceToNowStrict(
             new Date(post.createdAt),
             { addSuffix: true }
           );
@@ -38,8 +38,11 @@ const PostsController = {
             return like.user._id;
           });
           post.userLiked = likers.includes(req.session.user._id);
-          post.datePosted = datePosted;
           post.comments.forEach((comment) => {
+            comment.createdAtFormatted = formatDistanceToNowStrict(
+              new Date(comment.createdAt),
+              { addSuffix: true }
+            );
             const commentLikers = comment.likes.map((like) => {
               return like.user;
             });
@@ -49,21 +52,24 @@ const PostsController = {
           });
         });
 
-        const session = {
-          posts: posts,
-          user: req.session.user,
+        const handlebarsObject = {
+          sessionUser: req.session.user,
+          data: {
+            posts: posts,
+          },
         };
-        res.render("posts/index", session);
+
+        res.render("posts/index", handlebarsObject);
       });
   },
 
   Create: (req, res) => {
-    const session = {
+    const mongooseObject = {
       message: req.body.message,
       user: req.session.user,
       image: req.body.image,
     };
-    const post = new Post(session);
+    const post = new Post(mongooseObject);
 
     if (req.body.message) {
       post.save((err) => {
