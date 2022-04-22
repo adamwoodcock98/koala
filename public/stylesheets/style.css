@@ -274,8 +274,8 @@ input[type="submit"]:hover {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0.3rem;
-   /* position: relative; */
-   /* margin-left: 5px;
+  /* position: relative; */
+  /* margin-left: 5px;
    margin-right: 5px;
    width: 100%;
    border-bottom: 1px solid #7A7A7A; */
@@ -306,8 +306,8 @@ input[type="submit"]:hover {
 }
 
 .actual-post .profile-picture img {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
 }
 
 .post-header {
@@ -366,8 +366,6 @@ input[type="submit"]:hover {
   width: 300px;
   height: 300px;
 }
-
-
 
 /* Homepage - End */
 
