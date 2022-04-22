@@ -554,12 +554,13 @@ input[type="submit"].dynamic-cover-button-class:hover {
   border-color: var(--koala-lavender);
   color: white;
   padding: 7px 0px;
-  
+}
 /* messages */
 
 .message-container {
   grid-column: 2, 3;
 }
+
 .message-header {
   text-align: left;
   flex-direction: row;

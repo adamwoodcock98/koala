@@ -1,8 +1,8 @@
 describe.only("Viewing a profile", () => {
-  xit("should displays the users details", () => {
+  it("should displays the users details", () => {
     cy.signUp();
     cy.login();
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get("input[name=profileName").should("have.value", "Barry Barry-Barroldsson");
@@ -17,7 +17,7 @@ describe.only("Viewing a profile", () => {
   it("should edit the users details if profile owner", () => {
     cy.signUp();
     cy.login();
-    cy.get("#dropdownUser1").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get("input[name=profileName").should("be.disabled");
@@ -58,7 +58,7 @@ describe.only("Viewing a profile", () => {
     cy.addPost("Testing is so fun!");
     cy.addPost("Baddiez don't test!");
 
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get(".message").should("contain", "Baddiez don't test!");
@@ -70,11 +70,11 @@ describe.only("Viewing a profile", () => {
     cy.signUp();
     cy.login();
 
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
     cy.get("#friend-unfriend-button").should("not.exist");
 
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#sign-out-button").click();
     cy.signUp("Rick", "Rick-Rickinsson", "rick@ick.com", "securer1ck");
     cy.login();
@@ -119,7 +119,7 @@ describe.only("Viewing a profile", () => {
 
     cy.get(".friend-name").should("contain", "Barry Barry-Barroldsson");
 
-    cy.get("#dropdownSessionUser").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get(".friend-name").should("contain", "Rick Rick-Rickinsson");
@@ -128,7 +128,7 @@ describe.only("Viewing a profile", () => {
   it("should displays the users about me", () => {
     cy.signUp();
     cy.login();
-    cy.get("#dropdownUser1").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get("input[name=education").invoke('attr', 'placeholder').should("contain", "No education info");
@@ -139,7 +139,7 @@ describe.only("Viewing a profile", () => {
   it("should edit the users about me if profile owner", () => {
     cy.signUp();
     cy.login();
-    cy.get("#dropdownUser1").click();
+    cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#dropdown-profile-link").click();
 
     cy.get("input[name=education").should("be.disabled");
