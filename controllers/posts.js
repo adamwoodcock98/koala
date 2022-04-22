@@ -6,8 +6,21 @@ const PostsController = {
     Post.find()
       .populate("user")
       .populate({
-        path: "comments",
+        path: "likes",
         populate: { path: "user" },
+      })
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+        },
+      })
+      .populate({
+        path: "comments",
+        populate: {
+          path: "likes",
+          populate: { path: "commentlike" },
+        },
       })
       .sort({ createdAt: -1 })
       .exec((err, posts) => {
@@ -21,10 +34,20 @@ const PostsController = {
             new Date(post.createdAt),
             { addSuffix: true }
           );
+          const likers = post.likes.map((like) => {
+            return like.user._id;
+          });
+          post.userLiked = likers.includes(req.session.user._id);
           post.comments.forEach((comment) => {
             comment.createdAtFormatted = formatDistanceToNowStrict(
               new Date(comment.createdAt),
               { addSuffix: true }
+            );
+            const commentLikers = comment.likes.map((like) => {
+              return like.user;
+            });
+            comment.userLikedComment = commentLikers.includes(
+              req.session.user._id
             );
           });
         });
@@ -48,12 +71,16 @@ const PostsController = {
     };
     const post = new Post(mongooseObject);
 
-    post.save((err) => {
-      if (err) {
-        throw err;
-      }
+    if (req.body.message) {
+      post.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(201).redirect("/posts");
+      });
+    } else {
       res.status(201).redirect("/posts");
-    });
+    }
   },
 
   AddComment: (req, res) => {
@@ -65,6 +92,45 @@ const PostsController = {
         throw err;
       }
       post.comments.push(commentId);
+
+      post.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(204).redirect("/posts");
+      });
+    });
+  },
+
+  AddLike: (req, res) => {
+    const postId = req.params.postId;
+    const likeId = req.params.likeId;
+
+    Post.findById(postId).exec((err, post) => {
+      if (err) {
+        throw err;
+      }
+      post.likes.push(likeId);
+
+      post.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(204).redirect("/posts");
+      });
+    });
+  },
+
+  RemoveLike: (req, res) => {
+    const postId = req.params.postId;
+    const likeId = req.params.likeId;
+
+    Post.findById(postId).exec((err, post) => {
+      if (err) {
+        throw err;
+      }
+      const likeIndex = post.likes.indexOf(likeId);
+      post.likes.splice(likeIndex, 1);
 
       post.save((err) => {
         if (err) {

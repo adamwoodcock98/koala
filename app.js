@@ -20,6 +20,8 @@ const usersRouter = require("./routes/users");
 const messagesRouter = require("./routes/messages");
 const searchRouter = require("./routes/search");
 const profileRouter = require("./routes/profile");
+const postLikesRouter = require("./routes/post_likes");
+const commentLikesRouter = require("./routes/comment_likes");
 const friendsRouter = require("./routes/friends");
 
 const app = express();
@@ -32,6 +34,12 @@ const hbs = exphbs.create({
   helpers: {
     ifEquals: function (arg1, arg2, options) {
       return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+    },
+    ifIn: function (elem, list, options) {
+      if (list.indexOf(elem) > -1) {
+        return options.fn(this);
+      }
+      return options.inverse(this)
     },
   },
 });
@@ -85,6 +93,8 @@ const sessionChecker = (req, res, next) => {
 app.use("/", homeRouter);
 app.use("/posts", sessionChecker, postsRouter);
 app.use("/comments", sessionChecker, postCommentsRouter);
+app.use("/likes", sessionChecker, postLikesRouter);
+app.use("/comment-likes", sessionChecker, commentLikesRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
 app.use("/message", messagesRouter);
