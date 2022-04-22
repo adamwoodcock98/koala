@@ -1,4 +1,4 @@
-require("../models/notification");
+const Notification = require("../models/notification");
 const User = require("../models/user");
 const { formatDistanceToNowStrict } = require('date-fns');
 
@@ -27,7 +27,10 @@ const NotificationsController = {
     User.findById(user._id).then((user) => {
       user.notifications.pull(notificationId)
       user.save(() => {
-        res.redirect("/notifications/")
+        Notification.deleteOne({ _id: notificationId}).then(() => {
+          res.redirect("/notifications/");
+        })
+        
       })
     })
   }
