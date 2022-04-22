@@ -427,7 +427,7 @@ input[type="submit"].add-edit-profile-button:hover {
   margin-top: 10px;
 }
 
-#error-message {
+#confirmation-message {
   width: 100%;
   max-width: 50vw;
   padding: 15px;

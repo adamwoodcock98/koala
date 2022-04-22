@@ -22,4 +22,5 @@ require('./commands')
 
 beforeEach(() => {
   cy.exec("mongo acebook_test --eval 'db.users.remove({})'")
+  cy.exec("mongo acebook_test --eval 'db.notifications.remove({})'")
 })

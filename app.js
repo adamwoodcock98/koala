@@ -76,7 +76,7 @@ const sessionChecker = (req, res, next) => {
 
 // route setup
 app.use("/", homeRouter);
-app.use("/posts", postsRouter);
+app.use("/posts", sessionChecker, postsRouter);
 app.use("/comments", sessionChecker, postCommentsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
