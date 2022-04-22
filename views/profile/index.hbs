@@ -1,6 +1,5 @@
 <html lang="en">
   <head>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <title>Profile</title>
   </head>
   <body>
@@ -75,7 +74,7 @@
           </form>
             <div id="dynamic-cover-button" class="large-button">
               <form
-                action="/friends/delete/{{user._id}}?_method=DELETE"
+                action="/friends/delete/{{data.user._id}}?_method=DELETE"
                 method="post"
               >
                 <input
@@ -98,10 +97,10 @@
         {{#if user.isProfileOwner}}
           <h1 style="text-align:center">Your friends</h1>
         {{else}}
-          <h2 style="text-align:center">{{user.firstName}}'s friends</h2>
+          <h2 style="text-align:center">{{data.user.firstName}}'s friends</h2>
         {{/if}}
         <div class="friends-flex-container">
-          {{#each user.friends}}
+          {{#each data.user.friends}}
             <div class="friends-child">
               <div class="friend-image">
                 <a href="/profile/{{this._id}}">
@@ -130,12 +129,12 @@
         {{else}}
           <h1>Shared by {{user.firstName}}</h1>
         {{/if}}
-        {{#each user.posts}}
+        {{#each data.user.posts}}
 
           <div class="post-container card" id="{{this._id}}">
 
             <div class="post-header">
-              <span class="name">{{this.user.firstName}}</span>
+              <span class="name">{{this.data.user.firstName}}</span>
               <span class="date-posted">15 mins ago</span>
             </div>
 

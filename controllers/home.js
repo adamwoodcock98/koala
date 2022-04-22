@@ -1,6 +1,12 @@
 const HomeController = {
   Index: (req, res) => {
-    res.render("home/index", { title: "Acebook" });
+    const handlebarsObject = {
+      sessionUser: req.session.user,
+      data: {
+        title: "Acebook",
+      },
+    };
+    res.render("home/index", handlebarsObject);
   },
 };
 

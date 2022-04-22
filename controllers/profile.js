@@ -23,6 +23,7 @@ const ProfileController = {
             return user._id;
           });
 
+
           if (originalUrl.includes(`${userID}/edit`)) {
             user.isEditingInfo = "";
           } else {
@@ -39,10 +40,14 @@ const ProfileController = {
 
           user.isFriends = friendIDArray.includes(req.session.user._id);
 
-          res.render("profile/index", {
-            user: user,
-            loggedInUserId: req.session.user._id,
-          });
+          const handlebarsObject = {
+            sessionUser: req.session.user,
+            data: {
+              user: user,
+            },
+          };
+
+          res.render("profile/index", handlebarsObject);
         });
       });
   },

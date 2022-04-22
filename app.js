@@ -17,6 +17,7 @@ const postsRouter = require("./routes/posts");
 const postCommentsRouter = require("./routes/post_comments");
 const sessionsRouter = require("./routes/sessions");
 const usersRouter = require("./routes/users");
+const messagesRouter = require("./routes/messages");
 const searchRouter = require("./routes/search");
 const profileRouter = require("./routes/profile");
 const friendsRouter = require("./routes/friends");
@@ -24,16 +25,23 @@ const friendsRouter = require("./routes/friends");
 const app = express();
 
 // view engine setup
+const hbs = exphbs.create({
+  defaultLayout: "layout",
+  extname: ".hbs",
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+    },
+  },
+});
+
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  "hbs",
-  exphbs.engine({
-    defaultLayout: "layout",
-    extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
-  })
-);
+app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
+Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -79,6 +87,7 @@ app.use("/posts", sessionChecker, postsRouter);
 app.use("/comments", sessionChecker, postCommentsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
+app.use("/message", messagesRouter);
 app.use("/search", sessionChecker, searchRouter);
 app.use("/profile", sessionChecker, profileRouter);
 app.use("/friends", sessionChecker, friendsRouter);
