@@ -6,6 +6,7 @@ body {
   --koala-og-lavender: #c3b1e1;
   --koala-lavender: #a785df;
   --koala-magenta: #bf40bf;
+  --koala-red: #ff7171;
   --koala-duckegg-blue: #ced4da;
   --koala-grey: grey;
   --koala-background-grey: rgb(240, 242, 245);
@@ -327,7 +328,7 @@ input[type="submit"]:hover {
   text-align: left;
 }
 
-#edit-add-friend-button {
+#edit-friend-unfriend-button {
   flex: 1;
 }
 
@@ -371,6 +372,11 @@ h4 {
 h5 {
   text-align: left;
   padding-left: 7.5%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--koala-dark-grey);
 }
 
 #profile-photo {

@@ -17,17 +17,22 @@ const PostsController = {
           throw err;
         }
         req.session; // This line appears to be needed for later access to session properties
-
+       
         posts.forEach((post) => {
           const datePosted = formatDistanceToNowStrict(new Date(post.createdAt), { addSuffix: true })
-          post.datePosted = datePosted
+          post.createdAtFormatted = datePosted
+          post.comments.forEach((comment) => {
+            const commentDatePosted = formatDistanceToNowStrict(new Date(comment.createdAt), { addSuffix: true })
+            comment.createdAtFormatted = commentDatePosted;
+          })
         });
-
+        
         const session = {
           posts: posts,
           user: req.session.user,
-          loggedInUserId: req.session.user._id
+          loggedInUserId: req.session.user._id,
         };
+
         res.render("posts/index", session);
       });
   },

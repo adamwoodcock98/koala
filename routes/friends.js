@@ -5,6 +5,7 @@ const FriendsController = require("../controllers/friends");
 
 router.patch("/add/:userID", FriendsController.Request);
 router.post("/confirm/:userId/notification/:notificationId", FriendsController.Confirm)
+router.delete("/delete/:userID", FriendsController.Delete);
 
 module.exports = router;
 

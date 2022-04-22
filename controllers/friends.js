@@ -33,7 +33,25 @@ const FriendsController = {
         });
       });
     });
-  }
+  },
+  Delete: (req, res) => {
+    const requesterUserID = req.session.user._id
+    const receiverUserID = req.params.userID
+
+    User.findById(receiverUserID)
+    .then(user => {
+      user.friends.pull(requesterUserID);
+      user.save(() => {
+        User.findById(requesterUserID)
+          .then(user2 => {
+            user2.friends.pull(receiverUserID);
+            user2.save(() => {
+              res.redirect(`/profile/${receiverUserID}`);
+            })
+          });
+      })
+      })
+    }
 };
 
 module.exports = FriendsController;
