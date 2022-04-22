@@ -402,3 +402,28 @@ input[type="submit"].add-edit-profile-button:hover {
   color: var(--koala-lavender);
   border-radius: 8px;
 }
+
+.bi {
+  margin-right: 15px;
+  color: rgb(167, 24, 183)
+}
+
+#notification-link {
+  text-decoration: none;
+  color: rgb(167, 24, 183)
+}
+
+.notification-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#error-message {
+  width: 100%;
+  max-width: 50vw;
+  padding: 15px;
+  margin: auto;
+}

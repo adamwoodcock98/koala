@@ -10,6 +10,10 @@ const ProfileController = {
     User.findById(userID)
       .populate("aboutMe")
       .populate("friends")
+      .populate({
+        path: "notifications",
+        populate: { path: "user" }
+      })
       .then(user => {
         Post.find({ user: user._id }, (err, posts) => {
           if (err) {
@@ -21,8 +25,13 @@ const ProfileController = {
           const friendIDArray = user.friends.map(user => {
             return user._id;
           })
+
+          const friendRequestUserIDArray = user.notifications.map(notification => {
+              if(notification.category === "Friend Request") return notification.user._id;
+          })
           
           user.isFriends = friendIDArray.includes(req.session.user._id);
+          user.friendRequestPending = friendRequestUserIDArray.includes(req.session.user._id)
           
           res.render("profile/index", { user: user, loggedInUserId: req.session.user._id });
         });

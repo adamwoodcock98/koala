@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const notificationSchema = new mongoose.Schema({
   category: {
     type: String,
-    enum: ["Friend Request", "Message", "Comment", "Like"],
+    enum: ["Friend Request", "Comment"],
     required: true,
   },
   user: {

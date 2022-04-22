@@ -25,7 +25,10 @@
         </div>
         {{#unless user.isProfileOwner}}
           {{#unless user.isFriends}}
-          <div id="edit-add-friend-button" class="test">
+          <div id="edit-add-friend-button" class="test"></div>
+            {{#if user.friendRequestPending}}
+            <input type="submit" id="add-friend-button" value="Request Pending" class="add-edit-profile-button" disabled/>
+            {{else}}  
             <form action="/friends/add/{{user._id}}?_method=PATCH" method="post">
               <input
                 id="add-friend-button"
@@ -35,7 +38,8 @@
                 name="add-friend"
               />
             </form>
-          </div>
+            {{/if}}
+             </div>
           {{/unless}}
         {{/unless}}
       </div>
