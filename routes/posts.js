@@ -8,6 +8,6 @@ router.post("/", PostsController.Create);
 router.post("/:postId/comments/:commentId", PostsController.AddComment);
 // router.delete("/:postId/comments/:commentId", PostsController.RemoveComment);
 router.post("/:postId/likes/:likeId", PostsController.AddLike);
-// router.delete("/:postId/likeId", PostsController.RemoveLike);
+router.delete("/:postId/likeId", PostsController.RemoveLike);
 
 module.exports = router;

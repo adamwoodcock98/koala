@@ -32,17 +32,37 @@ const PostCommentsController = {
   },
 
   AddLike: (req, res) => {
-    console.log("We are updating a comment with a like!!!!!!!!");
     const commentId = req.params.commentId;
     const commentLikeId = req.params.commentLikeId;
 
-    PostComment.findById(commentId).exec((err, post) => {
+    PostComment.findById(commentId).exec((err, comment) => {
       if (err) {
         throw err;
       }
-      post.likes.push(commentLikeId);
+      comment.likes.push(commentLikeId);
 
-      post.save((err) => {
+      comment.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(204).redirect(`/posts`);
+        // /${session.post}/comments/${postCommentId}
+      });
+    });
+  },
+
+  RemoveLike: (req, res) => {
+    console.log("We are deleting a like from a comment!!!!!!!");
+    const commentId = req.params.commentId;
+    const commentLikeId = req.params.commentLikeId;
+
+    PostComment.findById(commentId).exec((err, comment) => {
+      if (err) {
+        throw err;
+      }
+      comment.likes.filter((like) => like != commentLikeId);
+
+      comment.save((err) => {
         if (err) {
           throw err;
         }

@@ -112,18 +112,32 @@
                   {{! I want to display the number of likes a comment has here }}
                   {{! Each post has an array of comments, trying to work out how to iterate through them }}
                   <p>{{this.likes.length}} likes</p>
-                  <form
-                    class="comment-like-form"
-                    action="/comment-likes/new"
-                    method="post"
-                  >
+                  {{#if this.userLikedComment}}
+                    <form
+                      class="comment-unlike-form"
+                      action="/comment-likes/remove"
+                      method="delete"
+                    >
                     <input
                       type="hidden"
                       name="commentId"
                       value="{{this._id}}"
                     />
                     <input type="submit" value="Like" />
-                  </form>
+                  {{else}}
+                    <form
+                      class="comment-like-form"
+                      action="/comment-likes/new"
+                      method="post"
+                    >
+                    <input
+                      type="hidden"
+                      name="commentId"
+                      value="{{this._id}}"
+                    />
+                    <input type="submit" value="Like" />
+                    </form>
+                  {{/if}}
                 </div>
               </div>
             </div>
