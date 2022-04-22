@@ -1,3 +1,4 @@
+const AboutMe = require("../models/about_me");
 const User = require("../models/user");
 
 const UsersController = {
@@ -7,8 +8,13 @@ const UsersController = {
 
   Create: (req, res) => {
     const user = new User(req.body);
+    const aboutMe = new AboutMe();
 
-    user.save()
+    user.aboutMe = aboutMe._id;
+    
+    aboutMe.save()
+      .then(() => {
+        user.save()
       .then(() => {
         res.status(201).redirect("/posts");
       })
@@ -16,6 +22,7 @@ const UsersController = {
         if (err.code === 11000) req.flash("error", "Email already exists");
         if (err.name === "ValidationError") req.flash("error", "All fields are required");
         res.redirect("/users/new");
+      })
       })
   },
 };

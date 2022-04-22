@@ -49,9 +49,8 @@ const ProfileController = {
   Update: (req, res) => {
     const data = req.body;
 
-    console.log("THE IS THE DATA: ", data);
-
     AboutMe.findById(req.session.user.aboutMe).then((aboutMe) => {
+      console.log("THIS IS ABOUT ME:", aboutMe);
       aboutMe.education = data.education;
       aboutMe.workplace = data.workplace;
       aboutMe.relationshipStatus = data.relationshipStatus;

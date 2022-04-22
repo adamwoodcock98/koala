@@ -193,9 +193,9 @@
             <div class="large-button">
               {{#if user.isProfileOwner}}
                 {{#if user.isEditingInfo}}
-                  <input type="submit" name="edit-profile" value="Edit profile"/>
+                  <input type="submit" id="dynamic-about-me-button" name="edit-profile" value="Update info"/>
                 {{else}}
-                  <input type="submit" name="edit-profile" value="Save changes"/>
+                  <input type="submit" id="dynamic-about-me-button" name="edit-profile" value="Save changes"/>
                 {{/if}}
               {{else}}
                 <input type="submit" name="edit-profile" value="Edit profile" style="display: none;"/>

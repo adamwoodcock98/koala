@@ -5,13 +5,36 @@ describe.only("Viewing a profile", () => {
     cy.get("#dropdownUser1").click();
     cy.get("#dropdown-profile-link").click();
 
-    cy.get("#name-pronouns").should("contain", "Barry Barry-Barroldsson");
-    // cy.get("#name-pronouns").should("contain", "They/Them"); currently not implemented
+    cy.get("input[name=profileName").should("have.value", "Barry Barry-Barroldsson");
+    cy.get("input[name=profilePronouns").should("have.value", "Add pronouns");
 
     cy.get(".friends-container").should("contain", "Your friends");
 
     cy.get(".about-container").should("contain", "About me");
     cy.get(".posts-container").should("contain", "Shared by you");
+  });
+
+  it("should edit the users details if profile owner", () => {
+    cy.signUp();
+    cy.login();
+    cy.get("#dropdownUser1").click();
+    cy.get("#dropdown-profile-link").click();
+
+    cy.get("input[name=profileName").should("be.disabled");
+    cy.get("input[name=profilePronouns").should("be.disabled");
+
+    cy.get("#dynamic-cover-button").click()
+
+    cy.get("input[name=profileName").should("not.be.disabled");
+    cy.get("input[name=profilePronouns").should("not.be.disabled");
+
+    cy.get("input[name=profileName").clear().type("Rick Rickinson");
+    cy.get("input[name=profilePronouns").clear().type("He/Him");
+
+    cy.get("#dynamic-cover-button").click()
+
+    cy.get("input[name=profileName").should("have.value", "Rick Rickinson");
+    cy.get("input[name=profilePronouns").should("have.value", "He/Him");
   });
 
   it("should dynamically change the profile labelling", () => {
@@ -103,17 +126,42 @@ describe.only("Viewing a profile", () => {
     cy.get(".friend-name").should("contain", "Rick Rick-Rickinsson");
   });
 
-  // it("should allow the user to edit their profile", () => {
-  //   cy.signUp();
-  //   cy.login();
+  it("should displays the users about me", () => {
+    cy.signUp();
+    cy.login();
+    cy.get("#dropdownUser1").click();
+    cy.get("#dropdown-profile-link").click();
 
-  //   cy.get("#education").should("contain", "");
-  //   cy.get("#workplace").should("contain", "");
-  //   cy.get("#relationshipStatus").should("contain", "");
+    cy.get("input[name=education").invoke('attr', 'placeholder').should("contain", "No education info");
+    cy.get("input[name=workplace").invoke('attr', 'placeholder').should("contain", "No workplace info");
+    cy.get("input[name=relationshipStatus").invoke('attr', 'placeholder').should("contain", "No relationship info");
+  });
 
-  //   cy.get("#education").should("contain", "");
-  //   cy.get("#workplace").should("contain", "");
-  //   cy.get("#relationshipStatus").should("contain", "");
-  // });
+  it("should edit the users about me if profile owner", () => {
+    cy.signUp();
+    cy.login();
+    cy.get("#dropdownUser1").click();
+    cy.get("#dropdown-profile-link").click();
+
+    cy.get("input[name=education").should("be.disabled");
+    cy.get("input[name=workplace").should("be.disabled");
+    cy.get("input[name=relationshipStatus").should("be.disabled");
+
+    cy.get("#dynamic-about-me-button").click()
+
+    cy.get("input[name=education").should("not.be.disabled");
+    cy.get("input[name=workplace").should("not.be.disabled");
+    cy.get("input[name=relationshipStatus").should("not.be.disabled");
+
+    cy.get("input[name=education").clear().type("Makers");
+    cy.get("input[name=workplace").clear().type("Nice job");
+    cy.get("input[name=relationshipStatus").clear().type("Single");
+
+    cy.get("#dynamic-about-me-button").click()
+
+    cy.get("input[name=education").should("have.value", "Makers");
+    cy.get("input[name=workplace").should("have.value", "Nice job");
+    cy.get("input[name=relationshipStatus").should("have.value", "Single");
+  });
 
 });
