@@ -103,8 +103,6 @@ describe("Messages", () => {
     cy.get(".message-input").type("Hi Rick!");
     cy.get(".message-form").submit();
 
-    cy.get("#dropdownUser1").click();
-    cy.get("#sign-out-button").click();
     cy.login("rick@ick.com", "securer1ck");
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
@@ -129,8 +127,6 @@ describe("Messages", () => {
     cy.get(".message-input").type("Hi Rick!");
     cy.get(".message-form").submit();
 
-    cy.get("#dropdownUser1").click();
-    cy.get("#sign-out-button").click();
     cy.login("rick@ick.com", "securer1ck");
     cy.get("#dropdownUser1").click();
     cy.get("#message-dropdown").click();
