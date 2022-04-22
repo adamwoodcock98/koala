@@ -198,12 +198,19 @@ input[type="submit"]:hover {
 
 .login-signup-btn {
   color: #fff;
-  background-color: var(--koala-lavender);
-  border-color: var(--koala-lavender);
+  background-color: var(--koala-lavender) !important;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
 }
 
 .login-signup-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-5px);
+  text-decoration: none;
 }
 
 /* Buttons - End */
@@ -257,6 +264,11 @@ input[type="submit"]:hover {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0.3rem;
+   /* position: relative; */
+   /* margin-left: 5px;
+   margin-right: 5px;
+   width: 100%;
+   border-bottom: 1px solid #7A7A7A; */
 }
 
 .comment-body {
@@ -264,6 +276,10 @@ input[type="submit"]:hover {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+}
+
+.comment-text {
+  font-size: 12px;
 }
 
 .actual-post {
@@ -277,11 +293,11 @@ input[type="submit"]:hover {
 .post-header {
   text-align: left;
   flex-direction: row;
-  padding-bottom: 20px;
 }
 
 .date-posted {
   color: var(--koala-grey);
+  font-style: italic;
 }
 
 .post-body {
@@ -290,11 +306,14 @@ input[type="submit"]:hover {
 }
 
 .post-content {
+  padding-top: 30px;
   width: 500px;
 }
 
 .post-content img {
-  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
 }
 
 .post-footer {
@@ -302,6 +321,35 @@ input[type="submit"]:hover {
 }
 
 /* Posts - End */
+
+/* Homepage */
+
+.title {
+  color: var(--koala-lavender);
+}
+
+.homepage-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.homepage-footer {
+  bottom: 0%;
+  position: fixed;
+  font-size: 10px;
+}
+
+.homepage-logo {
+  width: 300px;
+  height: 300px;
+}
+
+
+
+/* Homepage - End */
 
 /* Profile page CSS */
 /* Header secondary classes (grid) */
