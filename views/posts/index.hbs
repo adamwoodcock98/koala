@@ -14,7 +14,7 @@
         class="message-input"
         name="image"
         type="text"
-        placeholder="Insert image URL"
+        placeholder="Upload Image"
       />
       <input type="submit" value="Post" />
     </form>
@@ -37,17 +37,16 @@
         </div>
         <div class="post-body">
           <div class="post-header">
-            <a href="/profile/{{this.user._id}}">
-              <span class="post-author">{{this.user.firstName}}
-                {{this.user.lastName}}</span>
-            </a>
+            <a href="/profile/{{this.user._id}}"></a>
+            <span class="post-author">{{this.user.firstName}}
+              {{this.user.lastName}}</span>
             <div class="date-posted">{{this.createdAtFormatted}}</div>
           </div>
 
           <div class="post-content">
             {{#if this.image}}
               <p class="image">
-                <img src={{this.image}} width="200" height="200" />
+                <img src={{this.image}} />
               </p>
             {{/if}}
 
@@ -97,3 +96,4 @@
     </div>
   {{/each}}
 </div>
+<div class="homepage-footer">CodeBaddiez © 2022</div>

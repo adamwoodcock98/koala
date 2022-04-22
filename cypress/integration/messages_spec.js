@@ -2,8 +2,7 @@ describe("Messages", () => {
   it("loads a blank message section with choose a conversation on the index", () => {
     cy.signUp();
     cy.login();
-
-
+    
     cy.get("#dropdownSessionUser-profile-picture").click();
     cy.get("#message-dropdown").click();
 
