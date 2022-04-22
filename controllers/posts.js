@@ -1,5 +1,5 @@
 const Post = require("../models/post");
-const { formatDistanceToNowStrict } = require('date-fns');
+const { formatDistanceToNowStrict } = require("date-fns");
 
 const PostsController = {
   Index: (req, res) => {
@@ -15,33 +15,38 @@ const PostsController = {
           throw err;
         }
         req.session; // This line appears to be needed for later access to session properties
-       
+
         posts.forEach((post) => {
-          const datePosted = formatDistanceToNowStrict(new Date(post.createdAt), { addSuffix: true })
-          post.createdAtFormatted = datePosted
+          post.createdAtFormatted = formatDistanceToNowStrict(
+            new Date(post.createdAt),
+            { addSuffix: true }
+          );
           post.comments.forEach((comment) => {
-            const commentDatePosted = formatDistanceToNowStrict(new Date(comment.createdAt), { addSuffix: true })
-            comment.createdAtFormatted = commentDatePosted;
-          })
+            comment.createdAtFormatted = formatDistanceToNowStrict(
+              new Date(comment.createdAt),
+              { addSuffix: true }
+            );
+          });
         });
-        
-        const session = {
-          posts: posts,
-          user: req.session.user,
-          loggedInUserId: req.session.user._id,
+
+        const handlebarsObject = {
+          sessionUser: req.session.user,
+          data: {
+            posts: posts,
+          },
         };
 
-        res.render("posts/index", session);
+        res.render("posts/index", handlebarsObject);
       });
   },
 
   Create: (req, res) => {
-    const session = {
+    const mongooseObject = {
       message: req.body.message,
       user: req.session.user,
       image: req.body.image,
     };
-    const post = new Post(session);
+    const post = new Post(mongooseObject);
 
     post.save((err) => {
       if (err) {
