@@ -21,7 +21,7 @@ Koala is a MEHN-stack social media application aimed at people called Barry, as 
 - [MongoDB](https://www.mongodb.com/) - noSQL databse for storing collections.
 - [Express](https://expressjs.com/) - Web framework for Node.js.
 - [Handlebars](https://handlebarsjs.com/) - Templating engine for front-end.
-- [Node.js](https://nodejs.dev/) - JavaScript riun-time environment
+- [Node.js](https://nodejs.dev/) - JavaScript run-time environment
 
 ### Other Notable Technologies
 
